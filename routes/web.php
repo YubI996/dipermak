@@ -20,3 +20,52 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->middleware('verified');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::resource('roles', 'roleController');
+
+Route::resource('kotas', 'kotaController');
+
+
+
+Route::resource('kecamatans', 'kecamatanController');
+
+
+
+Route::resource('kelurahans', 'kelurahanController');
+
+Route::resource('rts', 'rtController');
+
+Route::resource('jenKegs', 'jenKegController');
+
+
+
+
+
+Route::resource('kegiatans', 'kegiatanController');
+
+Route::resource('partisipasis', 'partisipasiController');
+
+Route::resource('users', 'userController');
+
+Route::resource('dokumentasis', 'dokumentasiController');
