@@ -4,18 +4,15 @@
 
 use App\Models\rt;
 use Faker\Generator as Faker;
-$rt=1;
+use \Illuminate\Support\Carbon;
 $factory->define(rt::class, function (Faker $faker) {
-
+    static $rt=1;
+    
     return [
-        'nama_rt' => nomor()->current(),
+        'nama_rt' => $rt++,
         'kel_id' => 1,
-        'created_at' => $faker->date('Y-m-d H:i:s'),
-        'updated_at' => $faker->date('Y-m-d H:i:s')
+        'created_at' => date('Y-m-d H:i:s',strtotime(now())),
+        'updated_at' => date('Y-m-d H:i:s',strtotime(now()))
     ];
-});
-function nomor()
-{
-        yield $i;
-        $i += 1;
-}
+});$rt=1;
+
