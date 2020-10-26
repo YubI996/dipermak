@@ -18,11 +18,12 @@ class CreateKegiatansTable extends Migration
             $table->increments('id');
             $table->text('nama_keg', 100);
             $table->integer('rt_id')->unsigned();
-            $table->string('tgl_mulai');
-            $table->string('tgl_selesai');
+            $table->date('tgl_mulai');
+            $table->date('tgl_selesai');
             $table->enum('approval', ['1', '0']);
             $table->integer('jen_keg')->unsigned();
             $table->string('pagu');
+            $table->string('target');
             $table->string('volume');
             $table->timestamps();
             $table->softDeletes();
