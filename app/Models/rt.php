@@ -54,7 +54,7 @@ class rt extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function kel()
+    public function kelurahan()
     {
         return $this->belongsTo(\App\Models\kelurahan::class, 'kel_id');
     }

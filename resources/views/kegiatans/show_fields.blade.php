@@ -40,21 +40,15 @@
     <p>{{ $kegiatan->pagu }}</p>
 </div>
 
+<!-- Target Field -->
+<div class="form-group">
+    {!! Form::label('target', 'Target:') !!}
+    <p>{{ $kegiatan->target }}</p>
+</div>
+
 <!-- Volume Field -->
 <div class="form-group">
     {!! Form::label('volume', 'Volume:') !!}
     <p>{{ $kegiatan->volume }}</p>
-</div>
-
-<!-- Created At Field -->
-<div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
-    <p>{{ $kegiatan->created_at }}</p>
-</div>
-
-<!-- Updated At Field -->
-<div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
-    <p>{{ $kegiatan->updated_at }}</p>
 </div>
 

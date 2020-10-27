@@ -8,11 +8,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class user
  * @package App\Models
- * @version October 21, 2020, 1:45 am UTC
+ * @version October 26, 2020, 6:15 am UTC
  *
+ * @property \App\Models\Role $role
+ * @property \App\Models\Rt $rt
  * @property string $name
  * @property string $email
- * @property string|\Carbon\Carbon $email_verified_at
+ * @property string $email_verified_at
  * @property string $password
  * @property integer $role_id
  * @property integer $rt_id
@@ -51,7 +53,7 @@ class user extends Model
         'id' => 'integer',
         'name' => 'string',
         'email' => 'string',
-        'email_verified_at' => 'datetime',
+        'email_verified_at' => 'date',
         'password' => 'string',
         'role_id' => 'integer',
         'rt_id' => 'integer',
@@ -72,8 +74,23 @@ class user extends Model
         'rt_id' => 'nullable|integer',
         'remember_token' => 'nullable|string|max:100',
         'created_at' => 'nullable',
-        'updated_at' => 'nullable'
+        'updated_at' => 'nullable',
+        'deleted_at' => 'nullable'
     ];
 
-    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function role()
+    {
+        return $this->belongsTo(\App\Models\Role::class, 'role_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function rt()
+    {
+        return $this->belongsTo(\App\Models\rt::class, 'rt_id');
+    }
 }

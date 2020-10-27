@@ -8,7 +8,7 @@ use App\Repositories\BaseRepository;
 /**
  * Class kegiatanRepository
  * @package App\Repositories
- * @version October 20, 2020, 4:39 am UTC
+ * @version October 26, 2020, 6:12 am UTC
 */
 
 class kegiatanRepository extends BaseRepository
@@ -24,6 +24,7 @@ class kegiatanRepository extends BaseRepository
         'approval',
         'jen_keg',
         'pagu',
+        'target',
         'volume'
     ];
 

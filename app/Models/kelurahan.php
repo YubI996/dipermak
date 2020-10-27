@@ -54,7 +54,7 @@ class kelurahan extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function kec()
+    public function kecamatan()
     {
         return $this->belongsTo(\App\Models\kecamatan::class, 'kec_id');
     }

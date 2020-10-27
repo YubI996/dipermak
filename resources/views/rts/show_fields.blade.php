@@ -7,7 +7,7 @@
 <!-- Kel Id Field -->
 <div class="form-group">
     {!! Form::label('kel_id', 'Kel Id:') !!}
-    <p>{{ $rt->kel_id }}</p>
+    <p>{{ $rt->kelurahan->nama_kel }}</p>
 </div>
 
 <!-- Created At Field -->

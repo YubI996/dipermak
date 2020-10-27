@@ -35,10 +35,6 @@ Route::resource('rts', 'rtAPIController');
 
 Route::resource('jen_kegs', 'jenKegAPIController');
 
-
-
-
-
 Route::resource('kegiatans', 'kegiatanAPIController');
 
 Route::resource('partisipasis', 'partisipasiAPIController');

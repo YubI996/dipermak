@@ -11,7 +11,7 @@
         @foreach($rts as $rt)
             <tr>
                 <td>{{ $rt->nama_rt }}</td>
-            <td>{{ $rt->kel_id }}</td>
+            <td>{{ $rt->kelurahan->nama_kel }}</td>
                 <td>
                     {!! Form::open(['route' => ['rts.destroy', $rt->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

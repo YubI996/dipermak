@@ -37,7 +37,7 @@
     },
     {
         "name": "email_verified_at",
-        "dbType": "datetime:nullable",
+        "dbType": "date:nullable",
         "htmlType": "date",
         "validations": "nullable|nullable|nullable",
         "searchable": true,
@@ -118,5 +118,25 @@
         "inForm": false,
         "inIndex": false,
         "inView": false
+    },
+    {
+        "name": "deleted_at",
+        "dbType": "datetime:nullable",
+        "htmlType": "date",
+        "validations": "nullable|nullable|nullable",
+        "searchable": false,
+        "fillable": false,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false,
+        "inView": false
+    },
+    {
+        "type": "relation",
+        "relation": "mt1,Role,role_id"
+    },
+    {
+        "type": "relation",
+        "relation": "mt1,Rt,rt_id"
     }
 ]

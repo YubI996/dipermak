@@ -2,15 +2,14 @@
     <table class="table" id="users-table">
         <thead>
             <tr>
-                <th>Name</th>
+                <th>Nama</th>
         <th>Email</th>
         <th>Email Verified At</th>
-        <th>Password</th>
-        <th>Role Id</th>
-        <th>Rt Id</th>
+        <th>Role</th>
+        <th>RT</th>
         <th>Remember Token</th>
-                <th colspan="3">Action</th>
-            </tr>
+        <th colspan="3">Action</th>
+        </tr>
         </thead>
         <tbody>
         @foreach($users as $user)
@@ -18,9 +17,9 @@
                 <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
             <td>{{ $user->email_verified_at }}</td>
-            <td>{{ $user->password }}</td>
-            <td>{{ $user->role_id }}</td>
-            <td>{{ $user->rt_id }}</td>
+            {{-- <td>{{ $user->password }}</td> --}}
+            <td>{{ $user->role->nama_role }}</td>
+            <td>{{ $user->Rt->nama_rt.' Kelurahan '. $user->rt->kelurahan->nama_kel }}</td>
             <td>{{ $user->remember_token }}</td>
                 <td>
                     {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}

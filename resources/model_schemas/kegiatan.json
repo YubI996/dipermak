@@ -1,7 +1,7 @@
 [
     {
         "name": "id",
-        "dbType": "increments",
+        "dbType": "integer,true,true",
         "htmlType": null,
         "validations": null,
         "searchable": false,
@@ -13,9 +13,9 @@
     },
     {
         "name": "nama_keg",
-        "dbType": "text,100",
+        "dbType": "text,65535",
         "htmlType": "textarea",
-        "validations": "required|max:100",
+        "validations": "required|string|string|string",
         "searchable": true,
         "fillable": true,
         "primary": false,
@@ -25,9 +25,9 @@
     },
     {
         "name": "rt_id",
-        "dbType": "integer:unsigned:foreign,rts,id,cascade",
-        "htmlType": "selectTable:rts:id",
-        "validations": "required",
+        "dbType": "integer,false,true",
+        "htmlType": null,
+        "validations": "required|integer|integer|integer",
         "searchable": true,
         "fillable": true,
         "primary": false,
@@ -37,9 +37,9 @@
     },
     {
         "name": "tgl_mulai",
-        "dbType": "string",
+        "dbType": "date",
         "htmlType": "date",
-        "validations": "",
+        "validations": "required",
         "searchable": true,
         "fillable": true,
         "primary": false,
@@ -49,9 +49,9 @@
     },
     {
         "name": "tgl_selesai",
-        "dbType": "string",
-        "htmlType": "text",
-        "validations": "",
+        "dbType": "date",
+        "htmlType": "date",
+        "validations": "required",
         "searchable": true,
         "fillable": true,
         "primary": false,
@@ -61,9 +61,9 @@
     },
     {
         "name": "approval",
-        "dbType": "For",
-        "htmlType": "Enum,",
-        "validations": "",
+        "dbType": "string",
+        "htmlType": "text",
+        "validations": "required|string|string|string",
         "searchable": true,
         "fillable": true,
         "primary": false,
@@ -73,9 +73,9 @@
     },
     {
         "name": "jen_keg",
-        "dbType": "integer:unsigned:foreign,jen_kegs,id,cascade",
-        "htmlType": "selectTable:jen_kegs:id",
-        "validations": "",
+        "dbType": "integer,false,true",
+        "htmlType": null,
+        "validations": "required|integer|integer|integer",
         "searchable": true,
         "fillable": true,
         "primary": false,
@@ -85,9 +85,21 @@
     },
     {
         "name": "pagu",
-        "dbType": "string",
+        "dbType": "string,255",
         "htmlType": "text",
-        "validations": "",
+        "validations": "required|string|max:255|string|max:255|string|max:255",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "target",
+        "dbType": "string,255",
+        "htmlType": "text",
+        "validations": "required|string|max:255|string|max:255|string|max:255",
         "searchable": true,
         "fillable": true,
         "primary": false,
@@ -97,9 +109,9 @@
     },
     {
         "name": "volume",
-        "dbType": "string",
+        "dbType": "string,255",
         "htmlType": "text",
-        "validations": "",
+        "validations": "required|string|max:255|string|max:255|string|max:255",
         "searchable": true,
         "fillable": true,
         "primary": false,
@@ -109,34 +121,54 @@
     },
     {
         "name": "created_at",
-        "dbType": "timestamp",
-        "htmlType": null,
-        "validations": null,
+        "dbType": "datetime:nullable",
+        "htmlType": "date",
+        "validations": "nullable|nullable|nullable",
         "searchable": false,
         "fillable": false,
         "primary": false,
         "inForm": false,
         "inIndex": false,
-        "inView": true
+        "inView": false
     },
     {
         "name": "updated_at",
-        "dbType": "timestamp",
-        "htmlType": null,
-        "validations": null,
+        "dbType": "datetime:nullable",
+        "htmlType": "date",
+        "validations": "nullable|nullable|nullable",
         "searchable": false,
         "fillable": false,
         "primary": false,
         "inForm": false,
         "inIndex": false,
-        "inView": true
+        "inView": false
+    },
+    {
+        "name": "deleted_at",
+        "dbType": "datetime:nullable",
+        "htmlType": "date",
+        "validations": "nullable|nullable|nullable",
+        "searchable": false,
+        "fillable": false,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false,
+        "inView": false
     },
     {
         "type": "relation",
-        "relation": "mt1,rt,rt_id"
+        "relation": "mt1,JenKeg,jen_keg"
     },
     {
         "type": "relation",
-        "relation": "mt1,jenKeg,jen_keg"
+        "relation": "mt1,Rt,rt_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Dokumentasi,keg_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Partisipasi,keg_id"
     }
 ]

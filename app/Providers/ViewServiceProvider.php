@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Providers;
+namespace App\Providers;
+
 use App\Models\Partisipasi;
 use App\Models\Kegiatan;
 use App\Models\JenKeg;
@@ -41,7 +42,7 @@ class ViewServiceProvider extends ServiceProvider
             $view->with('kegiatanItems', $kegiatanItems);
         });
         View::composer(['kegiatans.fields'], function ($view) {
-            $jen_kegItems = JenKeg::pluck('id')->toArray();
+            $jen_kegItems = JenKeg::pluck('jenis_keg')->toArray();
             $view->with('jen_kegItems', $jen_kegItems);
         });
         View::composer(['kegiatans.fields'], function ($view) {
@@ -69,7 +70,7 @@ class ViewServiceProvider extends ServiceProvider
             $view->with('jenKegItems', $jenKegItems);
         });
         View::composer(['rts.fields'], function ($view) {
-            $kelurahanItems = Kelurahan::pluck('id')->toArray();
+            $kelurahanItems = Kelurahan::pluck('nama_kel')->toArray();
             $view->with('kelurahanItems', $kelurahanItems);
         });
         View::composer(['kelurahans.fields'], function ($view) {

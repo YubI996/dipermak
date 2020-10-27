@@ -9,6 +9,7 @@
         <th>Approval</th>
         <th>Jen Keg</th>
         <th>Pagu</th>
+        <th>Target</th>
         <th>Volume</th>
                 <th colspan="3">Action</th>
             </tr>
@@ -17,12 +18,13 @@
         @foreach($kegiatans as $kegiatan)
             <tr>
                 <td>{{ $kegiatan->nama_keg }}</td>
-            <td>{{ $kegiatan->rt_id }}</td>
+            <td>{{ $kegiatan->rt->nama_rt }}</td>
             <td>{{ $kegiatan->tgl_mulai }}</td>
             <td>{{ $kegiatan->tgl_selesai }}</td>
             <td>{{ $kegiatan->approval }}</td>
-            <td>{{ $kegiatan->jen_keg }}</td>
+            <td>{{ $kegiatan->jenKeg->jenis_keg }}</td>
             <td>{{ $kegiatan->pagu }}</td>
+            <td>{{ $kegiatan->target }}</td>
             <td>{{ $kegiatan->volume }}</td>
                 <td>
                     {!! Form::open(['route' => ['kegiatans.destroy', $kegiatan->id], 'method' => 'delete']) !!}

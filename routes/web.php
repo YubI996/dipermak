@@ -18,54 +18,36 @@ Route::get('/', function () {
 });
 
 Auth::routes(['verify' => true]);
+Route::Group(['middleware' => ['verified']],function(){
 
-Route::get('/home', 'HomeController@index')->middleware('verified');
+    
+    Route::get('/home', 'HomeController@index');
+    
+    Route::resource('roles', 'roleController');
+    
+    Route::resource('kotas', 'kotaController');
+    
+    
+    
+    Route::resource('kecamatans', 'kecamatanController');
+    
+    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Route::resource('roles', 'roleController');
-
-Route::resource('kotas', 'kotaController');
-
-
-
-Route::resource('kecamatans', 'kecamatanController');
-
-
-
-Route::resource('kelurahans', 'kelurahanController');
-
-Route::resource('rts', 'rtController');
-
-Route::resource('jenKegs', 'jenKegController');
-
-
-
-
-
-Route::resource('kegiatans', 'kegiatanController');
-
-Route::resource('partisipasis', 'partisipasiController');
-
-Route::resource('users', 'userController');
-
-Route::resource('dokumentasis', 'dokumentasiController');
+    Route::resource('kelurahans', 'kelurahanController');
+    
+    Route::resource('rts', 'rtController');
+    
+    Route::resource('jenKegs', 'jenKegController');
+    
+    
+    
+    
+    
+    Route::resource('kegiatans', 'kegiatanController');
+    
+    Route::resource('partisipasis', 'partisipasiController');
+    
+    Route::resource('users', 'userController');
+    
+    Route::resource('dokumentasis', 'dokumentasiController');
+});
