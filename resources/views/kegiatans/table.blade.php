@@ -17,14 +17,14 @@
         <tbody>
         @foreach($kegiatans as $kegiatan)
             <tr>
-                <td>{{ $kegiatan->nama_keg }}</td>
-            <td>{{ $kegiatan->rt->nama_rt }}</td>
+                <td>{{ substr($kegiatan->nama_keg,0, 20).'...' }}</td>
+            <td>{{ 'RT '.$kegiatan->rt->nama_rt.' Kelurahan '.$kegiatan->rt->kelurahan->nama_kel }}</td>
             <td>{{ $kegiatan->tgl_mulai }}</td>
             <td>{{ $kegiatan->tgl_selesai }}</td>
-            <td>{{ $kegiatan->approval }}</td>
+            <td>{{ $kegiatan->approval == 1 ? 'Disetujui' : 'Belum Disetujui' }}</td>
             <td>{{ $kegiatan->jenKeg->jenis_keg }}</td>
-            <td>{{ $kegiatan->pagu }}</td>
-            <td>{{ $kegiatan->target }}</td>
+            <td>{{ 'Rp '.number_format($kegiatan->pagu,2,',','.') }}</td>
+            <td>{{ 'Rp '.number_format($kegiatan->target,2,',','.') }}</td>
             <td>{{ $kegiatan->volume }}</td>
                 <td>
                     {!! Form::open(['route' => ['kegiatans.destroy', $kegiatan->id], 'method' => 'delete']) !!}
