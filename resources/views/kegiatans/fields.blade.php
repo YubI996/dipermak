@@ -58,13 +58,15 @@
 
 
 <!-- Volume Field -->
-<div class="form-group col-sm-6">
+<div class="input-group">
+{{-- <div class="form-group col-sm-6"> --}}
     {!! Form::label('volume', 'Volume:') !!}
     <div class="input-group-prepend">
         <div class="input-group-text">Rp</div>
       </div>
       <input class="form-control" maxlength="255" id="inlineFormInputGroup" name="volume" type="text">
     {{-- {!! Form::text('volume', null, ['class' => 'form-control','maxlength' => 255,'id'=>'inlineFormInputGroup']) !!} --}}
+{{-- </div> --}}
 </div>
 
 <!-- Submit Field -->
