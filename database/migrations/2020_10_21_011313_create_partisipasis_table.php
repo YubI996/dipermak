@@ -17,12 +17,14 @@ class CreatePartisipasisTable extends Migration
         Schema::create('partisipasis', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('keg_id')->unsigned();
+            $table->integer('rt_id')->unsigned();
             $table->text('deskripsi');
             $table->enum('jenis', ['barang','jasa']);
             $table->string('nominal');
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('keg_id')->references('id')->on('kegiatans')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('rt_id')->references('id')->on('rts')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

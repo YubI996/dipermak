@@ -20,7 +20,7 @@ class CreateKegiatansTable extends Migration
             $table->integer('rt_id')->unsigned();
             $table->date('tgl_mulai');
             $table->date('tgl_selesai');
-            $table->enum('approval', ['1', '0']);
+            $table->boolean('approval')->default(1);
             $table->integer('jen_keg')->unsigned();
             $table->string('pagu');
             $table->string('target');
