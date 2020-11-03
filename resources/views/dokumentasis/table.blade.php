@@ -3,6 +3,7 @@
         <thead>
             <tr>
                 <th>Keg Id</th>
+        <th>Rt Id</th>
         <th>Foto</th>
         <th>Keterangan</th>
                 <th colspan="3">Action</th>
@@ -12,6 +13,7 @@
         @foreach($dokumentasis as $dokumentasi)
             <tr>
                 <td>{{ $dokumentasi->keg_id }}</td>
+            <td>{{ $dokumentasi->rt_id }}</td>
             <td>{{ $dokumentasi->foto }}</td>
             <td>{{ $dokumentasi->keterangan }}</td>
                 <td>

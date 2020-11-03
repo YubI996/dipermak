@@ -8,7 +8,7 @@ use App\Repositories\BaseRepository;
 /**
  * Class partisipasiRepository
  * @package App\Repositories
- * @version October 21, 2020, 1:13 am UTC
+ * @version October 29, 2020, 1:42 am UTC
 */
 
 class partisipasiRepository extends BaseRepository
@@ -18,6 +18,7 @@ class partisipasiRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'keg_id',
+        'rt_id',
         'deskripsi',
         'jenis',
         'nominal'

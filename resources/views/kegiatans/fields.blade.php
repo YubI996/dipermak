@@ -1,12 +1,22 @@
 @livewireScripts
 @livewireStyles
+{{-- id --}}
+@if (isset($kegiatan))
+{{-- {{ Form::hidden('id', $kegiatan->id),['wire:model' => 'kid'] }} --}}
+<input  type="hidden" value="{{$kegiatan->id}}" wire:model ="kid">
+{{$kegiatan->id."aaaaaaaaaa"}}
+@endif
 <!-- Nama Keg Field -->
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('nama_keg', 'Nama Keg:') !!}
     {!! Form::textarea('nama_keg', null, ['class' => 'form-control']) !!}
 </div>
+@if (isset($kegiatan))
+@livewire('admin.dashboard',['kid'=>$kegiatan->id])
+@else
 
-@livewire('admin.dashboard')
+@livewire('admin.dashboard',['kid'=>0])
+@endif
 
 <!-- Tgl Mulai Field -->
 <div class="form-group col-sm-6">
@@ -61,11 +71,11 @@
 <div class="input-group">
 {{-- <div class="form-group col-sm-6"> --}}
     {!! Form::label('volume', 'Volume:') !!}
-    <div class="input-group-prepend">
-        <div class="input-group-text">Rp</div>
-      </div>
-      <input class="form-control" maxlength="255" id="inlineFormInputGroup" name="volume" type="text">
-    {{-- {!! Form::text('volume', null, ['class' => 'form-control','maxlength' => 255,'id'=>'inlineFormInputGroup']) !!} --}}
+    {{-- <input class="form-control" maxlength="255" id="inlineFormInputGroup" id="volume" name="volume" type="text"> --}}
+    {!! Form::text('volume', null, ['class' => 'form-control','maxlength' => 255]) !!}
+        <div class="input-group-prepend">
+            <div class="input-group-text">Satuan</div>
+          </div>
 {{-- </div> --}}
 </div>
 

@@ -25,9 +25,9 @@
     },
     {
         "name": "rt_id",
-        "dbType": "integer,false,true",
-        "htmlType": null,
-        "validations": "required|integer|integer|integer",
+        "dbType": "integer:unsigned:foreign,rts,id,cascade",
+        "htmlType": "selectTable:rts:id",
+        "validations": "required",
         "searchable": true,
         "fillable": true,
         "primary": false,
@@ -61,9 +61,9 @@
     },
     {
         "name": "approval",
-        "dbType": "string",
-        "htmlType": "text",
-        "validations": "required|string|string|string",
+        "dbType": "boolean",
+        "htmlType": "checkbox,1",
+        "validations": "required|boolean",
         "searchable": true,
         "fillable": true,
         "primary": false,
@@ -98,7 +98,7 @@
     {
         "name": "target",
         "dbType": "string,255",
-        "htmlType": "text",
+        "htmlType": "number",
         "validations": "required|string|max:255|string|max:255|string|max:255",
         "searchable": true,
         "fillable": true,
@@ -110,7 +110,7 @@
     {
         "name": "volume",
         "dbType": "string,255",
-        "htmlType": "text",
+        "htmlType": "number",
         "validations": "required|string|max:255|string|max:255|string|max:255",
         "searchable": true,
         "fillable": true,
@@ -121,7 +121,7 @@
     },
     {
         "name": "created_at",
-        "dbType": "datetime:nullable",
+        "dbType": "timestamps",
         "htmlType": "date",
         "validations": "nullable|nullable|nullable",
         "searchable": false,
@@ -133,7 +133,7 @@
     },
     {
         "name": "updated_at",
-        "dbType": "datetime:nullable",
+        "dbType": "timestamps",
         "htmlType": "date",
         "validations": "nullable|nullable|nullable",
         "searchable": false,
@@ -145,7 +145,7 @@
     },
     {
         "name": "deleted_at",
-        "dbType": "datetime:nullable",
+        "dbType": "timestamps",
         "htmlType": "date",
         "validations": "nullable|nullable|nullable",
         "searchable": false,

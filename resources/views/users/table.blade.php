@@ -3,12 +3,12 @@
         <thead>
             <tr>
                 <th>Nama</th>
-        <th>Email</th>
-        <th>Email Verified At</th>
-        <th>Role</th>
-        <th>RT</th>
-        <th>Remember Token</th>
-        <th colspan="3">Action</th>
+                <th>Email</th>
+                <th>Email Verified At</th>
+                <th>Role</th>
+                <th>RT</th>
+                {{-- <th>Remember Token</th> --}}
+                <th colspan="3">Action</th>
         </tr>
         </thead>
         <tbody>
@@ -19,8 +19,8 @@
             <td>{{ $user->email_verified_at }}</td>
             {{-- <td>{{ $user->password }}</td> --}}
             <td>{{ $user->role->nama_role }}</td>
-            <td>{{ $user->Rt->nama_rt.' Kelurahan '. $user->rt->kelurahan->nama_kel }}</td>
-            <td>{{ $user->remember_token }}</td>
+            <td>{{ 'RT '.$user->Rt->nama_rt.' Kelurahan '. $user->rt->kelurahan->nama_kel }}</td>
+            {{-- <td>{{ $user->remember_token }}</td> --}}
                 <td>
                     {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

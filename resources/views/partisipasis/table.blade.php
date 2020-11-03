@@ -3,6 +3,7 @@
         <thead>
             <tr>
                 <th>Keg Id</th>
+        <th>Rt Id</th>
         <th>Deskripsi</th>
         <th>Jenis</th>
         <th>Nominal</th>
@@ -13,6 +14,7 @@
         @foreach($partisipasis as $partisipasi)
             <tr>
                 <td>{{ $partisipasi->keg_id }}</td>
+            <td>{{ $partisipasi->rt_id }}</td>
             <td>{{ $partisipasi->deskripsi }}</td>
             <td>{{ $partisipasi->jenis }}</td>
             <td>{{ $partisipasi->nominal }}</td>

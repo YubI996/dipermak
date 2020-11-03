@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class kegiatan
  * @package App\Models
- * @version October 26, 2020, 6:12 am UTC
+ * @version October 29, 2020, 1:29 am UTC
  *
  * @property \App\Models\JenKeg $jenKeg
  * @property \App\Models\Rt $rt
@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property integer $rt_id
  * @property string $tgl_mulai
  * @property string $tgl_selesai
- * @property string $approval
+ * @property boolean $approval
  * @property integer $jen_keg
  * @property string $pagu
  * @property string $target
@@ -61,7 +61,7 @@ class kegiatan extends Model
         'rt_id' => 'integer',
         'tgl_mulai' => 'date',
         'tgl_selesai' => 'date',
-        'approval' => 'string',
+        'approval' => 'boolean',
         'jen_keg' => 'integer',
         'pagu' => 'string',
         'target' => 'string',
@@ -78,7 +78,7 @@ class kegiatan extends Model
         'rt_id' => 'required|integer',
         'tgl_mulai' => 'required',
         'tgl_selesai' => 'required',
-        'approval' => 'required|string',
+        'approval' => 'required|boolean',
         'jen_keg' => 'required|integer',
         'pagu' => 'required|string|max:255',
         'target' => 'required|string|max:255',
@@ -115,7 +115,7 @@ class kegiatan extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function partisipasi()
+    public function partisipasis()
     {
         return $this->hasMany(\App\Models\Partisipasi::class, 'keg_id');
     }

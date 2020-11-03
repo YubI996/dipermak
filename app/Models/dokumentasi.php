@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class dokumentasi
  * @package App\Models
- * @version October 21, 2020, 2:06 am UTC
+ * @version October 29, 2020, 1:45 am UTC
  *
- * @property \App\Models\kegiatan $keg
+ * @property \App\Models\Kegiatan $keg
+ * @property \App\Models\Rt $rt
  * @property integer $keg_id
+ * @property integer $rt_id
  * @property string $foto
  * @property string $keterangan
  */
@@ -21,6 +23,9 @@ class dokumentasi extends Model
 
     public $table = 'dokumentasis';
     
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at';
+
 
     protected $dates = ['deleted_at'];
 
@@ -28,6 +33,7 @@ class dokumentasi extends Model
 
     public $fillable = [
         'keg_id',
+        'rt_id',
         'foto',
         'keterangan'
     ];
@@ -40,6 +46,7 @@ class dokumentasi extends Model
     protected $casts = [
         'id' => 'integer',
         'keg_id' => 'integer',
+        'rt_id' => 'integer',
         'foto' => 'string',
         'keterangan' => 'string'
     ];
@@ -50,15 +57,28 @@ class dokumentasi extends Model
      * @var array
      */
     public static $rules = [
-        'keg_id' => 'required',
-        'foto' => 'required'
+        'keg_id' => 'required|integer',
+        'rt_id' => 'required|integer',
+        'foto' => 'required|string|max:255',
+        'keterangan' => 'required|string',
+        'created_at' => 'nullable',
+        'updated_at' => 'nullable',
+        'deleted_at' => 'nullable'
     ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function kegiatan()
+    public function keg()
     {
-        return $this->belongsTo(\App\Models\kegiatan::class, 'keg_id');
+        return $this->belongsTo(\App\Models\Kegiatan::class, 'keg_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function rt()
+    {
+        return $this->belongsTo(\App\Models\Rt::class, 'rt_id');
     }
 }

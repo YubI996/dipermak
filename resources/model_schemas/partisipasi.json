@@ -24,10 +24,22 @@
         "inView": true
     },
     {
-        "name": "deskripsi",
-        "dbType": "text",
-        "htmlType": "textarea",
+        "name": "rt_id",
+        "dbType": "integer:unsigned:foreign,rts,id,cascade",
+        "htmlType": "selectTable:rts:id",
         "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "deskripsi",
+        "dbType": "text,65535",
+        "htmlType": "textarea",
+        "validations": "required|string",
         "searchable": true,
         "fillable": true,
         "primary": false,
@@ -49,8 +61,8 @@
     },
     {
         "name": "nominal",
-        "dbType": "string",
-        "htmlType": "text",
+        "dbType": "string,255",
+        "htmlType": "number",
         "validations": "required",
         "searchable": true,
         "fillable": true,
@@ -69,22 +81,38 @@
         "primary": false,
         "inForm": false,
         "inIndex": false,
-        "inView": true
+        "inView": false
     },
     {
         "name": "updated_at",
-        "dbType": "timestamp",
-        "htmlType": null,
-        "validations": null,
+        "dbType": "datetime:nullable",
+        "htmlType": "date",
+        "validations": "nullable|nullable|nullable",
         "searchable": false,
         "fillable": false,
         "primary": false,
         "inForm": false,
         "inIndex": false,
-        "inView": true
+        "inView": false
+    },
+    {
+        "name": "deleted_at",
+        "dbType": "datetime:nullable",
+        "htmlType": "date",
+        "validations": "nullable|nullable|nullable",
+        "searchable": false,
+        "fillable": false,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false,
+        "inView": false
     },
     {
         "type": "relation",
-        "relation": "mt1,kegiatan,keg_id"
+        "relation": "mt1,Kegiatan,keg_id"
+    },
+    {
+        "type": "relation",
+        "relation": "mt1,Rt,rt_id"
     }
 ]
