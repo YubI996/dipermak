@@ -118,5 +118,5 @@ class kegiatan extends Model
     public function partisipasis()
     {
         return $this->hasMany(\App\Models\Partisipasi::class, 'keg_id');
-    }
+    }   
 }

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class user
  * @package App\Models
- * @version October 26, 2020, 6:15 am UTC
+ * @version November 3, 2020, 2:30 am UTC
  *
  * @property \App\Models\Role $role
  * @property \App\Models\Rt $rt
@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $password
  * @property integer $role_id
  * @property integer $rt_id
+ * @property string $foto
  * @property string $remember_token
  */
 class user extends Model
@@ -41,6 +42,7 @@ class user extends Model
         'password',
         'role_id',
         'rt_id',
+        'foto',
         'remember_token'
     ];
 
@@ -57,6 +59,7 @@ class user extends Model
         'password' => 'string',
         'role_id' => 'integer',
         'rt_id' => 'integer',
+        'foto' => 'string',
         'remember_token' => 'string'
     ];
 
@@ -72,6 +75,7 @@ class user extends Model
         'password' => 'required|string|max:255',
         'role_id' => 'required|integer',
         'rt_id' => 'nullable|integer',
+        'foto' => 'nullable|image',
         'remember_token' => 'nullable|string|max:100',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
@@ -91,6 +95,6 @@ class user extends Model
      **/
     public function rt()
     {
-        return $this->belongsTo(\App\Models\rt::class, 'rt_id');
+        return $this->belongsTo(\App\Models\Rt::class, 'rt_id');
     }
 }

@@ -59,7 +59,7 @@ class dokumentasi extends Model
     public static $rules = [
         'keg_id' => 'required|integer',
         'rt_id' => 'required|integer',
-        'foto' => 'required|string|max:255',
+        'foto' => 'nullable',
         'keterangan' => 'required|string',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
@@ -69,7 +69,7 @@ class dokumentasi extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function keg()
+    public function kegiatan()
     {
         return $this->belongsTo(\App\Models\Kegiatan::class, 'keg_id');
     }

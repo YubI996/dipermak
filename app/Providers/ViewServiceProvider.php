@@ -10,6 +10,7 @@ use App\Models\Rt;
 use App\Models\Kelurahan;
 use App\Models\Kecamatan;
 use App\Models\Kota;
+use Auth;
 
 use Illuminate\Support\ServiceProvider;
 use View;
@@ -35,16 +36,13 @@ class ViewServiceProvider extends ServiceProvider
     {
         // dokumentasi
         View::composer(['dokumentasis.fields'], function ($view) {
-            $kegiatanItems = Kegiatan::pluck('id')->toArray();
+            $kegiatanItems = Kegiatan::pluck('nama_keg','id')->toArray();
             $view->with('kegiatanItems', $kegiatanItems);
         });
-        View::composer(['dokumentasis.fields'], function ($view) {
-            $kegiatanItems = Kegiatan::pluck('id')->toArray();
-            $view->with('kegiatanItems', $kegiatanItems);
-        });
+        
         // partisipasi
         View::composer(['partisipasis.fields'], function ($view) {
-            $kegiatanItems = Kegiatan::pluck('id')->toArray();
+            $kegiatanItems = Kegiatan::where('rt_id',Auth::user()->rt_id)->pluck('nama_keg','id')->toArray();
             $view->with('kegiatanItems', $kegiatanItems);
         });
         // kegiatan
@@ -117,11 +115,13 @@ class ViewServiceProvider extends ServiceProvider
             $roleItems = Role::pluck('nama_role')->toArray();
             $view->with('roleItems', $roleItems);
         });
-        View::composer(['roles.fields'], function ($view) {
-            $roleItems = Role::pluck('nama_role')->toArray();
+        //user
+        View::composer(['users.fields'], function ($view) {
+            $roleItems = Role::pluck('nama_role','id')->toArray();
             $view->with('roleItems', $roleItems);
         });
-        // kota
+       
+        // kota 
         View::composer(['kotas.fields'], function ($view) {
             $KotaItems = Kota::pluck('nama_kota')->toArray();
             $view->with('KotaItems', $KotaItems);

@@ -8,6 +8,7 @@ use App\Repositories\userRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
+use Auth;
 use Response;
 
 class userController extends AppBaseController
@@ -55,9 +56,13 @@ class userController extends AppBaseController
     public function store(CreateuserRequest $request)
     {
         $input = $request->all();
-
+        $input['foto']->move(public_path('storage\\img\\foto'), Auth::user()->name.'.'.$input['foto']->getClientOriginalExtension());
+        // $input['foto']->storeAs(('storage\\img\\foto'),Auth::user()->name);
+        // dd($input['foto']->hashName());
         $user = $this->userRepository->create($input);
-
+        $user->foto = '\img\foto\\'.Auth::user()->name.'.'.$input['foto']->getClientOriginalExtension();
+        $user->save();
+        // dd($user->foto);
         Flash::success('User saved successfully.');
 
         return redirect(route('users.index'));

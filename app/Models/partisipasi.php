@@ -73,7 +73,7 @@ class partisipasi extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function keg()
+    public function kegiatan()
     {
         return $this->belongsTo(\App\Models\Kegiatan::class, 'keg_id');
     }

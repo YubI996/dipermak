@@ -8,6 +8,7 @@ use App\Repositories\dokumentasiRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
+use Auth;
 use Response;
 
 class dokumentasiController extends AppBaseController
@@ -55,8 +56,13 @@ class dokumentasiController extends AppBaseController
     public function store(CreatedokumentasiRequest $request)
     {
         $input = $request->all();
+        $input['foto']->move(public_path('storage\\img\\dok'), Auth::user()->name.'.'.$input['foto']->getClientOriginalExtension());
+
 
         $dokumentasi = $this->dokumentasiRepository->create($input);
+        $dokumentasi->foto = '\img\dok\\'.Auth::user()->name.'.'.$input['foto']->getClientOriginalExtension();
+        $dokumentasi->save();
+
 
         Flash::success('Dokumentasi saved successfully.');
 
