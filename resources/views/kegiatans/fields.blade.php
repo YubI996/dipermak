@@ -11,6 +11,8 @@
     {!! Form::label('nama_keg', 'Nama Keg:') !!}
     {!! Form::textarea('nama_keg', null, ['class' => 'form-control']) !!}
 </div>
+@livewire('pilihrt')
+{{-- @livewire('pilihrt', ['user' => $user], key($user->id)) --}}
 @if (isset($kegiatan))
 @livewire('admin.dashboard',['kid'=>$kegiatan->id])
 @else

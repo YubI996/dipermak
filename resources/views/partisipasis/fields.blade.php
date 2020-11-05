@@ -1,14 +1,15 @@
 <!-- Keg Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('keg_id', 'Keg Id:') !!}
-    {!! Form::select('keg_id', $kegiatanItems, null, ['class' => 'form-control']) !!}
+    {!! Form::select('keg_id', $kegiatanItems, Request::old('kegiatan_id'), ['class' => 'form-control','placeholder' => 'Pilih Kegiatan']) !!}
 </div>
 
 <!-- Rt Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('rt_id', 'Rt Id:') !!}
-    {!! Form::number('rt_id', null, ['class' => 'form-control']) !!}
-</div>
+{{-- <div class="form-group col-sm-6"> --}}
+    {{-- {!! Form::label('rt_id', 'Rt Id:') !!} --}}
+
+    {!! Form::hidden('rt_id', Auth::user()->rt_id) !!}
+{{-- </div> --}}
 
 <!-- Deskripsi Field -->
 <div class="form-group col-sm-12 col-lg-12">
@@ -18,8 +19,8 @@
 
 <!-- Jenis Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('jenis', 'Jenis:') !!}
-    {!! Form::select('jenis', ['barang' => 'Barang', 'jasa' => 'Jasa'], null, ['class' => 'form-control']) !!}
+    {!! Form::label('jenis', 'Jenis Partisipasi(Barang/Jasa) :') !!}
+    {!! Form::select('jenis', ['barang' => 'Barang', 'jasa' => 'Jasa'], null, ['class' => 'form-control','placeholder' => 'Pilih Jenis Partisipasi']) !!}
 </div>
 
 <!-- Nominal Field -->

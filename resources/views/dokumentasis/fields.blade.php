@@ -1,14 +1,14 @@
 <!-- Keg Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('keg_id', 'Keg Id:') !!}
-    {!! Form::select('keg_id', $kegiatanItems, null, ['class' => 'form-control']) !!}
+    {!! Form::select('keg_id', $kegiatanItems, Request::old('kegiatan_id'), ['class' => 'form-control','placeholder'=>'Pilih Kegiatan']) !!}
 </div>
 
 <!-- Rt Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('rt_id', 'Rt Id:') !!}
-    {!! Form::select('keg_id', $rtItems, null, ['class' => 'form-control']) !!}
-</div>
+{{-- <div class="form-group col-sm-6"> --}}
+    {{-- {!! Form::label('rt_id', 'Rt Id:') !!} --}}
+    {!! Form::hidden('rt_id', Auth::user()->rt_id) !!}
+{{-- </div> --}}
 
 <!-- Foto Field -->
 <div class="form-group col-sm-6">
