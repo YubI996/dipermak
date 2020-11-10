@@ -8,7 +8,7 @@
         <title>Laravel</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="{{asset('front/css/nunito.css')}}" rel="stylesheet">
 
         <!-- Styles -->
         
@@ -19,11 +19,11 @@
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{{ asset('img/favicon.ico') }}" />
         <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <script src="{{asset('front/js/all.js')}}" ></script>
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-
+        @livewireStyles
         {{-- <style>
             html, body {
                 background-color: #fff;
@@ -76,12 +76,12 @@
                 margin-bottom: 30px;
             }
         </style> --}}
-        <link href="{{ asset('css/styles.dashboard.css') }}" rel="stylesheet" />
-        <link href="{{ asset('vendor/datatables/buttons.server-side.js') }}" rel="stylesheet" />
+        <link href="{{ asset('front/css/styles.dashboard.css') }}" rel="stylesheet" />
+        {{-- <link href="{{ asset('vendor/datatables/buttons.server-side.js') }}" rel="stylesheet" /> --}}
 
     </head>
     <body>
-        {{ asset('vendor/datatables/buttons.server-side.js') }}
+        {{-- {{ asset('vendor/datatables/buttons.server-side.js') }} --}}
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -108,8 +108,9 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarResponsive">
                             <ul class="navbar-nav ml-auto">
-                                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Capaian Target Kegiatan</a></li>
-                                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">Mendaftar</a></li>
+                                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#target">Capaian Target Kegiatan</a></li>
+                                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#pagu">Pagu Anggaran Kegiatan</a></li>
+                                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#pilih">Mendaftar</a></li>
                                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('login') }}">Login</a></li>
 
                             </ul>
@@ -134,10 +135,10 @@
                     </div>
                 </header>
                 <!-- Portfolio Section-->
-                <section class="page-section portfolio" id="portfolio">
+                <section class="page-section portfolio" id="target">
                     <div class="container">
                         <!-- Portfolio Section Heading-->
-                        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Capaian Target Kegiatan</h2>
+                        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Capaian Target Kegiatan Tahun {{date('Y')}}</h2>
                         <!-- Icon Divider-->
                         <div class="divider-custom">
                             <div class="divider-custom-line"></div>
@@ -148,21 +149,28 @@
                         <div class="row">
                             <!-- Portfolio Item 0-->       
                             <div class="col-md-6 col-lg-4 mb-5">
-                                <div class="card border-left-primary shadow h-100 py-2">
-                                    <div class="card-body">
-                                      <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Seluruh Kegiatan</div>
-                                          <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                <div class="card border-left-info shadow h-100 py-2">
+                                  <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                      <div class="col mr-2">
+                                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Semua Kegiatan</div>
+                                        <div class="row no-gutters align-items-center">
+                                          <div class="col-auto">
+                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{number_format($allTarget,2,',','.').'%'}}</div>
+                                          </div>
+                                          <div class="col">
+                                            <div class="progress progress-sm mr-2">
+                                              <div class="progress-bar bg-info" role="progressbar" style="width: {{$allTarget}}%" aria-valuenow="{{$allTarget}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                          </div>
                                         </div>
-                                        <div class="col-auto">
-                                        <img src="/img/rp.svg" style="width:2rem;height:2rem;">
-                                        {{-- <i class="fas fa-clipboard-list fa-2x text-gray-300"></i> --}}
-                                        {{-- <i class="fas fa-calendar fa-2x text-gray-300"></i> --}}
-                                        </div>
+                                      </div>
+                                      <div class="col-auto">
+                                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                                       </div>
                                     </div>
                                   </div>
+                                </div>
                             </div>
                             {{-- capaian taget smart city --}}
                             <div class="col-md-6 col-lg-4 mb-5">
@@ -170,14 +178,14 @@
                                   <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                       <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Smart City</div>
+                                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Smart City</div>
                                         <div class="row no-gutters align-items-center">
                                           <div class="col-auto">
-                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{number_format($smartTarget,2,',','.').'%'}}</div>
                                           </div>
                                           <div class="col">
                                             <div class="progress progress-sm mr-2">
-                                              <div class="progress-bar bg-info" role="progressbar" style="width: 100%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                              <div class="progress-bar bg-info" role="progressbar" style="width: {{$smartTarget}}%" aria-valuenow="{{$smartTarget}}" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                           </div>
                                         </div>
@@ -191,57 +199,56 @@
                             </div>
                             {{-- end of capaian taget smart city --}}
                             {{-- capaian target creative city --}}
-                              <div class="col-md-6 col-lg-4 mb-5">
-                                <div class="card border-left-info shadow h-100 py-2">
-                                  <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                      <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Creative City</div>
-                                        <div class="row no-gutters align-items-center">
-                                          <div class="col-auto">
-                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                          </div>
-                                          <div class="col">
-                                            <div class="progress progress-sm mr-2">
-                                              <div class="progress-bar bg-info" role="progressbar" style="width: 100%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="col-auto">
-                                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            {{-- end of capaian target creative city --}}
-                            {{-- capaian target green city --}}
                             <div class="col-md-6 col-lg-4 mb-5">
                                 <div class="card border-left-info shadow h-100 py-2">
                                   <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                       <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Green City</div>
+                                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Creative City</div>
                                         <div class="row no-gutters align-items-center">
                                           <div class="col-auto">
-                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{number_format($creativeTarget,2,',','.').'%'}}</div>
                                           </div>
                                           <div class="col">
                                             <div class="progress progress-sm mr-2">
-                                              <div class="progress-bar bg-info" role="progressbar" style="width: 100%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                              <div class="progress-bar bg-info" role="progressbar" style="width: {{$creativeTarget}}%" aria-valuenow="{{$creativeTarget}}" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                           </div>
                                         </div>
                                       </div>
                                       <div class="col-auto">
                                         <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-
                                       </div>
                                     </div>
                                   </div>
                                 </div>
-                             </div>
+                            </div>
+                            {{-- end of capaian target creative city --}}
+                            {{-- capaian target green city --}}
+                            <div class="col-md-6 col-lg-4 mb-5">
+                              <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                  <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Green City</div>
+                                      <div class="row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{number_format($greenTarget,2,',','.').'%'}}</div>
+                                        </div>
+                                        <div class="col">
+                                          <div class="progress progress-sm mr-2">
+                                            <div class="progress-bar bg-info" role="progressbar" style="width: {{$greenTarget}}%" aria-valuenow="{{$greenTarget}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-auto">
+                                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
                             {{-- end of capaian target green city --}}
                         </div>
                     </div>
@@ -250,7 +257,7 @@
                 <section class="page-section pagu" id="pagu">
                     <div class="container">
                         <!-- Portfolio Section Heading-->
-                        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Pagu Kegiatan</h2>
+                        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Pagu Kegiatan Tahun {{date('Y')}}</h2>
                         <!-- Icon Divider-->
                         <div class="divider-custom">
                             <div class="divider-custom-line"></div>
@@ -259,14 +266,14 @@
                         </div>
                         <!-- Portfolio Grid Items-->
                         <div class="row">
-                            <!-- Portfolio Item 0-->       
+                            <!-- Pagu all-->       
                             <div class="col-md-6 col-lg-4 mb-5">
                                 <div class="card border-left-primary shadow h-100 py-2">
                                     <div class="card-body">
                                       <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                           <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Seluruh Kegiatan</div>
-                                          <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                          <div class="h5 mb-0 font-weight-bold text-gray-800">{{'Rp'.number_format($allPagu,0,',','.')}}</div>
                                         </div>
                                         <div class="col-auto">
                                         <img src="/img/rp.svg" style="width:2rem;height:2rem;">
@@ -275,84 +282,57 @@
                                     </div>
                                   </div>
                             </div>
-                            {{-- capaian taget smart city --}}
+                            {{-- pagu smart city --}}
                             <div class="col-md-6 col-lg-4 mb-5">
-                                <div class="card border-left-info shadow h-100 py-2">
+                              <div class="card border-left-primary shadow h-100 py-2">
                                   <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                       <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Smart City</div>
-                                        <div class="row no-gutters align-items-center">
-                                          <div class="col-auto">
-                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                          </div>
-                                          <div class="col">
-                                            <div class="progress progress-sm mr-2">
-                                              <div class="progress-bar bg-info" role="progressbar" style="width: 100%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                          </div>
-                                        </div>
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Smart City</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{'Rp'.number_format($smartPagu,0,',','.')}}</div>
                                       </div>
                                       <div class="col-auto">
-                                        <img src="/img/rp.svg" style="width:2rem;height:2rem;">
+                                      <img src="/img/rp.svg" style="width:2rem;height:2rem;">
                                       </div>
                                     </div>
                                   </div>
                                 </div>
-                            </div>
+                          </div>
                             {{-- end of capaian taget smart city --}}
                             {{-- capaian target creative city --}}
-                              <div class="col-md-6 col-lg-4 mb-5">
-                                <div class="card border-left-info shadow h-100 py-2">
+                            <div class="col-md-6 col-lg-4 mb-5">
+                              <div class="card border-left-primary shadow h-100 py-2">
                                   <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                       <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Creative City</div>
-                                        <div class="row no-gutters align-items-center">
-                                          <div class="col-auto">
-                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                          </div>
-                                          <div class="col">
-                                            <div class="progress progress-sm mr-2">
-                                              <div class="progress-bar bg-info" role="progressbar" style="width: 100%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                          </div>
-                                        </div>
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Green City</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{'Rp'.number_format($greenPagu,0,',','.')}}</div>
                                       </div>
                                       <div class="col-auto">
-                                        <img src="/img/rp.svg" style="width:2rem;height:2rem;">
-
+                                      <img src="/img/rp.svg" style="width:2rem;height:2rem;">
                                       </div>
                                     </div>
                                   </div>
                                 </div>
-                              </div>
+                          </div>
                             {{-- end of capaian target creative city --}}
                             {{-- capaian target green city --}}
                             <div class="col-md-6 col-lg-4 mb-5">
-                                <div class="card border-left-info shadow h-100 py-2">
+                              <div class="card border-left-primary shadow h-100 py-2">
                                   <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                       <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Green City</div>
-                                        <div class="row no-gutters align-items-center">
-                                          <div class="col-auto">
-                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                          </div>
-                                          <div class="col">
-                                            <div class="progress progress-sm mr-2">
-                                              <div class="progress-bar bg-info" role="progressbar" style="width: 100%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                          </div>
-                                        </div>
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Creative City</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{'Rp'.number_format($creativePagu,0,',','.')}}</div>
                                       </div>
                                       <div class="col-auto">
-                                        <img src="/img/rp.svg" style="width:2rem;height:2rem;">
-
+                                      <img src="/img/rp.svg" style="width:2rem;height:2rem;">
                                       </div>
                                     </div>
                                   </div>
                                 </div>
+                          </div>
+                                
                              </div>
                             {{-- end of capaian target green city --}}
                         </div>
@@ -361,10 +341,10 @@
                 {{-- end of PAGU SECTION --}}
 
                 <!-- About Section-->
-                <section class="page-section bg-primary text-white mb-0" id="about">
+                <section class="page-section bg-primary text-white mb-0" id="pilih">
                     <div class="container">
                         <!-- About Section Heading-->
-                        <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
+                        <h2 class="page-section-heading text-center text-uppercase text-white">Lihat Kegiatan RT</h2>
                         <!-- Icon Divider-->
                         <div class="divider-custom divider-light">
                             <div class="divider-custom-line"></div>
@@ -373,8 +353,7 @@
                         </div>
                         <!-- About Section Content-->
                         <div class="row">
-                            <div class="col-lg-4 ml-auto"><p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy customization.</p></div>
-                            <div class="col-lg-4 mr-auto"><p class="lead">You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!</p></div>
+                            @livewire('keg') 
                         </div>
                         <!-- About Section Button-->
                         <div class="text-center mt-4">
@@ -669,7 +648,7 @@
                                                 <div class="divider-custom-line"></div>
                                             </div>
                                             <!-- Portfolio Modal - Image-->
-                                            <img class="img-fluid rounded mb-5" src="assets/img/portfolio/submarine.png" alt="" />
+                                            <img class="img-fluid rounded mb-5" src="{{asset('front/assets/img/portfolio/submarine.png')}}" alt="" />
                                             <!-- Portfolio Modal - Text-->
                                             <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
                                             <button class="btn btn-primary" data-dismiss="modal">
@@ -684,15 +663,16 @@
                     </div>
                 </div>
                 <!-- Bootstrap core JS-->
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+                @livewireScripts
+            <script src="{{asset('front/js/jquery.min.js')}}"></script>
+                <script src="{{asset('front/js/bootstrap.bundle.min.js')}}"></script>
                 <!-- Third party plugin JS-->
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+                <script src="{{asset('front/js/jquery.easing.min.js')}}"></script>
                 <!-- Contact form JS-->
-                <script src="assets/mail/jqBootstrapValidation.js"></script>
-                <script src="assets/mail/contact_me.js"></script>
+                <script src="{{asset('front/assets/mail/jqBootstrapValidation.js')}}"></script>
+                <script src="{{asset('front/assets/mail/contact_me.js')}}"></script>
                 <!-- Core theme JS-->
-                <script src="js/scripts.js"></script>
+                <script src="{{asset('front/js/scripts.js')}}"></script>
             </body>
             </div>
         </div>

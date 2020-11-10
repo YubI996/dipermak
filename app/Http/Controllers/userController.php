@@ -9,6 +9,7 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Auth;
+use Hash;
 use Response;
 
 class userController extends AppBaseController
@@ -33,7 +34,7 @@ class userController extends AppBaseController
         $users = $this->userRepository->all();
 
         return view('users.index')
-            ->with('users', $users);
+        ->with('users', $users);
     }
 
     /**
@@ -61,6 +62,7 @@ class userController extends AppBaseController
         // dd($input['foto']->hashName());
         $user = $this->userRepository->create($input);
         $user->foto = '\img\foto\\'.Auth::user()->name.'.'.$input['foto']->getClientOriginalExtension();
+        $user->password = Hash::make($request->password);
         $user->save();
         // dd($user->foto);
         Flash::success('User saved successfully.');

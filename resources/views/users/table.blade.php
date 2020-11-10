@@ -4,10 +4,10 @@
             <tr>
                 <th>Name</th>
         <th>Email</th>
-        <th>Email Verified At</th>
+        {{-- <th>Email Verified At</th> --}}
         {{-- <th>Password</th> --}}
-        <th>Role Id</th>
-        <th>Rt Id</th>
+        <th>Role</th>
+        <th>RT</th>
         <th>Foto</th>
         {{-- <th>Remember Token</th> --}}
                 <th colspan="3">Action</th>
@@ -18,7 +18,7 @@
             <tr>
                 <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
-            <td>{{ $user->email_verified_at }}</td>
+            {{-- <td>{{ $user->email_verified_at }}</td> --}}
             {{-- <td>{{ $user->password }}</td> --}}
             <td>{{ $user->role->nama_role }}</td>
             <td>{{ $user->rt_id }}</td>

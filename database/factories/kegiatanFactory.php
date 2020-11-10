@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\kegiatan;
+use App\Models\kegiatan; 
 use App\Models\rt;
 use App\Models\jenKeg;
 use Faker\Generator as Faker;
@@ -19,8 +19,8 @@ $factory->define(kegiatan::class, function (Faker $faker) {
         'pagu' => $faker->randomNumber(6,false),
         'target' => $faker->randomNumber(5, true),
         'volume' => $faker->randomNumber(2,false),
-        'created_at' => $faker->date('Y-m-d H:i:s'),
-        'updated_at' => $faker->date('Y-m-d H:i:s'),
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => date('Y-m-d H:i:s'),
         
     ];
 });

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\kecamatan;
@@ -8,7 +8,7 @@ use App\Models\kelurahan;
 use App\Models\rt;
 
 
-class Pilihrt extends Component
+class Keg extends Component
 {
     public $kec;
     public $kel;

@@ -13,6 +13,9 @@
 <!-- Rt Id Field -->
 <div class="form-group row-sm-6">
     {!! Form::label('rt_id', 'RT:') !!}
-    {!! Form::select('rt_id', $rtItems,Request::old('rt_id'), ['class' => 'form-control','placeholder' => 'Pilih RT']) !!}
+    {!! Form::select('rt_id', $rtItems,Request::old('rt_id'), ['class' => 'form-control','placeholder' => 'Pilih RT','wire:model' => 'rtid']) !!}
+</div>
+<div>
+    {{$rtid}}
 </div>
 </div>
