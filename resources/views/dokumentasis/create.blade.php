@@ -11,7 +11,8 @@
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row">
-                    {!! Form::open(['route' => 'dokumentasis.store', 'files' => true]) !!}
+                    {!! Form::open(['route' => 'dokumentasis.store', 'enctype' => 'multipart/form-data']) !!}
+                    {{-- {!! Form::open(['route' => 'dokumentasis.store', 'files' => true]) !!} --}}
 
                         @include('dokumentasis.fields')
 

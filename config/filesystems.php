@@ -43,6 +43,13 @@ return [
 
     'disks' => [
 
+        // 'uploads' => [
+        //     'driver' => 'local',
+        //     'root' => public_path('storage\\img\\dok'),
+        //     'url' => '/img/uploads',
+        //     'visibility' => 'public',
+        // ],
+
         'local' => [
             'driver' => 'local',
             'root' => storage_path('files'),
@@ -51,6 +58,12 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+        'dok' => [
+            'driver' => 'local',
+            'root' => public_path('/storage/img/dok'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],

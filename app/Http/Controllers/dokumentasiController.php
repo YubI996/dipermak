@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 use Flash;
 use Auth;
 use Response;
+use App\Models\Kegiatan;
+use App\Models\Rt;
+use App\Models\Dokumentasi;
 
 class dokumentasiController extends AppBaseController
 {
@@ -56,12 +59,21 @@ class dokumentasiController extends AppBaseController
     public function store(CreatedokumentasiRequest $request)
     {
         $input = $request->all();
-        $input['foto']->move(public_path('storage\\img\\dok'), Auth::user()->name.'.'.$input['foto']->getClientOriginalExtension());
-
-
-        $dokumentasi = $this->dokumentasiRepository->create($input);
-        $dokumentasi->foto = '\img\dok\\'.Auth::user()->name.'.'.$input['foto']->getClientOriginalExtension();
-        $dokumentasi->save();
+        // dd($request->hasFile('foto'));
+        // dump($request->foto); 
+        // dd($input); 
+        foreach ($request->foto as $index => $foto) {
+            $keg = Kegiatan::where('id',$input['keg_id'])->value('nama_keg');
+            $rt = Rt::where('id',$input['rt_id'])->value('nama_rt');
+            $nama = $index.'_'.implode(' ', array_slice(explode(' ', $keg), 0, 3)).'_RT_'.$rt.'.'.$foto->getClientOriginalExtension();
+            $path = '\\img\\dok';
+            $dokumentasi = Dokumentasi::create([
+                'keg_id' => $input['keg_id'],
+                'rt_id' => $input['rt_id'],
+                'foto' => $foto->storeAs('/img/dok', $nama,'dok'),
+                'keterangan' => $input['keterangan']
+            ]);
+        }
 
 
         Flash::success('Dokumentasi saved successfully.');

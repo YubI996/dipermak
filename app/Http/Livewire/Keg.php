@@ -34,8 +34,13 @@ class Keg extends Component
             $rtItems = Rt::pluck('nama_rt','id')->toArray();
 
         }
-        $rtid = $this->rtid;
-        return view('livewire.admin.pilihrt', compact('kelurahanItems','kecamatanItems','rtItems','rtid'));
+        if (!(empty($this->rtid))) {
+            $rt = Rt::where('id',$this->rtid)->first()->toArray();
+        }
+        else{
+            $rt = $this->rtid;
+        }
+        return view('livewire.keg', compact('kelurahanItems','kecamatanItems','rtItems','rt'));
     }
 }
 

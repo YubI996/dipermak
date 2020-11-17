@@ -7,24 +7,24 @@
     {{-- @section('css') --}}
         
     <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap-toggle.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('dash/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('dash/css/bootstrap-toggle.min.css') }}">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-    
+    <link rel="stylesheet" href="{{ asset('dash/css/font-awesome.min.css') }}">
+
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('css/AdminLTE.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/_all-skins.min.css') }}">
-    
+    <link rel="stylesheet" href="{{ asset('dash/css/AdminLTE.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('dash/css/all-skins.min.css') }}">
+
     <!-- iCheck -->
-    <link rel="stylesheet" href="{{ asset('css/_all.css') }}">
-    
-    <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
-    
+    <link rel="stylesheet" href="{{ asset('dash/css/all.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('dash/css/select2.min.css') }}">
+
     <!-- Ionicons -->
-    <link rel="stylesheet" href="{{ asset('css/ionicons.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.min.css') }}">
-    {{-- @endsection --}}
+    <link rel="stylesheet" href="{{ asset('dash/css/ionicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('dash/css/bootstrap-datetimepicker.min.css') }}">
+
     @livewireStyles
 
     @yield('css')
@@ -153,16 +153,18 @@
     @endif
 
     <!-- jQuery 3.1.1 -->
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/moment.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap-toggle.min.js') }}"></script>
+    <script src="{{ asset('dash/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('dash/js/moment.min.js') }}"></script>
+    <script src="{{ asset('dash/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('dash/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script src="{{ asset('dash/js/bootstrap-toggle.min.js') }}"></script>
     <!-- AdminLTE App -->
-    <script src="{{ asset('js/adminlte.min.js') }}"></script>
+    <script src="{{ asset('dash/js/adminlte.min.js') }}"></script>
 
-    <script src="{{ asset('js/icheck.min.js') }}"></script>
-    <script src="{{ asset('js/select2.min.js') }}"></script>
+    <script src="{{ asset('dash/js/icheck.min.js') }}"></script>
+    <script src="{{ asset('dash/js/select2.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
+
     @livewireScripts
     @stack('scripts')
 </body>

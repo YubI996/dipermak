@@ -13,7 +13,7 @@
 <!-- Foto Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('foto', 'Foto:') !!}
-    {!! Form::file('foto') !!}
+    {!! Form::file('foto',['name' => 'foto[]','multiple']) !!}
 </div>
 <div class="clearfix"></div>
 

@@ -36,7 +36,7 @@ class userController extends AppBaseController
         return view('users.index')
         ->with('users', $users);
     }
-
+    
     /**
      * Show the form for creating a new user.
      *

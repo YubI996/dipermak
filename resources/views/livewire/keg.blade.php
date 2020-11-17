@@ -1,3 +1,4 @@
+
 <div class="col-lg-4 ml-auto">
     <!-- kecamatan Field -->
     <div class="form-group row-sm-6">
@@ -14,9 +15,11 @@
         {!! Form::label('rt_id', 'RT:') !!}
         {!! Form::select('rt_id', $rtItems,Request::old('rt_id'), ['class' => 'form-control','placeholder' => 'Pilih RT','wire:model' => 'rtid']) !!}
     </div>
-    <div>
-        {{$rtid}}
-    </div>
-</div>
-
-<div class="col-lg-4 mr-auto"><p class="lead">You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!</p></div>
+</div>{{$rt=='null'}}
+@if (($rt)== 'null')
+<div class="col-lg-4 mr-auto"><p class="lead">Anda belum memilih RT</p></div>
+    
+@else
+<div class="col-lg-4 mr-auto"><p class="lead">Anda memilih RT {{$rt['id']}}</p></div>
+    
+@endif

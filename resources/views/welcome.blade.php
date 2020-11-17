@@ -127,7 +127,8 @@
                         <!-- Icon Divider-->
                         <div class="divider-custom divider-light">
                             <div class="divider-custom-line"></div>
-                            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                            <div class="divider-custom-icon"><i class="fab fa-ethereum" ></i></div>
+                            {{-- <div class="divider-custom-icon"><i class="fab fa-ethereum"></i></div> --}}
                             <div class="divider-custom-line"></div>
                         </div>
                         <!-- Masthead Subheading-->
@@ -142,7 +143,7 @@
                         <!-- Icon Divider-->
                         <div class="divider-custom">
                             <div class="divider-custom-line"></div>
-                            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                            <div class="divider-custom-icon"><i class="fab fa-ethereum"></i></div>
                             <div class="divider-custom-line"></div>
                         </div>
                         <!-- Portfolio Grid Items-->
@@ -254,14 +255,14 @@
                     </div>
                 </section>
                 {{-- PAGU SECTION --}}
-                <section class="page-section pagu" id="pagu">
+                <section class="page-section bg-primary mb-0 pagu" id="pagu">
                     <div class="container">
                         <!-- Portfolio Section Heading-->
                         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Pagu Kegiatan Tahun {{date('Y')}}</h2>
                         <!-- Icon Divider-->
                         <div class="divider-custom">
                             <div class="divider-custom-line"></div>
-                            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                            <div class="divider-custom-icon"><i class="fab fa-ethereum"></i></div>
                             <div class="divider-custom-line"></div>
                         </div>
                         <!-- Portfolio Grid Items-->
@@ -341,38 +342,31 @@
                 {{-- end of PAGU SECTION --}}
 
                 <!-- About Section-->
-                <section class="page-section bg-primary text-white mb-0" id="pilih">
+                <section class="page-section bg-warning text-center" id="pilih">
                     <div class="container">
                         <!-- About Section Heading-->
                         <h2 class="page-section-heading text-center text-uppercase text-white">Lihat Kegiatan RT</h2>
                         <!-- Icon Divider-->
                         <div class="divider-custom divider-light">
                             <div class="divider-custom-line"></div>
-                            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                            <div class="divider-custom-icon"><i class="fab fa-ethereum"></i></div>
                             <div class="divider-custom-line"></div>
                         </div>
                         <!-- About Section Content-->
                         <div class="row">
                             @livewire('keg') 
                         </div>
-                        <!-- About Section Button-->
-                        <div class="text-center mt-4">
-                            <a class="btn btn-xl btn-outline-light" href="https://startbootstrap.com/themes/freelancer/">
-                                <i class="fas fa-download mr-2"></i>
-                                Free Download!
-                            </a>
-                        </div>
                     </div>
                 </section>
                 <!-- Contact Section-->
-                <section class="page-section" id="contact">
+                <section class="page-section bg-primary text-white mb-0" id="contact">
                     <div class="container">
                         <!-- Contact Section Heading-->
                         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contact Me</h2>
                         <!-- Icon Divider-->
                         <div class="divider-custom">
                             <div class="divider-custom-line"></div>
-                            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                            <div class="divider-custom-icon"><i class="fab fa-ethereum"></i></div>
                             <div class="divider-custom-line"></div>
                         </div>
                         <!-- Contact Section Form-->
@@ -474,7 +468,7 @@
                                             <!-- Icon Divider-->
                                             <div class="divider-custom">
                                                 <div class="divider-custom-line"></div>
-                                                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                                <div class="divider-custom-icon"><i class="fab fa-ethereum"></i></div>
                                                 <div class="divider-custom-line"></div>
                                             </div>
                                             <!-- Portfolio Modal - Image-->
@@ -508,7 +502,7 @@
                                             <!-- Icon Divider-->
                                             <div class="divider-custom">
                                                 <div class="divider-custom-line"></div>
-                                                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                                <div class="divider-custom-icon"><i class="fab fa-ethereum"></i></div>
                                                 <div class="divider-custom-line"></div>
                                             </div>
                                             <!-- Portfolio Modal - Image-->
@@ -542,7 +536,7 @@
                                             <!-- Icon Divider-->
                                             <div class="divider-custom">
                                                 <div class="divider-custom-line"></div>
-                                                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                                <div class="divider-custom-icon"><i class="fab fa-ethereum"></i></div>
                                                 <div class="divider-custom-line"></div>
                                             </div>
                                             <!-- Portfolio Modal - Image-->
@@ -576,7 +570,7 @@
                                             <!-- Icon Divider-->
                                             <div class="divider-custom">
                                                 <div class="divider-custom-line"></div>
-                                                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                                <div class="divider-custom-icon"><i class="fab fa-ethereum"></i></div>
                                                 <div class="divider-custom-line"></div>
                                             </div>
                                             <!-- Portfolio Modal - Image-->
@@ -610,7 +604,7 @@
                                             <!-- Icon Divider-->
                                             <div class="divider-custom">
                                                 <div class="divider-custom-line"></div>
-                                                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                                <div class="divider-custom-icon"><i class="fab fa-ethereum"></i></div>
                                                 <div class="divider-custom-line"></div>
                                             </div>
                                             <!-- Portfolio Modal - Image-->
@@ -644,7 +638,7 @@
                                             <!-- Icon Divider-->
                                             <div class="divider-custom">
                                                 <div class="divider-custom-line"></div>
-                                                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                                <div class="divider-custom-icon"><i class="fab fa-ethereum"></i></div>
                                                 <div class="divider-custom-line"></div>
                                             </div>
                                             <!-- Portfolio Modal - Image-->
