@@ -24,7 +24,8 @@
   --white: #fff;
   --gray: #6c757d;
   --gray-dark: #343a40;
-  --primary: #1abc9c;
+  --primary: #1b2c3d;
+  /* --primary: #1abc9c; */
   --secondary: #2c3e50;
   --success: #28a745;
   --info: #17a2b8;
@@ -6113,7 +6114,7 @@ button.bg-primary:focus {
 }
 
 .bg-secondary {
-  background-color: #2c3e50 !important;
+  background-color: #253C78 !important;
 }
 
 a.bg-secondary:hover, a.bg-secondary:focus,
@@ -6123,7 +6124,7 @@ button.bg-secondary:focus {
 }
 
 .bg-success {
-  background-color: #28a745 !important;
+  background-color: #06D6A0 !important;
 }
 
 a.bg-success:hover, a.bg-success:focus,
@@ -6133,7 +6134,7 @@ button.bg-success:focus {
 }
 
 .bg-info {
-  background-color: #17a2b8 !important;
+  background-color: #6CCFF6 !important;
 }
 
 a.bg-info:hover, a.bg-info:focus,
@@ -6143,7 +6144,7 @@ button.bg-info:focus {
 }
 
 .bg-warning {
-  background-color: #ffc107 !important;
+  background-color: #F9DC5C !important;
 }
 
 a.bg-warning:hover, a.bg-warning:focus,
@@ -6192,6 +6193,12 @@ button.bg-dark:focus {
 
 .border {
   border: 0.125rem solid #dee2e6 !important;
+}
+.border-test {
+  border: 0.5rem solid #000000 !important;
+}
+.border-test1 {
+  border: 0.5rem solid #f10000 !important;
 }
 
 .border-top {
@@ -10095,7 +10102,7 @@ h3 {
 #mainNav .navbar-nav li.nav-item a.nav-link {
   color: #fff;
 }
-#mainNav .navbar-nav li.nav-item a.nav-link:hover {
+#mainNav .navbar-nav li.nav-item a.nav-link:hover{
   color: #1abc9c;
 }
 #mainNav .navbar-nav li.nav-item a.nav-link:active, #mainNav .navbar-nav li.nav-item a.nav-link:focus {
