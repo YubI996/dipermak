@@ -6124,6 +6124,8 @@ button.bg-secondary:focus {
 }
 
 .bg-success {
+  background: linear-gradient(to bottom, #06D6A0, #F9DC5C) !important;
+
   background-color: #06D6A0 !important;
 }
 
@@ -6136,6 +6138,10 @@ button.bg-success:focus {
 .bg-info {
   background-color: #6CCFF6 !important;
 }
+.bg-banner {
+  background: linear-gradient(to bottom, #6CCFF6, #06D6A0) !important;
+
+}
 
 a.bg-info:hover, a.bg-info:focus,
 button.bg-info:hover,
@@ -6144,7 +6150,10 @@ button.bg-info:focus {
 }
 
 .bg-warning {
-  background-color: #F9DC5C !important;
+  background: linear-gradient(to bottom, #F9DC5C, #f5af19) !important;
+}
+.bg-rt {
+  background: linear-gradient(to bottom, #f5af19, #f12711) !important;
 }
 
 a.bg-warning:hover, a.bg-warning:focus,

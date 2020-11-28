@@ -65,12 +65,12 @@
                     </div>
                 </nav>
                 <!-- Masthead-->
-                <header class="masthead bg-info text-white text-center">
+                <header class="masthead bg-banner text-white text-center">
                     <div class="container d-flex align-items-center flex-column">
                         <!-- Masthead Avatar Image-->
                         <img class="masthead-avatar mb-5" src="/img/logo-bontang.png" alt="" />
                         <!-- Masthead Heading-->
-                        <h1 class="masthead-heading text-uppercase mb-0">Dinas Sosial</h1>
+                        <h1 class="masthead-heading text-uppercase p-0 mb-0">Dinas Sosial <br>dan Pemberdayaan Masyarakat Kota Bontang</h1>
                         <!-- Icon Divider-->
                         <div class="divider-custom divider-light">
                             <div class="divider-custom-line"></div>
@@ -290,7 +290,7 @@
                 {{-- end of PAGU SECTION --}}
 
                 <!-- About Section-->
-                <section class="page-section bg-success text-center" id="pilih">
+                <section class="page-section bg-rt text-center" id="pilih">
                     <div class="container">
                         <!-- About Section Heading-->
                         <h2 class="page-section-heading text-center text-uppercase text-white">Lihat Kegiatan RT</h2>
