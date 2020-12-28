@@ -13,12 +13,12 @@ class Dashboard extends Component
     public $nom;
     public $kid;
     function mount($kid){
-        if(((!(empty($this->pagu)))&&(!(empty($this->per))))){
-            $this->nom = ($this->per / 100) * $this->pagu;
-            // $target = $this->nom;
-        }
-        else
-        $this->kid = $kid;
+        // if(((!(empty($this->pagu)))&&(!(empty($this->per))))){
+        //     $this->nom = ($this->per / 100) * $this->pagu;
+        //     // $target = $this->nom;
+        // }
+        // else
+        // $this->kid = $kid;
         
         
     }

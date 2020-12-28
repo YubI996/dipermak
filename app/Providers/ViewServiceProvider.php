@@ -11,6 +11,8 @@ use App\Models\Kelurahan;
 use App\Models\Kecamatan;
 use App\Models\Kota;
 use Auth;
+use Carbon\Carbon;
+
 
 use Illuminate\Support\ServiceProvider;
 use View;
@@ -125,6 +127,16 @@ class ViewServiceProvider extends ServiceProvider
         View::composer(['kotas.fields'], function ($view) {
             $KotaItems = Kota::pluck('nama_kota')->toArray();
             $view->with('KotaItems', $KotaItems);
+        });
+        // partisipasi
+        View::composer(['partisipasis.fields'], function ($view) {
+            $kegItems = kegiatan::pluck('nama_keg','id')->toArray();
+            $view->with('kegItems', $kegItems);
+        });
+        // nominal.blade
+        View::composer(['livewire.admin.nominal'], function ($view) {
+            $kegItems = kegiatan::pluck('nama_keg','id')->toArray();
+            $view->with('kegItems', $kegItems);
         });
         // not used ???
         View::composer(['kegiatan_rts.fields'], function ($view) {

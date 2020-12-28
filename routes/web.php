@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'GuestController@index');
+Route::get("/page", function(){
+   return view("mold.index");
+});
+Route::get("/form", function(){
+   return view("mold.index3");
+});
 
 Auth::routes(['verify' => true]);
 Route::Group(['middleware' => ['verified']],function(){

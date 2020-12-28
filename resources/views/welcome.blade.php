@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="id">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -357,7 +357,7 @@
                             <div class="col-lg-4 mb-5 mb-lg-0">
                                 <h4 class="text-uppercase mb-4">Lokasi</h4>
                                 <p class="lead mb-0">
-                                    Jl. Moch. Roem Cedurg Graha Taman Praja Bontang Lestari
+                                    Jl. Moch. Roem, Gedung Graha Taman Praja, Kelurahan Bontang Lestari
                                     <br />
                                     Bontang Kode Pos-75325
                                 </p>

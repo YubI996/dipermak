@@ -10,8 +10,8 @@
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('nama_keg', 'Nama Keg:') !!}
     {!! Form::textarea('nama_keg', null, ['class' => 'form-control']) !!}
-</div>
-@livewire('pilihrt')
+</div> 
+@livewire('admin.pilihrt')
 {{-- @livewire('pilihrt', ['user' => $user], key($user->id)) --}}
 @if (isset($kegiatan))
 @livewire('admin.dashboard',['kid'=>$kegiatan->id])
