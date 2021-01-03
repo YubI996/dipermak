@@ -81,9 +81,99 @@
                         <!-- Masthead Subheading-->
                         <p class="masthead-subheading font-weight-light mb-0">Motto - Motto - Motto         </p>
                     </div>
-                </header>
+                </header> 
+                {{-- PAGU SECTION --}}
+                <section class="page-section bg-success mb-0 pagu" id="pagu">
+                    <div class="container">
+                        <!-- Portfolio Section Heading-->
+                        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Pagu Kegiatan Tahun {{date('Y')}}</h2>
+                        <!-- Icon Divider-->
+                        <div class="divider-custom">
+                            <div class="divider-custom-line"></div>
+                            <div class="divider-custom-icon"><i class="fab fa-ethereum"></i></div>
+                            <div class="divider-custom-line"></div>
+                        </div>
+                        <div class="row">
+                            <!-- Pagu all--> 
+                            <div class="col-md-6">
+                                <div class="row-md-6 my-2">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="card-body w-100">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Seluruh Kegiatan</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{'Rp'.number_format($allPagu,0,',','.')}}</div>
+                                            </div>
+                                            <div class="col-auto">
+                                            <img src="/img/rp.svg" style="width:2rem;height:2rem;">
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- pagu smart city --}}
+                                <div class="row-md-6 my-2">
+                                <div class="card border-left-primary shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Smart City</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{'Rp'.number_format($smartPagu,0,',','.')}}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                        <img src="/img/rp.svg" style="width:2rem;height:2rem;">
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                {{-- end of capaian taget smart city --}}
+                            </div>
+                            <div class="col-md-6">
+
+                                {{-- capaian target creative city --}}
+                                <div class="row-md-6 my-2">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Green City</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{'Rp'.number_format($greenPagu,0,',','.')}}</div>
+                                            </div>
+                                            <div class="col-auto">
+                                            <img src="/img/rp.svg" style="width:2rem;height:2rem;">
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- end of capaian target creative city --}}
+                                {{-- capaian target green city --}}
+                                <div class="row-md-6 my-2">
+                                <div class="card border-left-primary shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Creative City</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{'Rp'.number_format($creativePagu,0,',','.')}}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                        <img src="/img/rp.svg" style="width:2rem;height:2rem;">
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                            </div>
+                                    
+                            </div>
+                                {{-- end of capaian target green city --}}
+                        </div>
+                    </div>
+                    
+                </section>
+                {{-- end of PAGU SECTION --}}
                 <!-- Portfolio Section-->
-                <section class="page-section bg-success portfolio" id="target">
+                <section class="page-section bg-warning portfolio" id="target">
                     <div class="container">
                         <!-- Portfolio Section Heading-->
                         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Capaian Target Kegiatan Tahun {{date('Y')}}</h2>
@@ -198,96 +288,7 @@
                             </div>
                         </div>
                 </section>          
-                {{-- PAGU SECTION --}}
-                <section class="page-section bg-warning mb-0 pagu" id="pagu">
-                    <div class="container">
-                        <!-- Portfolio Section Heading-->
-                        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Pagu Kegiatan Tahun {{date('Y')}}</h2>
-                        <!-- Icon Divider-->
-                        <div class="divider-custom">
-                            <div class="divider-custom-line"></div>
-                            <div class="divider-custom-icon"><i class="fab fa-ethereum"></i></div>
-                            <div class="divider-custom-line"></div>
-                        </div>
-                        <div class="row">
-                            <!-- Pagu all--> 
-                            <div class="col-md-6">
-                                <div class="row-md-6 my-2">
-                                    <div class="card border-left-primary shadow h-100 py-2">
-                                        <div class="card-body w-100">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Seluruh Kegiatan</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{'Rp'.number_format($allPagu,0,',','.')}}</div>
-                                            </div>
-                                            <div class="col-auto">
-                                            <img src="/img/rp.svg" style="width:2rem;height:2rem;">
-                                            </div>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- pagu smart city --}}
-                                <div class="row-md-6 my-2">
-                                <div class="card border-left-primary shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Smart City</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{'Rp'.number_format($smartPagu,0,',','.')}}</div>
-                                        </div>
-                                        <div class="col-auto">
-                                        <img src="/img/rp.svg" style="width:2rem;height:2rem;">
-                                        </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </div>
-                                {{-- end of capaian taget smart city --}}
-                            </div>
-                            <div class="col-md-6">
-
-                                {{-- capaian target creative city --}}
-                                <div class="row-md-6 my-2">
-                                    <div class="card border-left-primary shadow h-100 py-2">
-                                        <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Green City</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{'Rp'.number_format($greenPagu,0,',','.')}}</div>
-                                            </div>
-                                            <div class="col-auto">
-                                            <img src="/img/rp.svg" style="width:2rem;height:2rem;">
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- end of capaian target creative city --}}
-                                {{-- capaian target green city --}}
-                                <div class="row-md-6 my-2">
-                                <div class="card border-left-primary shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Creative City</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{'Rp'.number_format($creativePagu,0,',','.')}}</div>
-                                        </div>
-                                        <div class="col-auto">
-                                        <img src="/img/rp.svg" style="width:2rem;height:2rem;">
-                                        </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                            </div>
-                                    
-                            </div>
-                                {{-- end of capaian target green city --}}
-                        </div>
-                    </div>
-                    
-                </section>
-                {{-- end of PAGU SECTION --}}
+               
 
                 <!-- About Section-->
                 <section class="page-section bg-rt text-center" id="pilih">
