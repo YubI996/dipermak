@@ -1161,7 +1161,7 @@
                   </div>
                 </div>
                 <div class="table table-striped files" id="previews">
-                  <div id="template" class="row mt-2">
+                  <div id="dropzone1" class="row mt-2">
                     <div class="col-auto">
                         <span class="preview"><img src="data:," alt="" data-dz-thumbnail /></span>
                     </div>

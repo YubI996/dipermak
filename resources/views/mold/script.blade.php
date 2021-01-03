@@ -145,7 +145,7 @@
   Dropzone.autoDiscover = false;
 
   // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
-  var previewNode = document.querySelector("#template");
+  var previewNode = document.querySelector("#dropzone1");
   previewNode.id = "";
   var previewTemplate = previewNode.parentNode.innerHTML;
   previewNode.parentNode.removeChild(previewNode);
