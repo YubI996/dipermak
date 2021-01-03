@@ -14,8 +14,13 @@
         </thead>
         <tbody>
         @foreach($partisipasis as $partisipasi)
+            {{-- @php
+                
+                dd($partisipasi->kegiatan->nama_keg);
+            @endphp --}}
             <tr>
-                <td>{{ $partisipasi->kegiatan->nama_keg }}</td>
+            {{-- <td>{{ $partisipasi->keg_id }}</td> --}}
+            <td>{{ $partisipasi->kegiatan['nama_keg'] }}</td>
             <td>{{ 'RT '.$partisipasi->rt->nama_rt.' Kelurahan '.$partisipasi->rt->kelurahan->nama_kel }}</td>
             <td>{{ $partisipasi->deskripsi }}</td>
             <td>{{ $partisipasi->jenis }}</td>
