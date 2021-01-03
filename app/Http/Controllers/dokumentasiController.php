@@ -70,7 +70,7 @@ class dokumentasiController extends AppBaseController
             $dokumentasi = Dokumentasi::create([
                 'keg_id' => $input['keg_id'],
                 'rt_id' => $input['rt_id'],
-                'foto' => $foto->storeAs('/img/dok', $nama,'dok'),
+                'foto' => $foto->storeAs('', $nama,'dok'),
                 'keterangan' => $input['keterangan']
             ]);
         }
