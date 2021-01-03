@@ -45,8 +45,9 @@
     <script>
         $(function () {
             $("#tabel1").DataTable({
-                "responsive": true, "lengthChange": false, "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                "responsive": true, "lengthChange": false, "autoWidth": true,
+                "buttons": ["copy", "csv", "excel",{extend: 'pdfHtml5',
+                orientation: 'landscape'}, "print", "colvis",]
             }).buttons().container().appendTo('#tabel1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
                 "paging": true,
@@ -62,6 +63,8 @@
     </script>
     <!-- Page specific script -->
 <script>
+  //treeview ini
+  $('[data-widget="treeview"]').Treeview('init')
   $(function () {
     //Initialize Select2 Elements
     $('.select2').select2()
