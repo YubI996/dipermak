@@ -12,7 +12,13 @@ class GuestController extends Controller
 {
     public function index()
     {
-        $allTarget = ((Partisipasi::whereYear('created_at',date('Y'))->sum('nominal'))/(Kegiatan::whereYear('created_at',date('Y'))->sum('target')))*100; 
+        try {
+            $allTarget = ((Partisipasi::whereYear('created_at',date('Y'))->sum('nominal'))/(Kegiatan::whereYear('created_at',date('Y'))->sum('target')))*100; 
+            } 
+        catch (\Exception $e) {
+            // throw $th;
+            $allTarget = 0;
+        }
         if(Kegiatan::whereYear('created_at',date('Y'))->where('jen_keg',1)->sum('target')>0){
             $smartTarget = ((Partisipasi::whereYear('created_at',date('Y'))->whereHas('kegiatan',function($q){$q->where('jen_keg','=','1');})->sum('nominal'))/(Kegiatan::whereYear('created_at',date('Y'))->where('jen_keg',1)->sum('target')))*100; 
         }
