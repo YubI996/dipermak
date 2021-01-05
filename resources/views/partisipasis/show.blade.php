@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('mold.app')
+<section class="content-title">
+    <h1>
+        Partisipasi
+    </h1>
+</section>
 
 @section('content')
-    <section class="content-header">
-        <h1>
-            Partisipasi
-        </h1>
-    </section>
     <div class="content">
         <div class="box box-primary">
             <div class="box-body">

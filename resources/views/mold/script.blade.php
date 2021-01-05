@@ -45,7 +45,7 @@
     <script>
         $(function () {
             $("#tabel1").DataTable({
-                "responsive": true, "lengthChange": false, "autoWidth": true,
+                "responsive": true, "lengthChange": false, "autoWidth": false,"fixedColumns": false,
                 "buttons": ["copy", "csv", "excel",{extend: 'pdfHtml5',
                 orientation: 'landscape'}, "print", "colvis",]
             }).buttons().container().appendTo('#tabel1_wrapper .col-md-6:eq(0)');
@@ -60,11 +60,23 @@
             });
         });
 
-    </script>
-    <!-- Page specific script -->
-<script>
-  //treeview ini
-  $('[data-widget="treeview"]').Treeview('init')
+    $(function () {
+    var url = window.location;
+    // for single sidebar menu
+    $('ul.nav-sidebar a').filter(function () {
+        return this.href == url;
+    }).addClass('active');
+
+    // // for sidebar menu and treeview
+    //$('ul.nav-treeview a').filter(function () {
+      //  return this.href == url;
+    //}).parentsUntil(".nav-sidebar > .nav-treeview")
+        // .css({'display': 'block'})
+        // .addClass('menu-open').prev('a')
+        // .addClass('active');
+    
+});
+
   $(function () {
     //Initialize Select2 Elements
     $('.select2').select2()

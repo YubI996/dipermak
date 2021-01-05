@@ -1,32 +1,27 @@
-<div class="table-responsive">
-    <table class="table" id="partisipasis-table">
+
+    <table id="tabel1" class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>Kegiatan</th>
-                <th>RT</th>
-                <th>Deskripsi</th>
-                <th>Jenis</th>
-                <th>Nominal</th>
-                <th>Di Input Pada</th>
-                <th>Di Update Pada</th>
-                <th colspan="3">Action</th>
+                <th class="align-middle">Kegiatan</th>
+                <th class="align-middle">RT</th>
+                <th class="align-middle">Deskripsi</th>
+                <th class="align-middle">Jenis</th>
+                <th class="align-middle">Nominal</th>
+                <th class="align-middle">Di Input Pada</th>
+                <th class="align-middle">Di Update Pada</th>
+                <th class="align-middle">Action</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody >
         @foreach($partisipasis as $partisipasi)
-            {{-- @php
-                
-                dd($partisipasi->kegiatan->nama_keg);
-            @endphp --}}
             <tr>
-            {{-- <td>{{ $partisipasi->keg_id }}</td> --}}
-            <td>{{ $partisipasi->kegiatan['nama_keg'] }}</td>
-            <td>{{ 'RT '.$partisipasi->rt->nama_rt.' Kelurahan '.$partisipasi->rt->kelurahan->nama_kel }}</td>
-            <td>{{ $partisipasi->deskripsi }}</td>
-            <td>{{ $partisipasi->jenis }}</td>
-            <td>{{ $partisipasi->nominal }}</td>
-            <td>{{ $partisipasi->created_at }}</td>
-            <td>{{ $partisipasi->updated_at }}</td>
+                <td>{{ $partisipasi->kegiatan['nama_keg'] }}</td>
+                <td>{{ 'RT '.$partisipasi->rt->nama_rt.' Kelurahan '.$partisipasi->rt->kelurahan->nama_kel }}</td>
+                <td>{{ substr($partisipasi->deskripsi,0, 30).'...' }}</td>
+                <td>{{ $partisipasi->jenis }}</td>
+                <td>{{ $partisipasi->nominal }}</td>
+                <td>{{ $partisipasi->created_at }}</td>
+                <td>{{ $partisipasi->updated_at }}</td>
                 <td>
                     {!! Form::open(['route' => ['partisipasis.destroy', $partisipasi->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
@@ -40,4 +35,4 @@
         @endforeach
         </tbody>
     </table>
-</div>
+

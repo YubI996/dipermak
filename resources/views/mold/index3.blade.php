@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Main content -->
-    <section class="content">
+    {{-- <section class="content"> --}}
       <div class="container-fluid">
         <!-- SELECT2 EXAMPLE -->
         <div class="card card-default">
@@ -1168,7 +1168,7 @@
                     <div class="col d-flex align-items-center">
                         <p class="mb-0">
                           <span class="lead" data-dz-name></span>
-                          (<span data-dz-size></span>)
+                          <span data-dz-size></span>
                         </p>
                         <strong class="error text-danger" data-dz-errormessage></strong>
                     </div>
@@ -1207,6 +1207,6 @@
         <!-- /.row -->
       </div>
       <!-- /.container-fluid -->
-    </section>
+    {{-- </section> --}}
 <!-- /.content -->
 @endsection

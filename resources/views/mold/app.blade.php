@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dipermak</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('img/favicon.ico') }}" />
 
-  
+  <title>Dipermak</title>
   @yield('css')
   @include('mold.css')
 </head>
@@ -39,7 +39,7 @@
     </form>
 
     <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto mb-0">
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
@@ -135,6 +135,43 @@
           <i class="fas fa-th-large"></i>
         </a>
       </li>
+      <!-- User Account Menu -->
+      <li class="nav-item dropdown user-menu mx-auto">
+          <!-- Menu Toggle Button -->
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+              <!-- The user image in the navbarurl('storage\\'.Auth::user()->foto)-->
+              <img src="{{url('storage\\'.Auth::user()->foto)}}"
+                    class="user-image mx-auto hidden-xs" alt="User Image" height="12%"/>
+              <!-- hidden-xs hides the username on small devices so only the image appears. -->
+              {{-- <span class="">{{ Auth::user()->name }}</span> --}}
+          </a>
+          <ul class="dropdown-menu">
+              <!-- The user image in the menu -->
+              <li class="user-header">
+                  <img src="{{url('storage\\'.Auth::user()->foto)}}"
+                        class="img-circle" alt="{{ Auth::user()->name }}"/>
+                  <p>
+                      {{ Auth::user()->name }}
+                      <small>Member since {{ Auth::user()->created_at->format('M. Y') }}</small>
+                  </p>
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer d-flex justify-content-between">
+                  <div class="pull-left">
+                      <a href="#" class="btn btn-outline-primary">Profile</a>
+                  </div>
+                  <div class="ml-auto">
+                      <a href="{{ url('/logout') }}" class="btn btn-outline-danger"
+                          onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                          Sign out
+                      </a>
+                      <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                          @csrf
+                      </form>
+                  </div>
+              </li>
+          </ul>
+      </li>
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -171,7 +208,7 @@
         </div>
       </div>
     {{-- SideBar Menu --}}
-     @include('mold.nav')
+     @include('mold.side')
     {{-- SideBar Menu End --}}
     </div>
     <!-- /.sidebar -->  
@@ -181,6 +218,7 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
+    {{-- <section class="content-header d-flex justify-content-between"> --}}
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -195,13 +233,45 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
-
-    @yield('content')
-
-  </div>
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <section class="content p-auto"> 
+      <div class="container-fluid">
+        <div class="card card-default">
+          <div class="card-header ">
+            <h3 class="card-title position-relative">
+              @yield('content-title')
+            </h3>
+            
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+              </button>
+              <button type="button" class="btn btn-tool" data-card-widget="remove">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <div class="row">
+            <div class="col align-self-center">
+              @yield('content')
+            </div>
+            
+          </div>
+            <!-- /.row -->
+        </div>
+          <!-- /.card-body -->
+          <div class="card-footer">
+            @yield('content-footer')
+          </div>
+        </div>
+      </div>
+      </section>
+        
+      </div>
+      <!-- /.content-wrapper -->
+      <footer class="main-footer">
+        <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->
