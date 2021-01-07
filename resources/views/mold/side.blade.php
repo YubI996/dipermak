@@ -21,6 +21,61 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('dokumentasis.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-camera-retro"></i>
+              <p>
+                Dokumentasi
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('pengaturan') }}" class="nav-link">
+              <i class="nav-icon fas fa-user-cog"></i>
+              <p>
+                Pengaturan
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('users.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-user-cog"></i>
+              <p>
+                User
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('kecamatans.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-user-cog"></i>
+              <p>
+                Kecamatan
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('kelurahans.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-user-cog"></i>
+              <p>
+                Kelurahan
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('rts.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-user-cog"></i>
+              <p>
+                RT
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </a>
+          </li>
+
           {{-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>

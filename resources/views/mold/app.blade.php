@@ -271,7 +271,7 @@
       </div>
       <!-- /.content-wrapper -->
       <footer class="main-footer">
-        <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Dinsos Kota Bontang.</strong> |Template by <a href="https://adminlte.io">AdminLTE.io</a>
   </footer>
 
   <!-- Control Sidebar -->

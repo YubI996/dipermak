@@ -26,6 +26,7 @@ Route::Group(['middleware' => ['verified']],function(){
 
     
     Route::get('/home', 'HomeController@index');
+    Route::get('/pengaturan', 'pengaturanController@index')->name('pengaturan');
     
     Route::resource('roles', 'roleController');
     
