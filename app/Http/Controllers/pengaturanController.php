@@ -3,26 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Repositories\kecamatanRepository;
-use App\Repositories\kelurahanRepository;
-use App\Repositories\rtRepository;
 use App\Repositories\userRepository;
 use App\Models\kecamatan as kec;
+use App\Models\user;
 
 class pengaturanController extends Controller
 {
-
-    private $kecamatanRepository;
-    private $kelurahanRepository;
-    private $rtRepository;
-    private $userRepository;
-    public function __construct(kecamatanRepository $kecamatanRepo, kelurahanRepository $kelurahanRepo, rtRepository $rtRepo, userRepository $userRepo)
-    {
-        $this->kecamatanRepository = $kecamatanRepo;
-        $this->kelurahanRepository = $kelurahanRepo;
-        $this->rtRepository = $rtRepo;
-        $this->userRepository = $userRepo;
-    }
     /**
      * Display a listing of the resource.
      *
@@ -30,15 +16,10 @@ class pengaturanController extends Controller
      */
     public function index()
     {
-        // $kecamatans = $this->kecamatanRepository->all();
-        // // $kec = $kecamatans->pluck('nama_kec', 'id');
-        // $kelurahans = $this->kelurahanRepository->all();
-        // $rts = $this->rtRepository->all()->toarray();
-        $users = $this->userRepository->all();
         $kecs = kec::with('kelurahan.rt')->get();
+        $users = user::all();
 
         return view('pengaturan.index',compact('kecs', 'users'));
-        // ->with('dokumentasis', $dokumentasis, );
     }
 
     /**

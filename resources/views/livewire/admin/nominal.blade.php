@@ -22,17 +22,7 @@
         {!! Form::label('target', 'Target:') !!}
         {!! Form::text('target', "{{number_format($target, 0 ',', '.')}}", ['id' => 'num','class' => 'form-control','maxlength' => 3, 'wire:model' => 'target']) !!}
     </div>
-
-    <div class="form-group">
-    <input class="form-field" type="text" placeholder="domain.tld">
-    <span>https://</span>
-    </div>
-
-    <div class="form-group">
-    <input class="form-field" type="email" placeholder="Email">
-    <span>@gmail.com</span>
-    </div>
-    
+  
     <!-- Nominal Field -->
     <div class="form-group col-sm-4">
         {!! Form::label('nominal', 'Nominal:') !!}

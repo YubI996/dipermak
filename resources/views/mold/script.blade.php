@@ -1,5 +1,5 @@
 
-        
+@livewireScripts
     <!-- jQuery -->
 <script src="../../dist/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -44,10 +44,12 @@
     <!-- Page specific script -->
     <script>
         $(function () {
-            $("#tabel1").DataTable({
+            var t = $("#tabel1").DataTable({
                 "responsive": true, "lengthChange": false, "autoWidth": false,"fixedColumns": false,
-                "buttons": ["copy", "csv", "excel",{extend: 'pdfHtml5',
-                orientation: 'landscape'}, "print", "colvis",]
+                "buttons": ["copy", "excel",{extend: 'pdfHtml5', orientation: 'landscape'}, "print", "colvis",],
+                // "buttons": ["copy", "csv", "excel",{extend: 'pdfHtml5', orientation: 'landscape'}, "print", "colvis",],
+                "columnDefs": [ {"searchable": false, "orderable": false, "targets": 0 } ], 
+                "order": [[ 1, 'asc' ]]
             }).buttons().container().appendTo('#tabel1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
                 "paging": true,
@@ -94,7 +96,10 @@
     $('[data-mask]').inputmask()
 
     //Date range picker
-    $('#reservationdate').datetimepicker({
+    $('#tgl_mulai').datetimepicker({
+        format: 'L'
+    });
+    $('#tgl_selesai').datetimepicker({
         format: 'L'
     });
     //Date range picker

@@ -14,9 +14,8 @@
         </div>
     </div>
     
-    
-    {{-- </div>  --}}
     @livewire('admin.pilihrt')
+    
     {{-- @livewire('pilihrt', ['user' => $user], key($user->id)) --}}
     @if (isset($kegiatan))
     @livewire('admin.dashboard',['kid'=>$kegiatan->id])
@@ -32,20 +31,17 @@
             {!! Form::label('tgl_mulai', 'Tanggal Mulai:') !!}
         </div>
         <div class="col-11">
-            {!! Form::text('tgl_mulai', null, ['class' => 'form-control  mb-3','id'=>'tgl_mulai']) !!}
+            {{-- {!! Form::text('tgl_mulai', null, ['class' => 'form-control datetimepicker-input mb-3','id'=>'tgl_mulai', 'data-target'= '#reservationdate']) !!} --}}
+            <div class="input-group date mb-3" id="tgl_mulai" data-target-input="nearest">
+                <div class="input-group-append" data-target="#tgl_mulai" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                </div>
+                <input type="text" class="form-control datetimepicker-input" data-target="#tgl_mulai"/>
+            </div>
         </div>
     </div>
     {{-- </div> --}}
-    
-    @push('scripts')
-    <script type="text/javascript">
-        $('#tgl_mulai').datetimepicker({
-            format: 'YYYY-MM-DD HH:mm:ss',
-            useCurrent: true,
-            sideBySide: true
-        });
-    </script>
-@endpush
+
 
 <!-- Tgl Selesai Field -->
 {{-- <div class="form-group"> --}}
@@ -54,20 +50,16 @@
             {!! Form::label('tgl_selesai', 'Tanggal Selesai:') !!}
         </div>
         <div class="col-11">
-            {!! Form::text('tgl_selesai', null, ['class' => 'form-control  mb-3','id'=>'tgl_selesai']) !!}
+            {{-- {!! Form::text('tgl_selesai', null, ['class' => 'form-control  mb-3','id'=>'tgl_selesai']) !!} --}}
+            <div class="input-group date mb-3" id="tgl_selesai" data-target-input="nearest">
+                <div class="input-group-append" data-target="#tgl_selesai" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                </div>
+                <input type="text" class="form-control datetimepicker-input" data-target="#tgl_selesai"/>
+            </div>
         </div>
     </div>
             {{-- </div> --}}
-            
-            @push('scripts')
-            <script type="text/javascript">
-        $('#tgl_selesai').datetimepicker({
-            format: 'YYYY-MM-DD HH:mm:ss',
-            useCurrent: true,
-            sideBySide: true
-        });
-        </script>
-@endpush
 
 <!-- Approval Field -->
 {{-- <div class="form-group"> --}}
