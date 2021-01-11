@@ -99,9 +99,11 @@
                         <div class="col-3 align-self-end">
 
                             <div class="input-group">
-                                <button type="button" class="btn btn-default">
-                                    <a href="{{route('users.create')}}"><i class="fa fa-plus" aria-hidden="true"></i></a>
-                                </button>
+                                <a href="{{route('users.create')}}">
+                                    <button type="button" class="btn btn-default">
+                                        <i class="fa fa-plus" aria-hidden="true"></i>
+                                    </button>
+                                </a>
                                 <!-- /btn-group -->
                             </div>
                             <!-- /input-group -->
@@ -110,8 +112,7 @@
                 </div>
                 <!-- ./card-header -->
                 <div class="card-body p-2">
-                    @foreach ($users as $user)
-                        <table id="tabel1" class="table table-bordered table-striped" >
+                    <table id="tabel1" class="table table-bordered table-striped" >
                         <thead>
                             <tr>
                                 <th>No.</th>
@@ -121,15 +122,16 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($users as $user)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->role->nama_role}}</td>
                             </tr>
+                            @endforeach
                         </tbody>
                         </table>
-                    @endforeach
                 </div>
             <!-- /.card-body -->
             </div>

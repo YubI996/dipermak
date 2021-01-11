@@ -53,7 +53,7 @@
               <i class="nav-icon fas fa-user-cog"></i>
               <p>
                 Kecamatan
-                {{-- <span class="right badge badge-danger">New</span> --}}
+                {{-- <span class="right badge badge-danger">New</span>
               </p>
             </a>
           </li>
@@ -62,7 +62,7 @@
               <i class="nav-icon fas fa-user-cog"></i>
               <p>
                 Kelurahan
-                {{-- <span class="right badge badge-danger">New</span> --}}
+                {{-- <span class="right badge badge-danger">New</span>
               </p>
             </a>
           </li>
@@ -71,7 +71,7 @@
               <i class="nav-icon fas fa-user-cog"></i>
               <p>
                 RT
-                {{-- <span class="right badge badge-danger">New</span> --}}
+                {{-- <span class="right badge badge-danger">New</span>
               </p>
             </a>
           </li> --}}
