@@ -43,82 +43,95 @@
 
 </head>
 <body style="background: linear-gradient(to left, #348f50, #56b4d3)" class="">
-    <div class="d-flex justify-content-center align-items-center" >
-        <div class="p-2">
-            <div id="tv">
-                <div class="login-logo">
-                    <a href="{{ url('/home') }}"><b>Dipermak </b>App</a>
-                </div>
+    <div class="d-flex align-items-center min-vh-100">
+        <div class="container-fluid">
+            <div class="content">
+                <div class="row row-12 justify-content-md-center">
+                    <div class="col col-md-auto  align-items-center">
+                            {{-- <div class="d-flex justify-content-center align-items-center" > --}}
+                                <div class="p-2">
+                                <div id="tv">
+                                    <div class="login-logo">
+                                        <a href="{{ url('/home') }}"><b>Dipermak </b>App</a>
+                                    </div>
+                    
+                                    <!-- /.login-logo -->
+                                    <div  class="login-box-body">
+                                        <p class="login-box-msg">Masukkkkk </p>
+                    
+                                        <form method="post" action="{{ url('/login') }}">
+                                            @csrf
+                    
+                                            <div class="form-group has-feedback {{ $errors->has('email') ? ' has-error' : '' }}">
+                                                <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email">
+                                                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                                                @if ($errors->has('email'))
+                                                    <span class="help-block">
+                                                    <strong>{{ $errors->first('email') }}</strong>
+                                                </span>
+                                                @endif
+                                            </div>
+                    
+                                            <div class="form-group has-feedback{{ $errors->has('password') ? ' has-error' : '' }}">
+                                                <input type="password" class="form-control" placeholder="Password" name="password">
+                                                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                                                @if ($errors->has('password'))
+                                                    <span class="help-block">
+                                                    <strong>{{ $errors->first('password') }}</strong>
+                                                </span>
+                                                @endif
+                    
+                                            </div>
+                                            <div class="row">
+                                                {{-- <div class="col-xs-8">
+                                                    <div class="checkbox icheck">
+                                                        <label>
+                                                            <input type="checkbox" name="remember"> Remember Me
+                                                        </label>
+                                                    </div>
+                                                </div> --}}
+                                                <!-- /.col -->
+                                                <div class="col">
 
-                <!-- /.login-logo -->
-                <div  class="login-box-body">
-                    <p class="login-box-msg">Masukkkkk </p>
-
-                    <form method="post" action="{{ url('/login') }}">
-                        @csrf
-
-                        <div class="form-group has-feedback {{ $errors->has('email') ? ' has-error' : '' }}">
-                            <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email">
-                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                            @if ($errors->has('email'))
-                                <span class="help-block">
-                                <strong>{{ $errors->first('email') }}</strong>
-                            </span>
-                            @endif
-                        </div>
-
-                        <div class="form-group has-feedback{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <input type="password" class="form-control" placeholder="Password" name="password">
-                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                            @if ($errors->has('password'))
-                                <span class="help-block">
-                                <strong>{{ $errors->first('password') }}</strong>
-                            </span>
-                            @endif
-
-                        </div>
-                        <div class="row">
-                            {{-- <div class="col-xs-8">
-                                <div class="checkbox icheck">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Remember Me
-                                    </label>
+                                                    <div class="col-xs-4">
+                                                        <button type="submit" class="btn btn-primary btn-block btn-flat">Masuk</button>
+                                                    </div>
+                                                    <a href="{{ url('/password/reset') }}">Saya lupa password</a>
+                                                </div>
+                                                <!-- /.col -->
+                                            </div>
+                                        </form>
+                    
+                                        <br>
+                                        {{-- <a href="{{ url('/register') }}" class="text-center">Mendaftar</a> --}}
+                    
+                                    </div>
+                                    <!-- /.login-box-body -->
+                    
                                 </div>
-                            </div> --}}
-                            <!-- /.col -->
-                            <a href="{{ url('/password/reset') }}">Saya lupa password</a>
-                            <div class="col-xs-4">
-                                <button type="submit" class="btn btn-primary btn-block btn-flat">Masuk</button>
-                            </div>
-                            <!-- /.col -->
-                        </div>
-                    </form>
-
-                    <br>
-                    {{-- <a href="{{ url('/register') }}" class="text-center">Mendaftar</a> --}}
-
+                                <!-- /.login-box -->
+                            </div>    
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+                    
+                            <!-- AdminLTE App -->
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/js/adminlte.min.js"></script>
+                    
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
+                            <script>
+                                $(function () {
+                                    $('input').iCheck({
+                                        checkboxClass: 'icheckbox_square-blue',
+                                        radioClass: 'iradio_square-blue',
+                                        increaseArea: '20%' // optional
+                                    });
+                                });
+                            </script>
+                        {{-- </div> --}}
+                    </div>
                 </div>
-                <!-- /.login-box-body -->
-
             </div>
-            <!-- /.login-box -->
-        </div>    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <!-- AdminLTE App -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/js/adminlte.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
-    <script>
-        $(function () {
-            $('input').iCheck({
-                checkboxClass: 'icheckbox_square-blue',
-                radioClass: 'iradio_square-blue',
-                increaseArea: '20%' // optional
-            });
-        });
-    </script>
-</div>
+        </div>
+    </div>
 </body>
 </html>
