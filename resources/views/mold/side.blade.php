@@ -39,12 +39,12 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="{{ route('users.index') }}" class="nav-link">
               <i class="nav-icon fas fa-user-cog"></i>
               <p>
                 User
-                {{-- <span class="right badge badge-danger">New</span> --}}
+                {{-- <span class="right badge badge-danger">New</sp
               </p>
             </a>
           </li>
@@ -74,7 +74,7 @@
                 {{-- <span class="right badge badge-danger">New</span> --}}
               </p>
             </a>
-          </li>
+          </li> --}}
 
           {{-- <li class="nav-item">
             <a href="#" class="nav-link">

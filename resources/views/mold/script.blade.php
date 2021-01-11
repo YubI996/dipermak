@@ -1,5 +1,6 @@
 
 @livewireScripts
+<script src="{{asset('js/app.js')}}"></script>
     <!-- jQuery -->
 <script src="../../dist/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
