@@ -78,15 +78,26 @@ class kegiatan extends Model
         'rt_id' => 'required|integer',
         'tgl_mulai' => 'required',
         'tgl_selesai' => 'required',
-        'approval' => 'required|boolean',
+        'approval' => 'nullable',
         'jen_keg' => 'required|integer',
-        'pagu' => 'required|string|max:255',
-        'target' => 'required|string|max:255',
-        'volume' => 'required|string|max:255',
+        'pagu' => 'required|integer',
+        'target' => 'required|integer',
+        'volume' => 'required|integer',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable'
     ];
+    public static $messages = [
+        'nama_keg.required' => 'Nama kegiatan Harus diisi',
+        'rt_id.required' => 'RT Harus diisi',
+        'tgl_mulai.required' => 'tanggal Mulai Harus diisi',
+        'tgl_selesai.required' => 'Tanggal Selesai Harus diisi',
+        'jen_keg.required' => 'Jenis Kegiatan Harus diisi',
+        'pagu.required' => 'Pagu Harus diisi',
+        'target.required' => 'Target Harus diisi',
+        'volume.required' => 'Volume Harus diisi',
+    ];
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

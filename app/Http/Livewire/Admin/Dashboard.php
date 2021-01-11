@@ -32,7 +32,7 @@ class Dashboard extends Component
             
         }
         if(((!(empty($this->pagu)))&&(!(empty($this->per))))){
-            $this->nom = ($this->per / 100) * $this->pagu;
+            $this->nom = intval(($this->per / 100) * $this->pagu);
             // $target = $this->nom;
         }
         

@@ -36,7 +36,7 @@
                 <div class="input-group-append" data-target="#tgl_mulai" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                 </div>
-                <input type="text" class="form-control datetimepicker-input" data-target="#tgl_mulai"/>
+                <input type="text" class="form-control datetimepicker-input" name="tgl_mulai" data-target="#tgl_mulai"/>
             </div>
         </div>
     </div>
@@ -55,7 +55,7 @@
                 <div class="input-group-append" data-target="#tgl_selesai" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                 </div>
-                <input type="text" class="form-control datetimepicker-input" data-target="#tgl_selesai"/>
+                <input type="text" class="form-control datetimepicker-input" name="tgl_selesai" data-target="#tgl_selesai"/>
             </div>
         </div>
     </div>
