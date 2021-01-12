@@ -1,6 +1,6 @@
 
 @livewireScripts
-<script src="{{asset('js/app.js')}}"></script>
+{{-- <script src="{{asset('js/app.js')}}"></script> --}}
     <!-- jQuery -->
 <script src="../../dist/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -47,7 +47,7 @@
         $(function () {
             var t = $("#tabel1").DataTable({
                 "responsive": true, "lengthChange": false, "autoWidth": false,"fixedColumns": false,
-                "buttons": ["copy", "excel",{extend: 'pdfHtml5', orientation: 'landscape'}, "print", "colvis",],
+                "buttons": ["copy", "excel",{extend: 'pdf', orientation: 'landscape',columns: ':visible'}, "print", "colvis",],
                 // "buttons": ["copy", "csv", "excel",{extend: 'pdfHtml5', orientation: 'landscape'}, "print", "colvis",],
                 "columnDefs": [ {"searchable": false, "orderable": false, "targets": 0 } ], 
                 "order": [[ 1, 'asc' ]]

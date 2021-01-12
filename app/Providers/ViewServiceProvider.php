@@ -101,13 +101,13 @@ class ViewServiceProvider extends ServiceProvider
         });
         // kecamatan
         View::composer(['kecamatans.fields'], function ($view) {
-            $kotaItems = Kota::pluck('id')->toArray();
+            $kotaItems = Kota::pluck('nama_kota','id')->toArray();
             $view->with('kotaItems', $kotaItems);
         });
-        View::composer(['kecamatans.fields'], function ($view) {
-            $kotaItems = Kota::pluck('nama_kota')->toArray();
-            $view->with('kotaItems', $kotaItems);
-        });
+        // View::composer(['kecamatans.fields'], function ($view) {
+        //     $kotaItems = Kota::pluck('nama_kota')->to;
+        //     $view->with('kotaItems', $kotaItems);
+        // });
         View::composer(['kecamatans.fields'], function ($view) {
             $kecamatanItems = Kecamatan::pluck('nama_kec')->toArray();
             $view->with('kecamatanItems', $kecamatanItems);

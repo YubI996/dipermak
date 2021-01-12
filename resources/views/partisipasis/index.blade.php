@@ -5,7 +5,7 @@
         @include('flash::message') 
         <div class="card card-default">
                 <div class="card-header">
-                  <div class="d-flex">
+                  <div class="d-flex justify-content-between">
                    <div class="mr-auto p-2">
                       <h1>Partisipasi</h1></div>
                     <div class="p-2">

@@ -48,7 +48,7 @@ class kecamatan extends Model
      */
     public static $rules = [
         'nama_kec' => 'required',
-        'kota_id' => 'requied'
+        'kota_id' => 'required'
     ];
 
     /**

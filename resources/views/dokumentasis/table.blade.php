@@ -1,21 +1,23 @@
 <div class="table-responsive">
-    <table class="table" id="dokumentasis-table">
+    <table class="table table-bordered table-striped" id="tabel1">
         <thead>
             <tr>
-                <th>Keg Id</th>
-        <th>Rt Id</th>
-        <th>Foto</th>
-        <th>Keterangan</th>
-                <th colspan="3">Action</th>
+                <th>No.</th>
+                <th>Kegiatan</th>
+                <th>Rukun Tetangga</th>
+                <th>Foto</th>
+                <th>Keterangan</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
         @foreach($dokumentasis as $dokumentasi)
             <tr>
+                <td>{{$loop->iteration}}</td>
                 <td>{{ $dokumentasi->keg_id }}</td>
-            <td>{{ $dokumentasi->rt_id }}</td>
-            <td>{{ $dokumentasi->foto }}</td>
-            <td>{{ $dokumentasi->keterangan }}</td>
+                <td>{{ $dokumentasi->rt_id }}</td>
+                <td><img src="{{ url('storage\\img\\dok\\'. $dokumentasi->foto)}}" alt="{{'foto '. $dokumentasi->name }}" width="40" height="40"></td>
+                <td>{{ $dokumentasi->keterangan }}</td>
                 <td>
                     {!! Form::open(['route' => ['dokumentasis.destroy', $dokumentasi->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

@@ -11,11 +11,14 @@
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row">
-                    {!! Form::open(['route' => 'kecamatans.store']) !!}
+                    <div class="col">
+                        
+                        {!! Form::open(['route' => 'kecamatans.store']) !!}
 
-                        @include('kecamatans.fields')
+                            @include('kecamatans.fields')
 
-                    {!! Form::close() !!}
+                        {!! Form::close() !!}
+                    </div>
                 </div>
             </div>
         </div>

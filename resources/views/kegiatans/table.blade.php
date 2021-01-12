@@ -2,6 +2,7 @@
         <table id="tabel1" class="table table-bordered table-striped" >
             <thead>
                 <tr>
+                    <th>No.</th>
                     <th class="align-middle">Nama Kegiatan</th>
                     <th class="align-middle">RT</th>
                     <th class="align-middle">Tanggal Mulai</th>
@@ -18,6 +19,7 @@
             <tbody>
             @foreach($kegiatans as $kegiatan)
                 <tr>
+                    <td>{{$loop->iteration}}</td>
                     <td>{{ substr($kegiatan->nama_keg,0, 30).'...' }}</td>
                     <td>{{ 'RT '.$kegiatan->rt->nama_rt.' Kelurahan '.$kegiatan->rt->kelurahan->nama_kel }}</td>
                     <td>{{  \Carbon\Carbon::parse($kegiatan->tgl_mulai)->translatedFormat('l, d F Y')  }}</td>

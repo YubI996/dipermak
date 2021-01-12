@@ -66,7 +66,7 @@
                                                         <table class="table table-hover">
                                                             <tbody>
                                                                 <tr>
-                                                                    <td>{{$rt}} Rukun Tetangga(RT 1 - RT {{$rt}})
+                                                                    <td>{{$rt}} Rukun Tetangga.
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
