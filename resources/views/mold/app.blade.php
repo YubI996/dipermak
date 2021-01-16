@@ -8,6 +8,8 @@
   <title>Dipermak</title>
   @yield('css')
   @include('mold.css')
+  @include('mold.script')
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -283,10 +285,9 @@
 </div>
 <!-- ./wrapper -->
 
-@yield('script')
+{{-- @yield('script') --}}
 
 <!-- datatable -->
-@include('mold.script')
 
 </body>
 </html>

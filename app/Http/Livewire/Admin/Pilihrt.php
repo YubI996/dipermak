@@ -13,6 +13,7 @@ class Pilihrt extends Component
     public $kec;
     public $kel;
     public $rtid;
+    public $kid;
     // function mount($rtid){
         // $this->rtid=$rtid;
     // }
@@ -32,10 +33,16 @@ class Pilihrt extends Component
         }
         else{
             $rtItems = Rt::pluck('nama_rt','id')->toArray();
-
         }
-        $rtid = $this->rtid;
-        return view('livewire.admin.pilihrt', compact('kelurahanItems','kecamatanItems','rtItems','rtid'));
+        if (!(empty($this->kid))){
+            $this->kel = rt::where('id', $this->rtid)->value('kel_id');
+            $this->kec = kelurahan::where('id', $this->kel)->value('kec_id');
+            dump($this->kel);
+            dump($this->kec);
+        }
+        // $rtid = $this->rtid;
+       
+        return view('livewire.admin.pilihrt', compact('kelurahanItems','kecamatanItems','rtItems'));
     }
 }
 

@@ -29,6 +29,7 @@ class Dashboard extends Component
         if(!((empty($this->kid)))){
             $this->pagu = kegiatan::Where('id',$this->kid)->pluck('pagu')->first();
             $this->nom = Kegiatan::Where('id',$this->kid)->pluck('target')->first();
+            $this->per = intval(($this->nom / $this->pagu) * 100);
             
         }
         if(((!(empty($this->pagu)))&&(!(empty($this->per))))){

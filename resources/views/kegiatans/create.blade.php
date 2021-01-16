@@ -1,6 +1,6 @@
 @extends('mold.app')
 @section('content-title')
-    Kegiatan
+   Tambah Kegiatan
 @endsection
 
 @section('content')

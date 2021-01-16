@@ -14,13 +14,13 @@
         </div>
     </div>
     
-    @livewire('admin.pilihrt')
     
     {{-- @livewire('pilihrt', ['user' => $user], key($user->id)) --}}
     @if (isset($kegiatan))
+    @livewire('admin.pilihrt',['rtid'=>$kegiatan->rt_id])
     @livewire('admin.dashboard',['kid'=>$kegiatan->id])
     @else
-    
+    @livewire('admin.pilihrt')
     @livewire('admin.dashboard',['kid'=>0])
     @endif
     
@@ -36,7 +36,11 @@
                 <div class="input-group-append" data-target="#tgl_mulai" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                 </div>
+                @if (isset($kegiatan))
+                <input type="text" value="{{$kegiatan->tgl_mulai}}" class="form-control datetimepicker-input" name="tgl_mulai" data-target="#tgl_mulai"/>
+                @else
                 <input type="text" class="form-control datetimepicker-input" name="tgl_mulai" data-target="#tgl_mulai"/>
+                @endif
             </div>
         </div>
     </div>
@@ -55,7 +59,11 @@
                 <div class="input-group-append" data-target="#tgl_selesai" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                 </div>
+                @if (isset($kegiatan))
+                <input type="text" value="{{$kegiatan->tgl_selesai}}" class="form-control datetimepicker-input" name="tgl_selesai" data-target="#tgl_selesai"/>
+                @else
                 <input type="text" class="form-control datetimepicker-input" name="tgl_selesai" data-target="#tgl_selesai"/>
+                @endif
             </div>
         </div>
     </div>
