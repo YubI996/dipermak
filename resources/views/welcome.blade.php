@@ -68,7 +68,7 @@
                 <header class="masthead bg-banner text-white text-center">
                     <div class="container d-flex align-items-center flex-column">
                         <!-- Masthead Avatar Image-->
-                        <img class="masthead-avatar mb-5" src="/img/logo-bontang.png" alt="" />
+                        <img class="masthead-avatar mb-5" src="/img/logo-bontang.png" alt="Logo Bontang" />
                         <!-- Masthead Heading-->
                         <h1 class="masthead-heading text-uppercase p-0 mb-0">Dinas Sosial <br>dan Pemberdayaan Masyarakat Kota Bontang</h1>
                         <!-- Icon Divider-->

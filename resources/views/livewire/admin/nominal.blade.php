@@ -1,10 +1,10 @@
 <div>
-    @php
+    {{-- @php
         dump($target);
         dump($nom);
         dump($per);
         dump($tgl);
-    @endphp
+    @endphp --}}
         <!-- Keg Id Field -->
     <div class="form-group col-sm-12">
         {!! Form::label('keg_id', 'Keg Id:') !!}
@@ -20,7 +20,7 @@
     <!-- Target Field -->
     <div class="form-group col-sm-4">
         {!! Form::label('target', 'Target:') !!}
-        {!! Form::text('target', "{{number_format($target, 0 ',', '.')}}", ['id' => 'num','class' => 'form-control','maxlength' => 3, 'wire:model' => 'target']) !!}
+        {!! Form::text('target', $target, ['id' => 'num','class' => 'form-control','maxlength' => 3, 'wire:model' => 'target']) !!}
     </div>
   
     <!-- Nominal Field -->

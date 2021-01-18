@@ -6125,7 +6125,7 @@ button.bg-secondary:focus {
 }
 
 .bg-success {
-  background: linear-gradient(to bottom, #06D6A0, #F9DC5C) !important;
+  background: linear-gradient(0deg, #CFF66C 0%, rgba(6,214,160,1) 12%) !important;
 
   background-color: #06D6A0 !important;
 }
@@ -6140,7 +6140,7 @@ button.bg-success:focus {
   background-color: #6CCFF6 !important;
 }
 .bg-banner {
-  background: linear-gradient(to bottom, #6CCFF6, #06D6A0) !important;
+  background: linear-gradient(0deg, rgba(6,214,160,1) 0%, #6ccff6 12%) !important;
 
 }
 
@@ -6151,10 +6151,10 @@ button.bg-info:focus {
 }
 
 .bg-warning {
-  background: linear-gradient(to bottom, #F9DC5C, #f5af19) !important;
+  background: linear-gradient(0deg, rgba(245,175,25,1) 0%, #CFF66C 12%) !important;
 }
 .bg-rt {
-  background: linear-gradient(to bottom, #f5af19, #f12711) !important;
+  background: linear-gradient(0deg, #2c3e50 0%, rgba(245,175,25,1) 20%) !important;
 }
 
 

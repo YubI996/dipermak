@@ -23,13 +23,13 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{url('/home')}}" class="nav-link">Home</a>
       </li>
-      {{-- <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li> --}}
+          {{-- <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">Contact</a>
+          </li> --}}
     </ul>
 
-    <!-- SEARCH FORM -->
-    {{-- <form class="form-inline ml-3">
+    {{--<!-- SEARCH FORM -->
+     <form class="form-inline ml-3">
       <div class="input-group input-group-sm">
         <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
         <div class="input-group-append">
@@ -55,7 +55,7 @@
               <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
-                  Brad Diesel
+                  Brad Mesin Diesel
                   <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
                 </h3>
                 <p class="text-sm">Call me whenever you can...</p>
@@ -99,9 +99,9 @@
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
         </div>
-      </li>
+      </li> --}}
       <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
+      {{-- <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
           <span class="badge badge-warning navbar-badge">15</span>
@@ -126,13 +126,13 @@
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
-      </li>
+      </li> --}}
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
           <i class="fas fa-th-large"></i>
         </a>
@@ -145,9 +145,9 @@
               <img src="{{url('storage\\'.Auth::user()->foto)}}"
                     class="user-image mx-auto hidden-xs" alt="User Image" height="12%"/>
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              {{-- <span class="">{{ Auth::user()->name }}</span> --}}
+              <span class="">{{ Auth::user()->name }}</span>
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
               <!-- The user image in the menu -->
               <li class="user-header">
                   <img src="{{url('storage\\'.Auth::user()->foto)}}"
@@ -191,7 +191,7 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src={{{isset(Auth::user()->name) ?  "../../storage".Auth::user()->foto:"../../img/avataaars.svg"}}} class="img-circle elevation-2" alt="User Image">
+          <img src={{{isset(Auth::user()->name) ?  "../../storage\\".Auth::user()->foto:"../../img/avataaars.svg"}}} class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">{{{ isset(Auth::user()->name) ? Auth::user()->name :"Unauthorized" }}}</a>

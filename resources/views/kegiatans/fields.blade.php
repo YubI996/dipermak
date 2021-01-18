@@ -54,17 +54,18 @@
             {!! Form::label('tgl_selesai', 'Tanggal Selesai:') !!}
         </div>
         <div class="col-11">
-            {{-- {!! Form::text('tgl_selesai', null, ['class' => 'form-control  mb-3','id'=>'tgl_selesai']) !!} --}}
-            <div class="input-group date mb-3" id="tgl_selesai" data-target-input="nearest">
-                <div class="input-group-append" data-target="#tgl_selesai" data-toggle="datetimepicker">
+            {!! Form::text('tgl_selesai', null, ['class' => 'form-control form-control datetimepicker-input mb-3']) !!}
+            {{-- <div class="input-group date mb-3" id="tgl_sel" data-target-input="nearest">
+                <div class="input-group-append" data-target="#tgl_sel" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                 </div>
-                @if (isset($kegiatan))
-                <input type="text" value="{{$kegiatan->tgl_selesai}}" class="form-control datetimepicker-input" name="tgl_selesai" data-target="#tgl_selesai"/>
+                {{-- <input type="text" class="form-control datetimepicker-input" name="tgl_selesai" data-target="#tgl_sel"/> --}}
+                {{-- @if (isset($kegiatan))
+                <input type="text" value="{{$kegiatan->tgl_selesai}}" class="form-control datetimepicker-input" name="tgl_selesai" data-target="#tgl_seL"/>
                 @else
-                <input type="text" class="form-control datetimepicker-input" name="tgl_selesai" data-target="#tgl_selesai"/>
-                @endif
-            </div>
+                <input type="text" class="form-control datetimepicker-input" name="tgl_selesai" data-target="#tgl_sel"/>
+                @endif --}
+            </div> --}}
         </div>
     </div>
             {{-- </div> --}}
