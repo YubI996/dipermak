@@ -6156,6 +6156,9 @@ button.bg-info:focus {
 .bg-rt {
   background: linear-gradient(0deg, #2c3e50 0%, rgba(245,175,25,1) 20%) !important;
 }
+.bg-img {
+  background-image: url('https://bgfons.com/uploads/lines/lines_texture1095.jpg'); !important;
+}
 
 
 a.bg-warning:hover, a.bg-warning:focus,

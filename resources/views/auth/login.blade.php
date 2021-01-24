@@ -57,7 +57,7 @@
                     
                                     <!-- /.login-logo -->
                                     <div  class="login-box-body">
-                                        <p class="login-box-msg">Masukkkkk </p>
+                                        {{-- <p class="login-box-msg"></p> --}}
                     
                                         <form method="post" action="{{ url('/login') }}">
                                             @csrf

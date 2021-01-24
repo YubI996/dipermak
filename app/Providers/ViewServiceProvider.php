@@ -68,6 +68,10 @@ class ViewServiceProvider extends ServiceProvider
             $rtItems = Rt::pluck('nama_rt','id')->toArray();
             $view->with('rtItems', $rtItems);
         });
+        View::composer(['kegiatans.fields'], function ($view) {
+            $rtItems = Rt::pluck('nama_rt','id')->toArray();
+            $view->with('rtItems', $rtItems);
+        });
         // jen keg
         View::composer(['jen_kegs.fields'], function ($view) {
             $jenKegItems = JenKeg::pluck('jenis_keg')->toArray();
