@@ -14,9 +14,11 @@ class Pilihrt extends Component
     public $kel;
     public $rtid;
     public $kid;
-    // function mount($rtid){
-        // $this->rtid=$rtid;
-    // }
+    function mount(){
+        $rtid=$this->rtid;
+        $this->kel = rt::where('id', $this->rtid)->value('kel_id');
+        $this->kec = kelurahan::where('id', $this->kel)->value('kec_id');
+    }
     public function render()
     {
         $kecamatanItems = Kecamatan::pluck('nama_kec','id')->toArray();

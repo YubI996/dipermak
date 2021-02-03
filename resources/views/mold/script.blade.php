@@ -1,10 +1,7 @@
+        <script src="../../dist/plugins/jquery/jquery.min.js" data-turbolinks-track="reload"></script>
 
-@livewireScripts
-{{-- <script src="{{asset('js/app.js')}}"></script> --}}
-    <!-- jQuery -->
-<script src="../../dist/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="../../dist/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../dist/plugins/bootstrap/js/bootstrap.bundle.min.js" data-turbolinks-track="reload"></script>
 <!-- Select2 -->
 <script src="../../dist/plugins/select2/js/select2.full.min.js"></script>
 <!-- Bootstrap4 Duallistbox -->
@@ -13,7 +10,7 @@
 <script src="../../dist/plugins/moment/moment.min.js"></script>
 <script src="../../dist/plugins/inputmask/jquery.inputmask.min.js"></script>
 <!-- date-range-picker -->
-<script src="../../dist/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="../../dist/plugins/daterangepicker/daterangepicker.js" data-turbolinks-track="reload"></script>
 <!-- bootstrap color picker -->
 <script src="../../dist/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
@@ -25,25 +22,29 @@
 <!-- dropzonejs -->
 <script src="../../dist/plugins/dropzone/min/dropzone.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
+<script src="../../dist/js/adminlte.min.js" data-turbolinks-track="reload"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
+<script src="../../dist/js/demo.js" data-turbolinks-track="reload"></script>
     <!-- DataTables  & dist/plugins -->
-    <script src="../../dist/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="../../dist/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="../../dist/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="../../dist/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <script src="../../dist/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="../../dist/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="../../dist/plugins/jszip/jszip.min.js"></script>
-    <script src="../../dist/plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="../../dist/plugins/pdfmake/vfs_fonts.js"></script>
-    <script src="../../dist/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="../../dist/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="../../dist/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script src="../../dist/plugins/datatables/jquery.dataTables.min.js" data-turbolinks-track="reload"></script>
+    <script src="../../dist/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js" data-turbolinks-track="reload"></script>
+    <script src="../../dist/plugins/datatables-responsive/js/dataTables.responsive.min.js" data-turbolinks-track="reload"></script>
+    <script src="../../dist/plugins/datatables-responsive/js/responsive.bootstrap4.min.js" data-turbolinks-track="reload"></script>
+    <script src="../../dist/plugins/datatables-buttons/js/dataTables.buttons.min.js" data-turbolinks-track="reload"></script>
+    <script src="../../dist/plugins/datatables-buttons/js/buttons.bootstrap4.min.js" data-turbolinks-track="reload"></script>
+    <script src="../../dist/plugins/jszip/jszip.min.js" data-turbolinks-track="reload"></script>
+    <script src="../../dist/plugins/pdfmake/pdfmake.min.js" data-turbolinks-track="reload"></script>
+    <script src="../../dist/plugins/pdfmake/vfs_fonts.js" data-turbolinks-track="reload"></script>
+    <script src="../../dist/plugins/datatables-buttons/js/buttons.html5.min.js" data-turbolinks-track="reload"></script>
+    <script src="../../dist/plugins/datatables-buttons/js/buttons.print.min.js" data-turbolinks-track="reload"></script>
+    <script src="../../dist/plugins/datatables-buttons/js/buttons.colVis.min.js" data-turbolinks-track="reload"></script>
     
     <!-- Page specific script -->
-    <script>
+    <script  data-turbolinks-track="reload">
+      $(document).on('turbolinks:load',function() {
+    //infinite_scroll()
+    console.log('turbolinks:load fired');
+});
         $(function () {
             var t = $("#tabel1").DataTable({
                 "responsive": true, "lengthChange": false, "autoWidth": false,"fixedColumns": false,
@@ -98,19 +99,19 @@
 
     //Date range picker
     $('#tgl_mulai').datetimepicker({
-        format: 'L'
+        format: 'YYYY/MM/DD'
     });
     $('#tgl_selesai').datetimepicker({
-        format: 'L'
+        format: 'YYYY/MM/DD'  
     });
-    //Date range picker
+    //Date range picker 
     $('#reservation').daterangepicker()
     //Date range picker with time picker
     $('#reservationtime').daterangepicker({
       timePicker: true,
       timePickerIncrement: 30,
       locale: {
-        format: 'MM/DD/YYYY hh:mm A'
+        format: 'DD/MM/YYYY'
       }
     })
     //Date range as a button

@@ -21,13 +21,8 @@
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-        <livewire:styles/>
-        <script src="../../vendor/livewire/livewire.js"></script>
-        <script src="../../vendor/livewire/livewire.js.map"></script>
-        <script src="../../vendor/livewire/manifest.json"></script>
-
-        <livewire:scripts/>
-        
+        @livewireScripts @livewireStyles
+               
         <link href="{{ asset('front/css/styles.dashboard.css') }}" rel="stylesheet" />
         {{-- <link href="{{ asset('vendor/datatables/buttons.server-side.js') }}" rel="stylesheet" /> --}}
 

@@ -7,7 +7,8 @@
                 {!! Form::label('kecamatan', 'Kecamatan :') !!}
             </div>
             <div class="col-11 m-auto">
-                {!! Form::select(null, $kecamatanItems, Request::old('kecamatan_id'), ['class' => 'form-control','placeholder' => 'Pilih Kecamatan','wire:model' => 'kec']) !!}
+                {!! Form::select(null, $kecamatanItems, $kec, ['class' => 'form-control','placeholder' => 'Pilih Kecamatan','wire:model' => 'kec']) !!}
+                {{-- {!! Form::select(null, $kecamatanItems, Request::old('kecamatan_id'), ['class' => 'form-control','placeholder' => 'Pilih Kecamatan','wire:model' => 'kec']) !!} --}}
             </div>
         </div>
     </div>
@@ -19,7 +20,7 @@
 
             </div>
             <div class="col-11">
-                {!! Form::select(null, $kelurahanItems, Request::old('kelurahan_id'), ['class' => 'form-control','placeholder' => 'Pilih Kelurahan','wire:model' => 'kel']) !!}
+                {!! Form::select(null, $kelurahanItems, $kel, ['class' => 'form-control','placeholder' => 'Pilih Kelurahan','wire:model' => 'kel']) !!}
 
             </div>
         </div>
@@ -32,7 +33,7 @@
         
                 </div>
                 <div class="col-11">
-                    {!! Form::select('rt_id', $rtItems,Request::old('rt_id'), ['class' => 'form-control','placeholder' => 'Pilih RT','wire:model' => 'rtid']) !!}
+                    {!! Form::select('rt_id', $rtItems,$rtid, ['class' => 'form-control','placeholder' => 'Pilih RT','wire:model' => 'rtid']) !!}
                 </div>
         </div>
     </div>
