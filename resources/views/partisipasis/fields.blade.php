@@ -1,4 +1,15 @@
-@livewire('admin.nominal')
+<div class="form-group col-sm-12">
+    {!! Form::label('keg_id', 'Keg Id:') !!}
+    {!! Form::select('keg_id', $kegItems, Request::old('kegiatan_id'), ['class' => 'form-control','placeholder' => 'Pilih Kegiatan', 'wire:model' => 'kid']) !!}
+</div>
+<div class="row-sm-12">
+    @if (isset($partisipasi))
+    {{-- {{$partisipasi->}} --}}
+        @livewire('admin.nominal',['pid'=>$partisipasi->id])
+        @else
+        @livewire('admin.nominal',['pid'=>0])
+    @endif
+</div>
 
 <!-- Deskripsi Field -->
 <div class="form-group col-sm-12 col-lg-12">

@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin;
 
 use Livewire\Component;
 use App\Models\kegiatan as keg;
+use App\Models\partisipasi as par;
 use Carbon\Carbon;
 
 class Nominal extends Component
@@ -11,19 +12,9 @@ class Nominal extends Component
     
     public $per;
     public $nom;
-    public $kid;
+    public $pid;
     public $target;
-    // protected $listeners = ['setNom' => 'setNom()', 'setPer' => 'setPer()'];
-    // function mount($kid){
-    //     if(((!(empty($this->pagu)))&&(!(empty($this->per))))){
-    //         $this->nom = ($this->per / 100) * $this->pagu;
-    //         // $target = $this->nom;
-    //     }
-    //     else
-    //     $this->kid = $kid;
-         
-        
-    // }
+    
     public function updatedPer($value)
     {
         empty($this->per) ? $this->nom = 0 : $this->nom = ($this->per/100) * $this->target;
@@ -39,11 +30,10 @@ class Nominal extends Component
     }
     public function render()
     {
-        $this->target=0; 
         
-        if(!((empty($this->kid)))){
+        if(!((empty($this->pid)))){
             // $this->pagu = keg::Where('id',$this->kid)->value('pagu');//get 
-            $this->target = keg::Where('id',$this->kid)->value('target');
+            $this->target = par::where('id',$this->pid)->first()->kegiatan->target;
             // $this->target = number_format(keg::Where('id',$this->kid)->value('target'),0,'.',',');
             // dd($this->target);
             
