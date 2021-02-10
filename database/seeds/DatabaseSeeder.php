@@ -11,6 +11,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(RtTableSeeder::class);
+        $this->call([
+            RoleSeeder::class,
+            jenKegSeeder::class,
+            KotaSeeder::class,
+            KecamatanSeeder::class,
+            kelurahanSeeder::class,
+            RtTableSeeder::class,
+            UserSeeder::class
+        ]);
     }
 }

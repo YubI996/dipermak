@@ -11,8 +11,6 @@ $factory->define(rt::class, function (Faker $faker) {
     return [
         'nama_rt' => $rt++,
         'kel_id' => 1,
-        'created_at' => date('Y-m-d H:i:s',strtotime(now())),
-        'updated_at' => date('Y-m-d H:i:s',strtotime(now()))
     ];
 });$rt=1;
 
