@@ -15,6 +15,12 @@ class Nominal extends Component
     public $pid;
     public $target;
     
+    public function updatedPid()
+    {
+        $keg = par::where('id',$this->pid)->first()->kegiatan->target;
+        
+        $this->target = number_format($keg,0,',','.');
+    }
     public function updatedPer($value)
     {
         empty($this->per) ? $this->nom = 0 : $this->nom = ($this->per/100) * $this->target;
@@ -25,22 +31,17 @@ class Nominal extends Component
     {
         // dd($this->target);
         // empty($this->nom) ? $this->per = 0 : $this->per = (number_format(($this->nom / $this->target) * 100,0,'.',','));
-        empty($this->nom) ? $this->per = 0 : $this->per = ($this->nom / $this->target) * 100;
+        empty($this->target) ? $this->per = 0 : $this->per = ($this->nom / $this->target) * 100;
         // $this->nom = number_format($value,0, ',' , '.');
+        
     }
     public function render()
     {
         
-        if(!((empty($this->pid)))){
-            // $this->pagu = keg::Where('id',$this->kid)->value('pagu');//get 
-            $this->target = par::where('id',$this->pid)->first()->kegiatan->target;
-            // $this->target = number_format(keg::Where('id',$this->kid)->value('target'),0,'.',',');
-            // dd($this->target);
-            
-        }
-        $tgl = Carbon::parse(now())->translatedFormat('l, d F Y H:i:s A');
+        
+        // $tgl = Carbon::parse(now())->translatedFormat('l, d F Y H:i:s A');
                 
-        return view('livewire.admin.nominal', compact('tgl'));
+        return view('livewire.admin.nominal');
     }
 }
 
