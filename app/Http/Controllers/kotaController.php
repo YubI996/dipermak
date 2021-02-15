@@ -29,7 +29,7 @@ class kotaController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $kotas = $this->kotaRepository->all();
+        $kotas = $this->kotaRepository->all()->sortbyDesc('created_at');
 
         return view('kotas.index')
             ->with('kotas', $kotas);

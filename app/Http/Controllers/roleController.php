@@ -29,7 +29,7 @@ class roleController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $roles = $this->roleRepository->all();
+        $roles = $this->roleRepository->all()->sortbyDesc('created_at');
 
         return view('roles.index')
             ->with('roles', $roles);

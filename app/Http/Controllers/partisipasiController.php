@@ -30,7 +30,7 @@ class partisipasiController extends AppBaseController
     public function index(Request $request)
     {
         // $partisipasis = $this->partisipasiRepository->OrderBy('created_at', 'DESC')->get();
-        $partisipasis = $this->partisipasiRepository->all();
+        $partisipasis = $this->partisipasiRepository->all()->sortbyDesc('created_at');
 
         return view('partisipasis.index')
             ->with('partisipasis', $partisipasis->sortByDesc('created_at'));

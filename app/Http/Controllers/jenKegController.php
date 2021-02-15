@@ -29,7 +29,7 @@ class jenKegController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $jenKegs = $this->jenKegRepository->all();
+        $jenKegs = $this->jenKegRepository->all()->sortbyDesc('created_at');
 
         return view('jen_kegs.index')
             ->with('jenKegs', $jenKegs);

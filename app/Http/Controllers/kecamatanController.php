@@ -29,7 +29,7 @@ class kecamatanController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $kecamatans = $this->kecamatanRepository->all();
+        $kecamatans = $this->kecamatanRepository->all()->sortbyDesc('created_at');
 
         return view('kecamatans.index')
             ->with('kecamatans', $kecamatans);

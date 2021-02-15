@@ -29,7 +29,7 @@ class rtController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $rts = $this->rtRepository->all();
+        $rts = $this->rtRepository->all()->sortbyDesc('created_at');
 
         return view('rts.index')
             ->with('rts', $rts);

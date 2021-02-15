@@ -31,7 +31,7 @@ class userController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $users = $this->userRepository->all();
+        $users = $this->userRepository->all()->sortbyDesc('created_at');
 
         return view('users.index')
         ->with('users', $users);

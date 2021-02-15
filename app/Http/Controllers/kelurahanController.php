@@ -29,7 +29,7 @@ class kelurahanController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $kelurahans = $this->kelurahanRepository->all();
+        $kelurahans = $this->kelurahanRepository->all()->sortbyDesc('created_at');
 
         return view('kelurahans.index')
             ->with('kelurahans', $kelurahans);

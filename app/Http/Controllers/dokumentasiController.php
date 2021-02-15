@@ -33,7 +33,7 @@ class dokumentasiController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $dokumentasis = $this->dokumentasiRepository->all();
+        $dokumentasis = $this->dokumentasiRepository->all()->sortbyDesc('created_at');
 
         return view('dokumentasis.index')
             ->with('dokumentasis', $dokumentasis);
@@ -70,7 +70,7 @@ class dokumentasiController extends AppBaseController
             $dokumentasi = Dokumentasi::create([
                 'keg_id' => $input['keg_id'],
                 'rt_id' => $input['rt_id'],
-                'foto' => $foto->storeAs('', $nama,'dok'),
+                'foto' => $foto->storeAs('', $nama,'public'),
                 'keterangan' => $input['keterangan']
             ]);
         }
