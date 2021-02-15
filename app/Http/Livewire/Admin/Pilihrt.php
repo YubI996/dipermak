@@ -14,37 +14,31 @@ class Pilihrt extends Component
     public $kel;
     public $rtid;
     public $kid;
+    public $kelurahanItems;
+    public $kecamatanItems;
+    public $rtItems;
     function mount(){
         $rtid=$this->rtid;
         $this->kel = rt::where('id', $this->rtid)->value('kel_id');
         $this->kec = kelurahan::where('id', $this->kel)->value('kec_id');
+        $this->kelurahanItems = Kelurahan::pluck('nama_kel','id')->toArray();
+        $this->kecamatanItems = Kecamatan::pluck('nama_kec','id')->toArray();
+        $this->rtItems = Rt::pluck('nama_rt','id')->toArray();
+
+    }
+    public function Updatedkec()
+    {
+
+            $this->kelurahanItems = Kelurahan::where('kec_id',$this->kec)->pluck('nama_kel','id')->toArray();
+    }
+    public function Updatedkel()
+    {
+            $this->rtItems = Rt::where('kel_id',$this->kel)->pluck('nama_rt','id')->toArray();
     }
     public function render()
     {
-        $kecamatanItems = Kecamatan::pluck('nama_kec','id')->toArray();
-        if (!(empty($this->kec))) {
-            $kelurahanItems = Kelurahan::where('kec_id',$this->kec)->pluck('nama_kel','id')->toArray();
-        }
-        else{
-            $kelurahanItems = Kelurahan::pluck('nama_kel','id')->toArray();
 
-        }
-        if (!(empty($this->kel))) {
-            $rtItems = Rt::where('kel_id',$this->kel)->pluck('nama_rt','id')->toArray();
-            # code...
-        }
-        else{
-            $rtItems = Rt::pluck('nama_rt','id')->toArray();
-        }
-        if (!(empty($this->kid))){
-            $this->kel = rt::where('id', $this->rtid)->value('kel_id');
-            $this->kec = kelurahan::where('id', $this->kel)->value('kec_id');
-            dump($this->kel);
-            dump($this->kec);
-        }
-        // $rtid = $this->rtid;
-       
-        return view('livewire.admin.pilihrt', compact('kelurahanItems','kecamatanItems','rtItems'));
+        return view('livewire.admin.pilihrt');
     }
 }
 
