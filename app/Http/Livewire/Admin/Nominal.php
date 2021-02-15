@@ -12,14 +12,24 @@ class Nominal extends Component
     
     public $per;
     public $nom;
-    public $pid;
+    public $kid;
     public $target;
-    
-    public function updatedPid()
+    public $keg;
+    public $pid;
+    public function mount()
     {
-        $keg = par::where('id',$this->pid)->first()->kegiatan->target;
+        $this->kid = par::find($this->pid)->keg_id;
+        $this->target = keg::find($this->kid)->target;
+        $this->nom = par::find($this->pid)->nominal;
+        $this->per = ($this->nom/$this->target)*100;
+    }
+
+    public function updatedKid()
+    {
+        // $kid = par::where('id',$this->pid)->first()->value('keg_id');
+        $this->keg = keg::where('id',$this->kid)->value('target');
         
-        $this->target = number_format($keg,0,',','.');
+        $this->target = number_format($this->keg,0,',','.');
     }
     public function updatedPer($value)
     {
@@ -31,9 +41,10 @@ class Nominal extends Component
     {
         // dd($this->target);
         // empty($this->nom) ? $this->per = 0 : $this->per = (number_format(($this->nom / $this->target) * 100,0,'.',','));
-        empty($this->target) ? $this->per = 0 : $this->per = ($this->nom / $this->target) * 100;
+        $per = number_format((($this->nom / $this->target) * 100),1,',','.');
+        empty($this->target) ? $this->per = 0 : $this->per = $per;
         // $this->nom = number_format($value,0, ',' , '.');
-        
+        // dump('keeeeey');
     }
     public function render()
     {
