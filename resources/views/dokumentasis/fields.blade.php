@@ -13,6 +13,10 @@
 <!-- Foto Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('foto', 'Foto:') !!}
+    @if (isset($dokumentasi->id))
+        
+    <img src="{{ url('storage/'. $dokumentasi->foto)}}" alt="{{'foto '. $dokumentasi->name }}" width="40" height="40"></td><br>
+    @endif
     {!! Form::file('foto',['name' => 'foto[]','multiple']) !!}
 </div>
 <div class="clearfix"></div>

@@ -65,7 +65,7 @@ class dokumentasiController extends AppBaseController
         foreach ($request->foto as $index => $foto) {
             $keg = Kegiatan::where('id',$input['keg_id'])->value('nama_keg');
             $rt = Rt::where('id',$input['rt_id'])->value('nama_rt');
-            $nama = $index.'_'.implode(' ', array_slice(explode(' ', $keg), 0, 3)).'_RT_'.$rt.'.'.$foto->getClientOriginalExtension();
+            $nama = '\\img\\dok\\'.$index.'_'.implode(' ', array_slice(explode(' ', $keg), 0, 3)).'_RT_'.$rt.'.'.$foto->getClientOriginalExtension();
             $path = '\\img\\dok';
             $dokumentasi = Dokumentasi::create([
                 'keg_id' => $input['keg_id'],
@@ -138,8 +138,17 @@ class dokumentasiController extends AppBaseController
 
             return redirect(route('dokumentasis.index'));
         }
-
-        $dokumentasi = $this->dokumentasiRepository->update($request->all(), $id);
+        $dokumentasi = $this->dokumentasiRepository->update([$request->all(), $id]);
+        foreach ($request->foto as $index => $foto) {
+            $keg = Kegiatan::where('id',$input['keg_id'])->value('nama_keg');
+            $rt = Rt::where('id',$input['rt_id'])->value('nama_rt');
+            $nama = '\\img\\dok\\'.$index.'_'.implode(' ', array_slice(explode(' ', $keg), 0, 3)).'_RT_'.$rt.'.'.$foto->getClientOriginalExtension();
+            $path = '\\img\\dok';
+            $foto->move($path,$foto);
+            $foto = $nama;
+            $foto->storeAs('', $nama,'dok');
+            $dokumentasi->update(['foto' => $foto,$id]);
+        }
 
         Flash::success('Dokumentasi updated successfully.');
 

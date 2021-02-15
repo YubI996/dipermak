@@ -1,19 +1,9 @@
 @extends('mold.app')
-
+@section('content-title')
+Dokumentasi
+@endsection
 @section('content')
-    <section class="content-header">
-        <h1>
-            Dokumentasi
-        </h1>
-    </section>
-    <div class="content">
-        <div class="box box-primary">
-            <div class="box-body">
-                <div class="row" style="padding-left: 20px">
-                    @include('dokumentasis.show_fields')
-                    <a href="{{ route('dokumentasis.index') }}" class="btn btn-default">Back</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('adminlte-templates::common.errors')
+        @include('dokumentasis.show_fields')
+        <a href="{{ route('dokumentasis.index') }}" class="btn btn-default">Back</a>
 @endsection

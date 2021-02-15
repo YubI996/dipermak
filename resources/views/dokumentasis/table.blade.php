@@ -14,9 +14,9 @@
         @foreach($dokumentasis as $dokumentasi)
             <tr>
                 <td>{{$loop->iteration}}</td>
-                <td>{{ $dokumentasi->keg_id }}</td>
-                <td>{{ $dokumentasi->rt_id }}</td>
-                <td><img src="{{ url('storage\\img\\dok\\'. $dokumentasi->foto)}}" alt="{{'foto '. $dokumentasi->name }}" width="40" height="40"></td>
+                <td>{{ $dokumentasi->kegiatan->nama_keg }}</td>
+                <td>{{ 'RT '.$dokumentasi->rt->nama_rt.' Kelurahan '.$dokumentasi->rt->kelurahan->nama_kel }}</td>
+                <td><img src="{{ url('storage/'. $dokumentasi->foto)}}" alt="{{'foto '. $dokumentasi->name }}" width="40" height="40"></td>
                 <td>{{ $dokumentasi->keterangan }}</td>
                 <td>
                     {!! Form::open(['route' => ['dokumentasis.destroy', $dokumentasi->id], 'method' => 'delete']) !!}
