@@ -82,7 +82,7 @@ class kegiatanController extends AppBaseController
             return redirect(route('kegiatans.index'));
         }
 
-        return view('kegiatans.show')->with('kegiatan', $kegiatan->sortByDesc('created_at'));
+        return view('kegiatans.show')->with('kegiatan', $kegiatan);
     }
 
     /**
