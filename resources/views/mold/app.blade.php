@@ -155,7 +155,8 @@
                             class="img-circle" alt="{{ Auth::user()->name }}"/>
                       <p>
                           {{ Auth::user()->name }}
-                          <small>Member since {{ Auth::user()->created_at->format('M. Y') }}</small>
+                          <small>Member since {{ empty(Auth::user()->created_at) ? "-" : Auth::user()->created_at->format('M. Y')}}</small>
+                          
                       </p>
                   </li>
                   <!-- Menu Footer-->
