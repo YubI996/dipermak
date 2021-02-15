@@ -2,6 +2,7 @@
     <table id="tabel1" class="table table-bordered table-striped">
         <thead>
             <tr>
+                <th class="align-middle">No.</th>
                 <th class="align-middle">Kegiatan</th>
                 <th class="align-middle">RT</th>
                 <th class="align-middle">Deskripsi</th>
@@ -15,13 +16,14 @@
         <tbody >
         @foreach($partisipasis as $partisipasi)
             <tr>
+                <td>{{$loop->iteration}}</td>
                 <td>{{ $partisipasi->kegiatan['nama_keg'] }}</td>
                 <td>{{ 'RT '.$partisipasi->rt->nama_rt.' Kelurahan '.$partisipasi->rt->kelurahan->nama_kel }}</td>
                 <td>{{ substr($partisipasi->deskripsi,0, 30).'...' }}</td>
                 <td>{{ $partisipasi->jenis }}</td>
                 <td>{{ $partisipasi->nominal }}</td>
-                <td>{{ $partisipasi->created_at }}</td>
-                <td>{{ $partisipasi->updated_at }}</td>
+                <td>{{ \Carbon\Carbon::parse($partisipasi->created_at)->translatedFormat('l, d F Y')}}</td>
+                <td>{{ \Carbon\Carbon::parse( $partisipasi->updated_at)->translatedFormat('l, d F Y') }}</td>
                 <td>
                     {!! Form::open(['route' => ['partisipasis.destroy', $partisipasi->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
