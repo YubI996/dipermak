@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Carbon\Carbon;
 
 class CreateUsersTable extends Migration
 {
@@ -21,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('role_id')->unsigned();
             $table->integer('rt_id')->unsigned()->nullable();
-            $table->string('foto')->nullable()->default('\img\foto\default.jpg');
+            $table->string('foto')->nullable()->default("//img//foto//default.jpg");
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
