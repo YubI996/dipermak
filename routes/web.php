@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/form-captcha','CaptchaController@index');
+Route::post('/form-captcha','CaptchaController@submit');
+Route::get('createcaptcha', 'CaptchaController@create');
+Route::post('captcha', 'CaptchaController@captchaValidate');
+Route::get('refreshcaptcha', 'CaptchaController@refreshCaptcha');
 
 Route::get('/', 'GuestController@index');
 Route::get("/page", function(){

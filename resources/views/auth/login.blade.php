@@ -82,6 +82,25 @@
                                                 @endif
                     
                                             </div>
+                                            <div class="form-group has-feedback{{ $errors->has('captcha') ? ' has-error' : '' }}">
+                                                <div class=" d-flex justify-content-center" >
+                                                    <div id = "ref" class="p-1 border border-primary rounded">{!!captcha_img('math')!!}
+                                                    </div>
+                                                    <button  tooltip="test" align = "center" type="button" tabindex = 100 class="btn btn-primary btn-user1 btn-block" id="refresh" width=1>
+                                                        <span id="refresh" class="fa fa-repeat" aria-setsize="50"></span>
+                                                        {{-- <i class="fa fa-refresh">Reload Captcha</i> --}}
+                                                    </button>
+                                                </div>
+                                                <div class=" m-2">
+                                                </div>
+                                                <input type="captcha" name="captcha" class="form-control form-control-user @error('captcha') is-invalid @enderror" id="captcha" placeholder="Captcha">
+                                                @if ($errors->has('captcha'))
+                                                    <span class="help-block">
+                                                    <strong>{{ $errors->first('captcha') }}</strong>
+                                                </span>
+                                                @endif
+                    
+                                            </div>
                                             <div class="row">
                                                 {{-- <div class="col-xs-8">
                                                     <div class="checkbox icheck">
@@ -96,7 +115,7 @@
                                                     <div class="col-xs-4">
                                                         <button type="submit" class="btn btn-primary btn-block btn-flat">Masuk</button>
                                                     </div>
-                                                    <a href="{{ url('/password/reset') }}">Saya lupa password</a>
+                                                    {{-- <a href="{{ url('/password/reset') }}">Saya lupa password</a> --}}
                                                 </div>
                                                 <!-- /.col -->
                                             </div>
@@ -124,6 +143,21 @@
                                         checkboxClass: 'icheckbox_square-blue',
                                         radioClass: 'iradio_square-blue',
                                         increaseArea: '20%' // optional
+                                    });
+                                });
+
+                                var base_url = window.location.origin+'/refreshcaptcha';
+
+                                $("#refresh").click(function(){
+                                    $.ajax({
+                                    type:'GET',
+                                    url:'refreshcaptcha',
+                                    success:function(data){
+                                        $(".captcha span").html(data.captcha);
+                                        var container = document.getElementById("ref");
+                                    var refreshContent = data;
+                                    container.innerHTML = refreshContent;
+                                    }
                                     });
                                 });
                             </script>

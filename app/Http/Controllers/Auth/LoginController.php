@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -18,7 +19,14 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'captcha' => ['required|captcha'],
+        ]);
+    }
     use AuthenticatesUsers;
 
     /**
@@ -27,6 +35,17 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
+    }
+
+    public function showLoginForm()
+    {
+        return view('auth.login');
+    }
 
     /**
      * Create a new controller instance.
