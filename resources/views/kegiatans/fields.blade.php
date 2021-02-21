@@ -80,7 +80,7 @@
         <div class="col-11 icheck-success mb-3">
 
             <label class="checkbox-inline">
-                {!! Form::checkbox('approval', '1', null) !!}
+                {!! Form::checkbox('approval', '1', 'checked') !!}
             </label>
         </div>
     </div>

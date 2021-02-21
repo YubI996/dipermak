@@ -57,7 +57,7 @@ class kegiatanController extends AppBaseController
     public function store(CreatekegiatanRequest $request)
     {
         $input = $request->all();
-
+        // dd($input);
         $kegiatan = $this->kegiatanRepository->create($input);
 
         Flash::success('Kegiatan saved successfully.');
@@ -116,13 +116,15 @@ class kegiatanController extends AppBaseController
     public function update($id, UpdatekegiatanRequest $request)
     {
         $kegiatan = $this->kegiatanRepository->find($id);
-
+        
         if (empty($kegiatan)) {
             Flash::error('Kegiatan not found');
-
+            
             return redirect(route('kegiatans.index'));
         }
-
+        $approval = isset($request->approval) ? true : false;
+        $request->request->add(['approval' => $approval]);
+        // dd($request);
         $kegiatan = $this->kegiatanRepository->update($request->all(), $id);
 
         Flash::success('Kegiatan updated successfully.');

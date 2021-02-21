@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Passport\HasApiTokens;
 
 /**
  * Class user
@@ -23,7 +24,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class user extends Model
 {
-    use SoftDeletes;
+    use HasApiTokens, SoftDeletes;
 
     public $table = 'users';
     

@@ -11,6 +11,7 @@ use Flash;
 use Auth;
 use Hash;
 use Response;
+use App\Models\User;
 
 class userController extends AppBaseController
 {
@@ -127,8 +128,18 @@ class userController extends AppBaseController
 
             return redirect(route('users.index'));
         }
-
-        $user = $this->userRepository->update($request->all(), $id);
+        // dd($request);
+        $move = $request->foto->move(public_path('storage\\img\\foto\\'), $request->name.'.'.$request->foto->getClientOriginalExtension());
+        // dd($move);
+            $userr = User::findorfail($id)->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'role_id' => $request->role_id,
+                'rt_id'  => $request->rt_id,
+                'foto' => '\\img\\foto\\'.$request->name.'.'.$request->foto->getClientOriginalExtension()
+            ]);
+        // $user = $this->userRepository->update($request->all(), $id);
 
         Flash::success('User updated successfully.');
 

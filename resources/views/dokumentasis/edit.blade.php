@@ -11,7 +11,7 @@
        <div class="box box-primary">
            <div class="box-body">
                <div class="row">
-                   {!! Form::model($dokumentasi, ['route' => ['dokumentasis.update', $dokumentasi->id], 'method' => 'patch', 'files' => true]) !!}
+                   {!! Form::model($dokumentasi, ['route' => ['dokumentasis.update', $dokumentasi->id], 'method' => 'patch', 'enctype'=>'multipart/form-data']) !!}
 
                         @include('dokumentasis.fields')
 

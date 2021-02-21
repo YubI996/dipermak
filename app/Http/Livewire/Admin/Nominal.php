@@ -18,10 +18,12 @@ class Nominal extends Component
     public $pid;
     public function mount()
     {
-        $this->kid = par::find($this->pid)->keg_id;
-        $this->target = keg::find($this->kid)->target;
-        $this->nom = par::find($this->pid)->nominal;
-        $this->per = ($this->nom/$this->target)*100;
+        if (!(empty($this->pid))) {
+            $this->kid = par::find($this->pid)->keg_id;
+            $this->target = keg::find($this->kid)->target;
+            $this->nom = par::find($this->pid)->nominal;
+            $this->per = ($this->nom/$this->target)*100;
+        }
     }
 
     public function updatedKid()

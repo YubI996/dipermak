@@ -132,27 +132,48 @@ class dokumentasiController extends AppBaseController
     public function update($id, UpdatedokumentasiRequest $request)
     {
         $dokumentasi = $this->dokumentasiRepository->find($id);
-
+        
         if (empty($dokumentasi)) {
             Flash::error('Dokumentasi not found');
-
+            
             return redirect(route('dokumentasis.index'));
         }
-        $dokumentasi = $this->dokumentasiRepository->update([$request->all(), $id]);
+        // dd($dokumentasi);
         foreach ($request->foto as $index => $foto) {
-            $keg = Kegiatan::where('id',$input['keg_id'])->value('nama_keg');
-            $rt = Rt::where('id',$input['rt_id'])->value('nama_rt');
+            $keg = Kegiatan::where('id',$request->keg_id)->value('nama_keg');
+            $rt = Rt::where('id',$request->rt_id)->value('nama_rt');
             $nama = '\\img\\dok\\'.$index.'_'.implode(' ', array_slice(explode(' ', $keg), 0, 3)).'_RT_'.$rt.'.'.$foto->getClientOriginalExtension();
-            $path = '\\img\\dok';
-            $foto->move($path,$foto);
-            $foto = $nama;
-            $foto->storeAs('', $nama,'dok');
-            $dokumentasi->update(['foto' => $foto,$id]);
+            $dok = Dokumentasi::findorfail($id)->update([
+                'keg_id' => $request->keg_id,
+                'rt_id'  => $request->rt_id,
+                'keterangan' => $request->keterangan,
+                    'foto' => $foto->storeAs('', $nama,'public'),
+            ]);
         }
+        // dd($id);
 
-        Flash::success('Dokumentasi updated successfully.');
+        // if (!(empty($request->foto))) {
+        //     # code...
+        //     foreach ($request->foto as $index => $foto) {
+        //         // $path = '\\img\\dok';
+        //         // $foto->move($path,$foto);
+        //         // $foto = $nama;
+        //         // $oldn = $foto->getclientoriginalname();
+        //         // rename($foto,$nama);
+        //         fopen($foto,'r');
+        //         $foto->storeAs('', $nama,'public');
+        //         $dokumentasi->update(['foto' => $foto,$id]);
+        //         dd($foto)->PathName;
+        //     }
+        // }
+        // $dokumentasi = $this->dokumentasiRepository->update($request->all(), $id);
+        // dd($dokumentasi);
+        if ($dok) {
+            Flash::success('Dokumentasi updated successfully.');
+    
+            return redirect(route('dokumentasis.index'));
 
-        return redirect(route('dokumentasis.index'));
+        }
     }
 
     /**
