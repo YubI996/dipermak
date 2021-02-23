@@ -40,7 +40,7 @@ class jenKegAPIController extends AppBaseController
             $request->get('limit')
         );
 
-        return $this->sendResponse($jenKegs->toArray(), 'Jen Kegs retrieved successfully');
+        return $this->sendResponse($jenKegs->toArray(), 'Jenis Kegiatans retrieved successfully');
     }
 
     /**
@@ -57,7 +57,7 @@ class jenKegAPIController extends AppBaseController
 
         $jenKeg = $this->jenKegRepository->create($input);
 
-        return $this->sendResponse($jenKeg->toArray(), 'Jen Keg saved successfully');
+        return $this->sendResponse($jenKeg->toArray(), 'Jenis Kegiatan saved successfully');
     }
 
     /**
@@ -74,10 +74,10 @@ class jenKegAPIController extends AppBaseController
         $jenKeg = $this->jenKegRepository->find($id);
 
         if (empty($jenKeg)) {
-            return $this->sendError('Jen Keg not found');
+            return $this->sendError('Jenis Kegiatan not found');
         }
 
-        return $this->sendResponse($jenKeg->toArray(), 'Jen Keg retrieved successfully');
+        return $this->sendResponse($jenKeg->toArray(), 'Jenis Kegiatan retrieved successfully');
     }
 
     /**
@@ -97,7 +97,7 @@ class jenKegAPIController extends AppBaseController
         $jenKeg = $this->jenKegRepository->find($id);
 
         if (empty($jenKeg)) {
-            return $this->sendError('Jen Keg not found');
+            return $this->sendError('Jenis Kegiatan not found');
         }
 
         $jenKeg = $this->jenKegRepository->update($input, $id);
@@ -121,11 +121,11 @@ class jenKegAPIController extends AppBaseController
         $jenKeg = $this->jenKegRepository->find($id);
 
         if (empty($jenKeg)) {
-            return $this->sendError('Jen Keg not found');
+            return $this->sendError('Jenis Kegiatan not found');
         }
 
         $jenKeg->delete();
 
-        return $this->sendSuccess('Jen Keg deleted successfully');
+        return $this->sendSuccess('Jenis Kegiatan deleted successfully');
     }
 }

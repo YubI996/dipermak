@@ -55,10 +55,11 @@ class jenKegController extends AppBaseController
     public function store(CreatejenKegRequest $request)
     {
         $input = $request->all();
+        // dd($request);
 
         $jenKeg = $this->jenKegRepository->create($input);
 
-        Flash::success('Jen Keg saved successfully.');
+        Flash::success('Jenis Kegiatan saved successfully.');
 
         return redirect(route('jenKegs.index'));
     }
@@ -75,7 +76,7 @@ class jenKegController extends AppBaseController
         $jenKeg = $this->jenKegRepository->find($id);
 
         if (empty($jenKeg)) {
-            Flash::error('Jen Keg not found');
+            Flash::error('Jenis Kegiatan not found');
 
             return redirect(route('jenKegs.index'));
         }
@@ -95,7 +96,7 @@ class jenKegController extends AppBaseController
         $jenKeg = $this->jenKegRepository->find($id);
 
         if (empty($jenKeg)) {
-            Flash::error('Jen Keg not found');
+            Flash::error('Jenis Kegiatan not found');
 
             return redirect(route('jenKegs.index'));
         }
@@ -116,14 +117,14 @@ class jenKegController extends AppBaseController
         $jenKeg = $this->jenKegRepository->find($id);
 
         if (empty($jenKeg)) {
-            Flash::error('Jen Keg not found');
+            Flash::error('Jenis Kegiatan not found');
 
             return redirect(route('jenKegs.index'));
         }
 
         $jenKeg = $this->jenKegRepository->update($request->all(), $id);
 
-        Flash::success('Jen Keg updated successfully.');
+        Flash::success('Jenis Kegiatan updated successfully.');
 
         return redirect(route('jenKegs.index'));
     }
@@ -142,14 +143,14 @@ class jenKegController extends AppBaseController
         $jenKeg = $this->jenKegRepository->find($id);
 
         if (empty($jenKeg)) {
-            Flash::error('Jen Keg not found');
+            Flash::error('Jenis Kegiatan not found');
 
             return redirect(route('jenKegs.index'));
         }
 
         $this->jenKegRepository->delete($id);
 
-        Flash::success('Jen Keg deleted successfully.');
+        Flash::success('Jenis Kegiatan deleted successfully.');
 
         return redirect(route('jenKegs.index'));
     }
