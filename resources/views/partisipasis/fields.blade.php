@@ -2,8 +2,10 @@
 <div class="row-sm-12">
     @if (isset($partisipasi))
     {{-- {{$partisipasi->}} --}}
-        @livewire('admin.nominal',['pid'=>$partisipasi->id])
+    @livewire('admin.pilihrt',['rtid'=>$partisipasi->kegiatan->rt_id])
+        @livewire('admin.nominal',['pid'=>$partisipasi->id]) 
         @else
+        @livewire('admin.pilihrt')
         @livewire('admin.nominal',['pid'=>0])
     @endif
 </div>
