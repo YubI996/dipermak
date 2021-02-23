@@ -14,11 +14,13 @@ $factory->define(kegiatan::class, function (Faker $faker) {
         'rt_id' => Rt::all()->random()->id,
         'tgl_mulai' => $faker->dateTimeBetween($startDate = 'now', $endDate = '+1 month', $timezone = null),
         'tgl_selesai' => $faker->dateTimeBetween($startDate = '+1 moth', $endDate = '+2 month', $timezone = null),
+        'sumber_dana' => $faker->randomElement(['APBN','APBD']), 
         'approval' => $faker->boolean,
         'jen_keg' => jenKeg::all()->random()->id,
         'pagu' => $faker->randomNumber(6,false),
         'target' => $faker->randomNumber(5, true),
         'volume' => $faker->randomNumber(2,false),
+        'satuan' => $faker->word,
         'created_at' => date('Y-m-d H:i:s'),
         'updated_at' => date('Y-m-d H:i:s'),
         
