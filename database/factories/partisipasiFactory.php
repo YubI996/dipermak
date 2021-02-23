@@ -13,7 +13,7 @@ $factory->define(partisipasi::class, function (Faker $faker) {
         'keg_id' => $keg->id,
         'rt_id' => $keg->rt_id,
         'deskripsi' => $faker->text,
-        'jenis' => $faker->randomElement(['barang','jasa']),
+        'jenis' => $faker->randomElement(['Barang','Jasa','Uang']),
         'nominal' => intval($keg->target * 0.85),
         'created_at' => date('Y-m-d H:i:s'),
         'updated_at' => date('Y-m-d H:i:s')
