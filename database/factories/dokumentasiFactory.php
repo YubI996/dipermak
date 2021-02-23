@@ -15,6 +15,7 @@ $factory->define(dokumentasi::class, function (Faker $faker) {
         'rt_id' => $keg->rt_id,
         'foto' => 'img\\dok\\default.jpg',
         'keterangan' => $faker->text,
+        'progres' => $faker->randomFloat(2,1,100),
         'created_at' => date('Y-m-d H:i:s',strtotime(now())),
         'updated_at' => date('Y-m-d H:i:s',strtotime(now())),
     ];
