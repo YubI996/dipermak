@@ -16,7 +16,7 @@ class CreateJenKegsTable extends Migration
     {
         Schema::create('jen_kegs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('jenis_keg', 20);
+            $table->string('jenis_keg', 50);
             $table->timestamps();
             $table->softDeletes();
         });
