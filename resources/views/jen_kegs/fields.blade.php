@@ -1,7 +1,17 @@
 <!-- Jenis Keg Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('jenis_keg', 'Jenis Keg:') !!}
-    {!! Form::select('jenis_keg', $jenKegItems, null, ['class' => 'form-control']) !!}
+<div class="form-group col-sm-12">
+    <div class="row">
+        <div class="col-sm-2">
+
+            {!! Form::label('jenis_keg', 'Jenis Kegiatan :') !!}
+        </div>
+        <div class="col-sm-10">
+
+            {{-- {!! Form::text('jenis_keg', $jenKegItems, null, ['class' => 'form-control']) !!} --}}
+            {!! Form::text('jenis_keg', old('jenis_keg'), ['class' => 'form-control']) !!}
+        </div>
+    </div>
+
 </div>
 
 <!-- Submit Field -->
