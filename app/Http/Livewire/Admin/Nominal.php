@@ -25,8 +25,12 @@ class Nominal extends Component
             $this->target = keg::find($this->kid)->target;
             $this->nom = par::find($this->pid)->nominal;
             $this->per = ($this->nom/$this->target)*100;
+            $this->kegItems = keg::where('id',$this->kid)->pluck('nama_keg','id')->toArray();
         }
-        $this->kegItems = ['Silahkan pilih RT'];
+        else{
+            $this->kegItems = ['Silahkan pilih RT'];
+
+        }
     }
     public function rt($value)
     {
