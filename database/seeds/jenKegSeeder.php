@@ -14,15 +14,11 @@ class jenKegSeeder extends Seeder
         DB::table('jen_kegs')->insert([
             [
                 'id' => 1,
-                'jenis_keg' => 'Smart City'
+                'jenis_keg' => 'Sarana dan Prasarana Kelurahan'
             ],
             [
                 'id' => 2,
-                'jenis_keg' => 'Green City'
-            ],
-            [
-                'id' => 3,
-                'jenis_keg' => 'Creative City'
+                'jenis_keg' => 'Pemberdayaan Masyarakat Kelurahan'
             ]
         ]);
     }
