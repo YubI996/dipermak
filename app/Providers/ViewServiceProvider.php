@@ -138,10 +138,10 @@ class ViewServiceProvider extends ServiceProvider
             $view->with('kegItems', $kegItems);
         });
         // nominal.blade
-        View::composer(['livewire.admin.nominal'], function ($view) {
-            $kegItems = kegiatan::pluck('nama_keg','id')->toArray();
-            $view->with('kegItems', $kegItems);
-        });
+        // View::composer(['livewire.admin.nominal'], function ($view) {
+        //     $kegItems = kegiatan::pluck('nama_keg','id')->toArray();
+        //     $view->with('kegItems', $kegItems);
+        // });
         // not used ???
         View::composer(['kegiatan_rts.fields'], function ($view) {
             $rtItems = Rt::pluck('nama_rt')->toArray();
