@@ -16,6 +16,8 @@ class Nominal extends Component
     public $target;
     public $keg;
     public $pid;
+    public $kegItems;
+    protected $listeners = ['RT' => 'rt'];
     public function mount()
     {
         if (!(empty($this->pid))) {
@@ -24,8 +26,13 @@ class Nominal extends Component
             $this->nom = par::find($this->pid)->nominal;
             $this->per = ($this->nom/$this->target)*100;
         }
+        $this->kegItems = ['Silahkan pilih RT'];
     }
-
+    public function rt($value)
+    {
+        // dd($value);
+        $this->kegItems = keg::where('rt_id',$value)->pluck('nama_keg','id')->toArray();
+    }
     public function updatedKid()
     {
         // $kid = par::where('id',$this->pid)->first()->value('keg_id');

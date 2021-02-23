@@ -12,7 +12,7 @@
             <div class="input-group-prepend">
                         <div class="input-group-text">Rp</div>
                     </div>
-            {!! Form::text('target',null, ['id' => 'target','class' => 'form-control','maxlength' => 20, 'wire:model.lazy' => 'target']) !!}
+            {!! Form::text('target',null, ['id' => 'target','class' => 'form-control','maxlength' => 20, 'wire:model.lazy' => 'target', 'disabled']) !!}
                
         </div>
     </div>

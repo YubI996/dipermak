@@ -35,6 +35,10 @@ class Pilihrt extends Component
     {
             $this->rtItems = Rt::where('kel_id',$this->kel)->pluck('nama_rt','id')->toArray();
     }
+    public function UpdatedRtid()
+    {
+        $this->emit('RT',$this->rtid);
+    }
     public function render()
     {
 
