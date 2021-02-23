@@ -19,7 +19,7 @@ class CreatePartisipasisTable extends Migration
             $table->integer('keg_id')->unsigned();
             $table->integer('rt_id')->unsigned();
             $table->text('deskripsi');
-            $table->enum('jenis', ['barang','jasa']);
+            $table->enum('jenis', ['Barang','Jasa','Uang']);
             $table->string('nominal');
             $table->timestamps();
             $table->softDeletes();
