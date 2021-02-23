@@ -20,11 +20,13 @@ class CreateKegiatansTable extends Migration
             $table->integer('rt_id')->unsigned();
             $table->date('tgl_mulai');
             $table->date('tgl_selesai');
+            $table->string('sumber_dana');//baru
             $table->boolean('approval')->default(0);
             $table->integer('jen_keg')->unsigned();
             $table->string('pagu');
             $table->string('target');
             $table->string('volume');
+            $table->string('satuan');//baru
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('rt_id')->references('id')->on('rts')->onUpdate('cascade')->onDelete('cascade');
