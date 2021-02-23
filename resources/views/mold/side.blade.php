@@ -23,9 +23,9 @@
           </li>
           <li class="nav-item">
             <a href="{{ route('dokumentasis.index') }}" class="nav-link">
-              <i class="nav-icon fas fa-camera-retro"></i>
+              <i class="nav-icon fas fa-building"></i>
               <p>
-                Dokumentasi
+                Progres
                 {{-- <span class="right badge badge-danger">New</span> --}}
               </p>
             </a>
