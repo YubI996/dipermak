@@ -2,10 +2,18 @@
 
 @section('content')
     <section class="content-header">
-        <h1 class="pull-left">Users</h1>
-        <h1 class="pull-right">
-           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('users.create') }}">Add New</a>
-        </h1>
+        <div class="row">
+            <div class="col-md-1">
+                <h1 class="pull-left">User</h1>
+            </div>
+            <div class="col-md-10"></div>
+            <div class="col-md-1">
+
+                <h1 class="pull-right">
+                    <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('users.create') }}">Add New</a>
+                </h1>
+            </div>
+        </div>
     </section>
     <div class="content">
         <div class="clearfix"></div>
