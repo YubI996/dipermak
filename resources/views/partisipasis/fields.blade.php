@@ -12,7 +12,7 @@
 <!-- Jenis Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('jenis', 'Jenis Partisipasi(Barang/Jasa) :') !!}
-    {!! Form::select('jenis', ['barang' => 'Barang', 'jasa' => 'Jasa'], null, ['class' => 'form-control','placeholder' => 'Pilih Jenis Partisipasi']) !!}
+    {!! Form::select('jenis', ['Barang' => 'Barang', 'Jasa' => 'Jasa', 'Uang' => 'Uang'], old('jenis'), ['class' => 'form-control','placeholder' => 'Pilih Jenis Partisipasi']) !!}
 </div>
 <!-- Deskripsi Field -->
 <div class="form-group col-sm-12 col-lg-12">
