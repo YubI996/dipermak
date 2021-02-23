@@ -20,6 +20,7 @@ class CreateDokumentasisTable extends Migration
             $table->integer('rt_id')->unsigned();
             $table->string('foto');
             $table->text('keterangan');
+            $table->decimal('progres', 12, 2);
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('rt_id')->references('id')->on('rts')->onUpdate('cascade')->onDelete('cascade');
