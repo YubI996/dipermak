@@ -27,14 +27,9 @@ class GuestController extends Controller
             $greenTarget = ((Partisipasi::whereYear('created_at',date('Y'))->whereHas('kegiatan',function($q){$q->where('jen_keg','=','2');})->whereNull('deleted_at')->sum('nominal'))/(Kegiatan::whereYear('created_at',date('Y'))->where('jen_keg',2)->whereNull('deleted_at')->sum('target')))*100; 
         }
         else{$greenTarget = 0;}
-        if(Kegiatan::whereYear('created_at',date('Y'))->where('jen_keg',3)->sum('target')>0){
-            $creativeTarget = ((Partisipasi::whereYear('created_at',date('Y'))->whereHas('kegiatan',function($q){$q->where('jen_keg','=','3');})->whereNull('deleted_at')->sum('nominal'))/(Kegiatan::whereYear('created_at',date('Y'))->where('jen_keg',3)->whereNull('deleted_at')->sum('target')))*100; 
-        }
-        else{$creativeTarget = 0;}
         $allPagu = Kegiatan::whereYear('created_at',date('Y'))->whereNull('deleted_at')->sum('pagu');
         $smartPagu = Kegiatan::whereYear('created_at',date('Y'))->where('jen_keg',1)->whereNull('deleted_at')->sum('pagu');
         $greenPagu = Kegiatan::whereYear('created_at',date('Y'))->where('jen_keg',2)->whereNull('deleted_at')->sum('pagu');
-        $creativePagu = Kegiatan::whereYear('created_at',date('Y'))->where('jen_keg',3)->whereNull('deleted_at')->sum('pagu');
-        return view('welcome',\compact('allTarget','smartTarget','greenTarget','creativeTarget','allPagu','smartPagu','creativePagu','greenPagu'));
+        return view('welcome',\compact('allTarget','smartTarget','greenTarget','allPagu','smartPagu','greenPagu'));
     }
 }
