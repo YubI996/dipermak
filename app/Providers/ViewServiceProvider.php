@@ -36,6 +36,10 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        View::composer(['home'], function ($view) {
+            $kegiatans = Partisipasi::with('kegiatan:id,pagu,rt_id,target')->get();
+            $view->with('kegiatans', $kegiatans);
+        });
         // dokumentasi
         View::composer(['dokumentasis.fields'], function ($view) {
             $kegiatanItems = Kegiatan::pluck('nama_keg','id')->toArray();

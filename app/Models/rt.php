@@ -50,6 +50,7 @@ class rt extends Model
         'nama_rt' => 'required|max:20',
         'kel_id' => 'required'
     ];
+    protected $appends = ['kelurahan'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

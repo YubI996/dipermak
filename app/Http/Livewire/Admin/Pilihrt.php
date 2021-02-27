@@ -38,10 +38,10 @@ class Pilihrt extends Component
     public function UpdatedRtid()
     {
         $this->emit('RT',$this->rtid);
+        $this->dispatchBrowserEvent('rthome', ['rt' => $this->rtid]);
     }
     public function render()
     {
-
         return view('livewire.admin.pilihrt');
     }
 }
