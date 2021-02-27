@@ -6,10 +6,10 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('img/favicon.ico') }}" />
 
   <title>Dipermak</title>
-  @yield('css')
-  @yield('script')
   @include('mold.css')
+  @yield('css')
   @include('mold.script')
+  @yield('script')
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
