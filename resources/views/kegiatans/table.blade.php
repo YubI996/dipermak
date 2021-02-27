@@ -18,7 +18,7 @@
                 </tr>
             </thead>
             <tbody>
-            @forelse($kegiatans as $kegiatan)
+            @foreach($kegiatans as $kegiatan)
                 <tr>
                     <td>{{$loop->iteration}}</td>
                     <td>{{ 'RT '.$kegiatan->rt->nama_rt.' Kelurahan '.$kegiatan->rt->kelurahan->nama_kel }}</td>
@@ -45,7 +45,7 @@
                         {!! Form::close() !!}
                     </td>
                 </tr>
-            @empty
+            
             
             @endforeach
             </tbody>
