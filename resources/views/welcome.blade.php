@@ -71,7 +71,8 @@
                         <!-- Masthead Avatar Image-->
                         <img class="masthead-avatar mb-5" src="/img/logo-bontang.png" alt="Logo Bontang" />
                         <!-- Masthead Heading-->
-                        <h1 class="masthead-heading text-uppercase p-0 mb-0">Dinas Sosial <br>dan Pemberdayaan Masyarakat Kota Bontang</h1>
+                        {{-- <h1 class="masthead-heading text-uppercase p-0 mb-0">Dinas Sosial <br>dan Pemberdayaan Masyarakat Kota Bontang</h1> --}}
+                        <h1 class="masthead-heading text-uppercase p-0 mb-0">Database Informasi Pemberdayaan Masyarakat</h1>
                         <!-- Icon Divider-->
                         <div class="divider-custom divider-light">
                             <div class="divider-custom-line"></div>
@@ -95,16 +96,15 @@
                             <div class="divider-custom-icon"><i class="fab fa-ethereum"></i></div>
                             <div class="divider-custom-line"></div>
                         </div>
-                        <div class="row">
-                            <!-- Pagu all--> 
-                            <div class="col-md-6">
-                                <div class="row-md-6 my-2">
-                                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="row my-2">
+                            <div class="col-md-12">
+                                <div class="row-md-12">
+                                    <div class="card">
                                         <div class="card-body w-100">
                                         <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Seluruh Kegiatan</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{'Rp'.number_format($allPagu,0,',','.')}}</div>
+                                            <div class="col">
+                                            <div class="text-xs align-middle font-weight-bold text-primary text-uppercase">Semua Kegiatan</div>
+                                            <div class="h5 font-weight-bold text-gray-800">{{'Rp'.number_format($allPagu,0,',','.')}}</div>
                                             </div>
                                             <div class="col-auto">
                                             <img src="/img/rp.svg" style="width:2rem;height:2rem;">
@@ -112,34 +112,41 @@
                                         </div>
                                         </div>
                                     </div>
+                                    
                                 </div>
-                                {{-- pagu smart city --}}
-                                <div class="row-md-6 my-2">
-                                <div class="card border-left-primary shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Smart City</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{'Rp'.number_format($smartPagu,0,',','.')}}</div>
-                                        </div>
-                                        <div class="col-auto">
-                                        <img src="/img/rp.svg" style="width:2rem;height:2rem;">
-                                        </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Pagu all--> 
+                            <div class="col-md-6">
+                                <div class="row-md-6 my-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col ">
+                                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Sarana dan Prasarana</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{'Rp'.number_format($smartPagu,0,',','.')}}</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <img src="/img/rp.svg" style="width:2rem;height:2rem;">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    </div>
                                 </div>
+                               
                                 {{-- end of capaian taget smart city --}}
                             </div>
                             <div class="col-md-6">
 
                                 {{-- capaian target creative city --}}
-                                <div class="row-md-6 my-2">
-                                    <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="row-md-6 my-4">
+                                    <div class="card">
                                         <div class="card-body">
                                             <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Green City</div>
+                                            <div class="col">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Pemberdayaan Masyarakat</div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{'Rp'.number_format($greenPagu,0,',','.')}}</div>
                                             </div>
                                             <div class="col-auto">
@@ -150,22 +157,7 @@
                                     </div>
                                 </div>
                                 {{-- end of capaian target creative city --}}
-                                {{-- capaian target green city --}}
-                                <div class="row-md-6 my-2">
-                                <div class="card border-left-primary shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Creative City</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{'Rp'.number_format($creativePagu,0,',','.')}}</div>
-                                        </div>
-                                        <div class="col-auto">
-                                        <img src="/img/rp.svg" style="width:2rem;height:2rem;">
-                                        </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                            </div>
+                              
                                     
                             </div>
                                 {{-- end of capaian target green city --}}
@@ -186,11 +178,9 @@
                             <div class="divider-custom-icon"><i class="fab fa-ethereum"></i></div>
                             <div class="divider-custom-line"></div>
                         </div>
-                        <!-- Portfolio Grid Items-->
-                        <div class="row ">
-                            <!-- Portfolio Item 0-->   
-                            <div class="col-md-6">
-                                <div class="row-md-6 my-5">
+                        <div class="row my-2">
+                            <div class="col-md-12">
+                                <div class="row-md-12 ">
                                     <div class="card">
                                         <div class="card-body w-100">
                                             <div class="row no-gutters align-items-center">
@@ -214,12 +204,20 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row-md-6 my-1">
+                            </div>
+                        </div>
+
+                        <!-- Portfolio Grid Items-->
+                        <div class="row ">
+                            <!-- Portfolio Item 0-->   
+                            <div class="col-md-6">
+
+                                <div class="row-md-6 my-4">
                                     <div class="card">
                                         <div class="card-body w-100">
                                             <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Smart City</div>
+                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Sarana dan Prasarana</div>
                                                 <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
                                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{number_format($smartTarget,2,',','.').'%'}}</div>
@@ -240,54 +238,31 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="row-md-6 my-5">
+                                <div class="row-md-6 my-4">
                                     <div class="card">
                                         <div class="card-body w-100">
                                             <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Green City</div>
-                                                <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{number_format($greenTarget,2,',','.').'%'}}</div>
-                                                </div>
                                                 <div class="col">
-                                                    <div class="progress progress-sm mr-2">
-                                                    <div class="progress-bar bg-info" role="progressbar" style="width: {{$greenTarget}}%" aria-valuenow="{{$greenTarget}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Pemberdayaan Masyarakat</div>
+                                                    <div class="row no-gutters align-items-center">
+                                                    <div class="col-auto">
+                                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{number_format($greenTarget,2,',','.').'%'}}</div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-info" role="progressbar" style="width: {{$greenTarget}}%" aria-valuenow="{{$greenTarget}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                    </div>
                                                     </div>
                                                 </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                                                 </div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                            </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row-md-6 my-1">
-                                    <div class="card">
-                                        <div class="card-body w-100">
-                                            <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Creative City</div>
-                                                <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{number_format($creativeTarget,2,',','.').'%'}}</div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="progress progress-sm mr-2">
-                                                    <div class="progress-bar bg-info" role="progressbar" style="width: {{$allTarget}}%" aria-valuenow="{{$allTarget}}" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                 </section>          
