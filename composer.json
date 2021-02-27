@@ -21,6 +21,7 @@
         "laravel/ui": "^2.0",
         "laravelcollective/html": "^6.1",
         "livewire/livewire": "^2.3",
+        "mediconesystems/livewire-datatables": "^0.4.3",
         "mews/captcha": "^3.2"
     },
     "require-dev": {
