@@ -41,7 +41,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <table id="tabel" class="table table-bordered table-striped" >
+            <table id="tabel1" class="table table-bordered table-striped" >
                 <thead>
                     <tr>
                         <th>No.</th>
