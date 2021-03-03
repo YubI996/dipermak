@@ -87,6 +87,23 @@ class kegiatan extends Model
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable'
     ];
+
+    public function scopeSearch($query, $term)
+    {
+        $term = "%$term%";
+        $query->where(function ($query) use ($term) {
+            $query->where('nama_keg', 'like', $term)
+                ->orWhere('sumber_dana', 'like', $term)
+                ->orWhere('volume', 'like', $term)
+                ->orWhere('satuan', 'like', $term)
+                ->orWhereHas('rt', function ($query) use ($term) {
+                    $query->where('nama_rt', 'like', $term);
+                })
+                ->orWhereHas('jen_keg', function ($query) use ($term) {
+                    $query->where('jenis_keg', 'like', $term);
+                });
+        });
+    }
     public static $messages = [
         'nama_keg.required' => 'Nama kegiatan Harus diisi',
         'rt_id.required' => 'RT Harus diisi',

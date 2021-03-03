@@ -1,4 +1,11 @@
 <div>
+    {{-- flash message --}}
+    <div class="col-md-10 mt-3">
+        @include('mold.includes.livewire_flash_messages')
+    </div>
+    <br>
+
+
     <div class="row-lg-12">
         
         <!-- kecamatan Field -->
@@ -13,7 +20,9 @@
                 </div>
             </div>
         </div>
+
         <!-- kelurahan Field -->
+        @if ($kec != 0 && !is_null($kec))
         <div class="form-group">
             <div class="row p-auto">
                 <div class="col-1">
@@ -26,8 +35,11 @@
                 </div>
             </div>
         </div>
+        @endif
+
         <!-- Rt Id Field -->
-        <div class="form-group">
+        @if ($kel != 0 && !is_null($kel))
+            <div class="form-group">
             <div class="row p-auto">
                     <div class="col-1">
                         {!! Form::label('rt_id', 'RT:') !!}
@@ -38,13 +50,19 @@
                     </div>
             </div>
         </div>
+        @endif
+        
     </div>
     <div class="row">
         <div class="col">
-            <table id="tabel" class="table table-bordered table-striped" >
+            <a href="#" class="m-2 btn btn-secondary" type="button"
+                            onclick="confirm('Ekspor data dalam bentuk excel ?'.$dataKec.'-'.$dataKel.'-'.$dataRT) || event.stopImmediatePropagation()"
+                            wire:click="exportTable()">
+                            Ekspor
+                        </a>
+            <table id="tabel" class="table table-bordered table-striped table-hover" >
                 <thead>
                     <tr>
-                        <th>No.</th>
                         <th class="align-middle">Pagu Kecamatan</th>
                         <th class="align-middle">Pagu Kelurahan</th>
                         <th class="align-middle">Pagu RT</th>
@@ -57,7 +75,6 @@
                 <tbody>
                     {{-- @foreach($kegiatans as $kegiatan) --}}
                     <tr>
-                        <td>{{1}}</td>
                         <td>{{'Rp. '.number_format($dataKec['pagu'],2,',','.')}}</td>
                         <td>{{'Rp. '.number_format($dataKel['pagu'],2,',','.')}}</td>
                         <td>{{'Rp. '.number_format($dataRT['pagu'],2,',','.')}}</td>
@@ -71,19 +88,6 @@
             </table>
         </div>
     </div>
-    {{-- <script>
-         window.addEventListener('RT', event => {
-            console.log("Hello world2");
-            alert('Name updated to: ');
-            document.getElementById("tabel").DataTable().ajax.reload();
-            console.log("Hello world3");
-        })
-        console.log("1");
-        $(function(){
-            $("#tabel").DataTable({
-                "responsive": true, "lengthChange": false, "autoWidth": false,"fixedColumns": false,
-                "buttons": ["copy", "excel",{extend: 'pdf', orientation: 'landscape',columns: ':visible'}, "print", "colvis",],
-            }).buttons().container().appendTo('#tabel_wrapper .col-md-6:eq(0)');
-        });
-    </script> --}}
+
+        
 </div>

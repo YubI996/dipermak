@@ -2,6 +2,11 @@
 @if (isset($kegiatan))
 {{-- {{ Form::hidden('id', $kegiatan->id),['wire:model' => 'kid'] }} --}}
 <input  type="hidden" value="{{$kegiatan->id}}" wire:model ="kid">
+    @livewire('admin.pilihrt',['rtid'=>$kegiatan->rt_id])
+
+@else
+    @livewire('admin.pilihrt')
+
 @endif
 <!-- Nama Keg Field -->
 {{-- <div class="form-group"> --}}
@@ -17,10 +22,8 @@
     
     {{-- @livewire('pilihrt', ['user' => $user], key($user->id)) --}}
     @if (isset($kegiatan))
-    @livewire('admin.pilihrt',['rtid'=>$kegiatan->rt_id])
     @livewire('admin.dashboard',['kid'=>$kegiatan->id])
     @else
-    @livewire('admin.pilihrt')
     @livewire('admin.dashboard',['kid'=>0])
     @endif
     
@@ -46,6 +49,15 @@
     </div>
     {{-- </div> --}}
 
+        <div class="row mb-3">
+            <div class="col-1">
+                {!! Form::label('sumber_dana', 'Sumber dana :') !!}
+            </div>
+            <div class="col-11 m-auto">
+                {!! Form::select('sumber_dana', ['APBN','APBD'], Request::old('sumber_dana'), ['class' => 'form-control','placeholder' => 'Sumber Dana']) !!}
+                {{-- {!! Form::select(null, $kecamatanItems, Request::old('kecamatan_id'), ['class' => 'form-control','placeholder' => 'Pilih Kecamatan','wire:model.lazy' => 'kec']) !!} --}}
+            </div>
+        </div> 
 
 <!-- Tgl Selesai Field -->
 {{-- <div class="form-group"> --}}
@@ -108,16 +120,20 @@
             {!! Form::label('volume', 'Volume:') !!}
         </div>
         {{-- <input class="form-control" maxlength="255" id="inlineFormInputGroup" id="volume" name="volume" type="text"> --}}
-        <div class="col-11 mb-3">
-            <div class="input-group">
+        <div class="col-5 mb-3">
                 {!! Form::text('volume', null, ['class' => 'form-control','maxlength' => 255]) !!}
-                <div class="input-group-prepend">
-                    <div class="input-group-text">Satuan</div>
-                </div>
-            </div>
+        </div>
+        <div class="col-1">
+            {!! Form::label('satuan', 'Satuan :') !!}
+        </div>
+        <div class="col-5 mb-3">
+                {!! Form::text('satuan', null, ['class' => 'form-control']) !!}
         </div>
     </div>
 {{-- </div> --}}
+
+
+
 
 <!-- Submit Field -->
 {{-- <div class="form-group"> --}}
