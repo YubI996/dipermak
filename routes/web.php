@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/export','TestController@export');
+Route::get('/export2','TestController@export2');
 Route::get('/form-captcha','CaptchaController@index');
 Route::post('/form-captcha','CaptchaController@submit');
 Route::get('createcaptcha', 'CaptchaController@create');

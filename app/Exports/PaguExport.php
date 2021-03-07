@@ -7,6 +7,7 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 
 class PaguExport implements FromCollection
 {
+    use Exportable;
     /**
     * @return \Illuminate\Support\Collection
     */

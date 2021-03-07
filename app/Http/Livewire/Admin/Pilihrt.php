@@ -30,15 +30,24 @@ class Pilihrt extends Component
     {
 
             $this->kelurahanItems = Kelurahan::where('kec_id',$this->kec)->pluck('nama_kel','id')->toArray();
+            $this->kel = 0;
+            $this->rt = 0;
+            $this->emitUp('rtid', 0);
+
     }
     public function Updatedkel()
     {
             $this->rtItems = Rt::where('kel_id',$this->kel)->pluck('nama_rt','id')->toArray();
+            $this->rt = 0;
+            $this->emitUp('rtid', 0);
+
     }
     public function UpdatedRtid()
     {
-        $this->emit('RT',$this->rtid);
-        $this->dispatchBrowserEvent('rthome', ['rt' => $this->rtid]);
+        // $this->emit('RT',$this->rtid);
+        // $this->dispatchBrowserEvent('rthome', ['rt' => $this->rtid]);
+        $this->emitUp('rtid', $this->rtid);
+        
     }
     public function render()
     {

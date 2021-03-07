@@ -25,8 +25,8 @@ class CreateKegiatansTable extends Migration
             $table->integer('jen_keg')->unsigned();
             $table->string('pagu');
             $table->string('target');
-            $table->string('volume');
-            $table->string('satuan');//baru
+            $table->string('volume')->default(0);
+            $table->string('satuan')->default('satuan');//baru
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('rt_id')->references('id')->on('rts')->onUpdate('cascade')->onDelete('cascade');

@@ -275,8 +275,8 @@
           </div>
           <!-- /.content-wrapper -->
           <footer class="main-footer">
-            <strong>Copyright &copy; 2021 Dinsos Kota Bontang.</strong> |Template by <a href="https://adminlte.io">AdminLTE.io</a>
-            {{-- <strong>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Dinsos Kota Bontang.</strong> |Template by <a href="https://adminlte.io">AdminLTE.io</a> --}}
+            <strong>Copyright &copy; 2021 Diskominfo Kota Bontang.</strong> |Template by <a href="https://adminlte.io">AdminLTE.io</a>
+            {{-- <strong>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Diskominfo Kota Bontang.</strong> |Template by <a href="https://adminlte.io">AdminLTE.io</a> --}}
       </footer>
 
       <!-- Control Sidebar -->

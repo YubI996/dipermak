@@ -5,19 +5,15 @@
         <h1>
             Jen Keg
         </h1>
-   </section>
-   <div class="content">
-       @include('adminlte-templates::common.errors')
-       <div class="box box-primary">
-           <div class="box-body">
-               <div class="row">
-                   {!! Form::model($jenKeg, ['route' => ['jenKegs.update', $jenKeg->id], 'method' => 'patch']) !!}
+    </section>
+    <div class="content">
+        @include('adminlte-templates::common.errors')
+        
+                    {!! Form::model($jenKeg, ['route' => ['jenKegs.update', $jenKeg->id], 'method' => 'patch']) !!}
 
-                        @include('jen_kegs.fields')
+                            @include('jen_kegs.fields')
 
-                   {!! Form::close() !!}
-               </div>
-           </div>
-       </div>
-   </div>
+                    {!! Form::close() !!}
+            
+    </div>
 @endsection

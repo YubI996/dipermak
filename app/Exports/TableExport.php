@@ -8,14 +8,21 @@ use App\Models\kecamatan as kec;
 use App\Models\kelurahan as kel;
 use App\Models\rt;
 use Maatwebsite\Excel\Concerns\FromArray;
+use Illuminate\Database\Eloquent\Collection;
+use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
+use Maatwebsite\Excel\Concerns\WithHeadings;
 
 
 
-class TableExport implements FromView
+
+class TableExport implements 
+// FromView
+// FromQuery
+FromCollection, WithHeadings
 
 {   
     use Exportable;
@@ -25,23 +32,27 @@ class TableExport implements FromView
     protected $rts;
     protected $data;
 
-    public $kegs;
+    public $keg;
     
-    public function view(): View
+    // public function view(): View
+    // {
+    //     return view('kegiatans.table', [
+    //         'kegiatans' => keg::all()
+    //     ]);
+    // }
+    public function __construct($data)
     {
-        return view('exports.invoices', [
-            'invoices' => Invoice::all()
-        ]);
+        $this->keg = $data;
     }
-    // public function __construct($data)
-    // {
-    //     $this->kegs = $data;
-    // }
 
-    // public function query()
-    // {
-    //     // return $this->data;
-    //     return Student::query()->find($this->kegs);
-    //     // return Student::query()->whereKey($this->students);
-    // }
+    public function collection()
+    {
+        return new collection($this->keg);
+        // return Student::query()->find($this->kegs);
+        // return Student::query()->whereKey($this->students);
+    }
+    public function headings(): array
+    {
+        return ["Pagu Kecamatan", "Pagu Kelurahan", "Pagu RT","Total Partisipasi","Partisipasi Barang","Partisipasi Jasa","Partisipasi Uang"];
+    }
 }

@@ -34,6 +34,7 @@ class dokumentasi extends Model
     public $fillable = [
         'keg_id',
         'rt_id',
+        'progres',
         'foto',
         'keterangan'
     ];
@@ -46,6 +47,7 @@ class dokumentasi extends Model
     protected $casts = [
         'id' => 'integer',
         'keg_id' => 'integer',
+        'progres' => 'integer',
         'rt_id' => 'integer',
         'foto' => 'string',
         'keterangan' => 'string'
@@ -59,6 +61,7 @@ class dokumentasi extends Model
     public static $rules = [
         'keg_id' => 'required|integer',
         'rt_id' => 'required|integer',
+        'progres' => 'nullable|integer',
         'foto' => 'nullable',
         'keterangan' => 'required|string',
         'created_at' => 'nullable',

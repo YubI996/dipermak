@@ -3,88 +3,113 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\kecamatan;
-use App\Models\kelurahan;
-use App\Models\rt;
 use App\Models\kegiatan;
+use App\Http\Livewire\Field;
+use Illuminate\Http\Request;
 
 class FieldsKegiatan extends Component
 {
-    public $kec;
-    public $kel;
+    public $nama_keg;
     public $rtid;
-    public $kid;
-    public $pagu;
-    public $per;
-    public $nom;
-    public $ap;
     public $tm;
     public $ts;
+    public $sumber;
+    public $ap = true;
+    public $jk;
+    public $pagu;
+    public $target;
+    public $volume;
+    public $sat;
+    
+    public $inputs = [];
+    public $i = 0;
+
+    protected $listeners = ['rtid'];
+    public function rtid($rtid)
+    {
+        $this->rtid = $rtid;
+    }
+
+    public function add($i)
+    {
+        $i = $i + 1;
+        $this->i = $i;
+        array_push($this->inputs, $i);
+        // dump($this->nama_keg);
+        // dd($this->inputs);
+    }
+    public function remove($i)
+    {
+        unset($this->inputs[$i]);
+    }
+
     public function render()
     {
-        if (!(empty($this->kid)))
-        {
-            $keg = kegiatan::where('id',$this->kid)->first();
-            $rt_id = $keg->value('rt_id');
-            $kel_id = rt::where('id',$rt_id)->first()->kel_id;
-            $kec_id = rt::where('id',$rt_id)->first()->kelurahan->kec_id;
-            $kecamatanItems = Kecamatan::pluck('nama_kec','id')->toArray();
-            $kelurahanItems = kelurahan::where('kec_id',$kec_id)->pluck('nama_kel','id')->toArray();
-            $rtItems = rt::where('kel_id',$kel_id)->pluck('nama_rt','id')->toArray();
-            $this->kec = $kec_id;
-            $this->kel = $kel_id;
-            $this->rtid = $rt_id;
-            $this->pagu = $keg->value('pagu');
-            $this->target = $keg->value('target');
-            $this->per = intval(($this->target / $this->pagu) * 100);
-            $this->ap = $keg->approval;
-            $this->tm = $keg->tgl_mulai;
-            $this->ts = $keg->tgl_selesai;
-            return view('livewire.fields-kegiatan', compact('kecamatanItems','kelurahanItems','rtItems'));
-        }   
-        elseif(empty($this->kid))
-        {
-            $kecamatanItems = Kecamatan::pluck('nama_kec','id')->toArray();
-            $kelurahanItems = Kecamatan::pluck('nama_kel','id')->toArray();
-            $rtItems = Kecamatan::pluck('nama_rt','id')->toArray();
-            return view('livewire.fields-kegiatan', compact('kecamatanItems','kelurahanItems','rtItems'));
-        }
-        // pilih rt
-        // if (!(empty($this->kec))) {
-        //     $kelurahanItems = Kelurahan::where('kec_id',$this->kec)->pluck('nama_kel','id')->toArray();
-        // }
-        // else{
-        //     $kelurahanItems = Kelurahan::pluck('nama_kel','id')->toArray();
-
-        // }
-        // if (!(empty($this->kel))) {
-        //     $rtItems = Rt::where('kel_id',$this->kel)->pluck('nama_rt','id')->toArray();
-        //     # code...
-        // }
-        // else{
-        //     $rtItems = Rt::pluck('nama_rt','id')->toArray();
-        // }
-        //     $this->kel = rt::where('id', $this->rtid)->value('kel_id');
-        //     $this->kec = kelurahan::where('id', $this->kel)->value('kec_id');
-        //     dump($this->kel);
-        //     dump($this->kec);
-        //     //end pilih rt
-        //     // dashboard
-        //      $target=0;
-       
-        // if(!((empty($this->kid)))){
-        //     $this->pagu = kegiatan::Where('id',$this->kid)->pluck('pagu')->first();
-        //     $this->nom = Kegiatan::Where('id',$this->kid)->pluck('target')->first();
-        //     $this->per = intval(($this->nom / $this->pagu) * 100);
-            
-        // }
-        // if(((!(empty($this->pagu)))&&(!(empty($this->per))))){
-        //     $this->nom = intval(($this->per / 100) * $this->pagu);
-        //     // $target = $this->nom;
-        // }
-        // //end dashoboard
-        // return view('livewire.fields-kegiatan');
-    
-        
+        return view('livewire.fields-kegiatan');
     }
+
+    private function resetInputFields(){
+        $this->name = '';
+        $this->email = '';
+    }
+
+    public function store()
+    {
+        $validatedDate = $this->validate([
+                'nama_keg.0' => 'required',
+                'nama_keg.*' => 'required',
+                'rtid.0' => 'required',
+                'rtid.*' => 'required',
+                'tm.0' => 'required',
+                'tm.*' => 'required',
+                'ts.0' => 'required',
+                'ts.*' => 'required',
+                'sumber.0' => 'required',
+                'sumber.*' => 'required',
+                'jk.0' => 'required',
+                'jk.*' => 'required',
+                'pagu.0' => 'required',
+                'pagu.*' => 'required',
+                'target.0' => 'required',
+                'target.*' => 'required',
+                'volume.0' => 'required',
+                'volume.*' => 'required',
+                'sat.0' => 'required',
+                'sat.*' => 'required'
+            ],
+            [
+                'nama_keg.0.required' => 'nama kegiatan harus diisi.',
+                'nama_keg.*.required' => 'nama kegiatan harus diisi.',
+                'rtid.0.required' => 'RT harus diisi.',
+                'rtid.*.required' => 'RT harus diisi.',
+                'tm.0.required' => 'Tanggal Mulai harus diisi.',
+                'tm.*.required' => 'Tanggal Mulai harus diisi.',
+                'ts.0.required' => 'Tanggal selesai harus diisi.',
+                'ts.*.required' => 'Tanggal selesai harus diisi.',
+                'sumber.0.required' => 'sumber dana harus diisi.',
+                'sumber.*.required' => 'sumber dana harus diisi.',
+                'jk.0.required' => 'Jenis Kegiatan harus diisi.',
+                'jk.*.required' => 'Jenis Kegiatan harus diisi.',
+                'pagu.0.required' => 'Pagu harus diisi.',
+                'pagu.*.required' => 'Pagu harus diisi.',
+                'target.0.required' => 'Target Partisipasi harus diisi.',
+                'target.*.required' => 'Target Partisipasi harus diisi.',
+                'volume.0.required' => 'Volume harus diisi.',
+                'volume.*.required' => 'Volume harus diisi.',
+                'sat.0.required' => 'Satuan harus diisi.',
+                'sat.*.required' => 'Satuan harus diisi.'                
+            ]
+        );
+
+        foreach ($this->name as $key => $value) {
+            User::create(['name' => $this->name[$key], 'email' => $this->email[$key]]);
+        }
+
+        $this->inputs = [];
+
+        $this->resetInputFields();
+
+        session()->flash('message', 'Users Created Successfully.');
+    }
+
 }

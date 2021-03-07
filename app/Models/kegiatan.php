@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @version October 29, 2020, 1:29 am UTC
  *
  * @property \App\Models\JenKeg $jenKeg
- * @property \App\Models\Rt $rt
+ * @property \App\Models\RT $rt
  * @property \Illuminate\Database\Eloquent\Collection $dokumentasis
  * @property \Illuminate\Database\Eloquent\Collection $partisipasis
  * @property string $nama_keg
@@ -41,13 +41,15 @@ class kegiatan extends Model
     public $fillable = [
         'nama_keg',
         'rt_id',
+        'sumber_dana',
         'tgl_mulai',
         'tgl_selesai',
         'approval',
         'jen_keg',
         'pagu',
         'target',
-        'volume'
+        'volume',
+        'satuan'
     ];
 
     /**
@@ -99,7 +101,7 @@ class kegiatan extends Model
                 ->orWhereHas('rt', function ($query) use ($term) {
                     $query->where('nama_rt', 'like', $term);
                 })
-                ->orWhereHas('jen_keg', function ($query) use ($term) {
+                ->orWhereHas('jenkeg', function ($query) use ($term) {
                     $query->where('jenis_keg', 'like', $term);
                 });
         });
@@ -129,7 +131,7 @@ class kegiatan extends Model
      **/
     public function rt()
     {
-        return $this->belongsTo(\App\Models\Rt::class, 'rt_id');
+        return $this->belongsTo(\App\Models\RT::class, 'rt_id');
     }
 
     /**

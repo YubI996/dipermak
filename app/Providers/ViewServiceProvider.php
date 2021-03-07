@@ -40,11 +40,6 @@ class ViewServiceProvider extends ServiceProvider
             $kegiatans = Partisipasi::with('kegiatan:id,pagu,rt_id,target')->get();
             $view->with('kegiatans', $kegiatans);
         });
-        // dokumentasi
-        View::composer(['dokumentasis.fields'], function ($view) {
-            $kegiatanItems = Kegiatan::pluck('nama_keg','id')->toArray();
-            $view->with('kegiatanItems', $kegiatanItems);
-        });
         
         // partisipasi
         View::composer(['partisipasis.fields'], function ($view) {
@@ -52,27 +47,27 @@ class ViewServiceProvider extends ServiceProvider
             $view->with('kegiatanItems', $kegiatanItems);
         });
         // kegiatan
-        View::composer(['kegiatans.fields'], function ($view) {
+        View::composer(['livewire.fields-kegiatan'], function ($view) {
             $partisipasiItems = Partisipasi::pluck('id')->toArray();
             $view->with('partisipasiItems', $partisipasiItems);
         });
-        View::composer(['kegiatans.fields'], function ($view) {
+        View::composer(['livewire.fields-kegiatan'], function ($view) {
             $jen_kegItems = JenKeg::pluck('jenis_keg','id')->toArray();
             $view->with('jen_kegItems', $jen_kegItems);
         });
-        View::composer(['kegiatans.fields'], function ($view) {
+        View::composer(['livewire.fields-kegiatan'], function ($view) {
             $kelurahanItems = Kelurahan::pluck('nama_kel','id')->toArray();
             $view->with('kelurahanItems', $kelurahanItems);
         });
-        View::composer(['kegiatans.fields'], function ($view) {
+        View::composer(['livewire.fields-kegiatan'], function ($view) {
             $kecamatanItems = Kecamatan::pluck('nama_kec','id')->toArray();
             $view->with('kecamatanItems', $kecamatanItems);
         });
-        View::composer(['kegiatans.fields'], function ($view) {
+        View::composer(['livewire.fields-kegiatan'], function ($view) {
             $rtItems = Rt::pluck('nama_rt','id')->toArray();
             $view->with('rtItems', $rtItems);
         });
-        View::composer(['kegiatans.fields'], function ($view) {
+        View::composer(['livewire.fields-kegiatan'], function ($view) {
             $rtItems = Rt::pluck('nama_rt','id')->toArray();
             $view->with('rtItems', $rtItems);
         });

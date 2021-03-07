@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin;
 
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Database\Eloquent\Collection;
 use App\Exports\TableExport;
 use App\Models\kegiatan;
 use App\Models\partisipasi as par;
@@ -14,6 +15,7 @@ use App\Models\rt;
 class Index extends Component
 {
     use WithPagination;
+    
     
     public $kec;
     public $kel;
@@ -34,8 +36,6 @@ class Index extends Component
     public $checked = [];
     public $selectPage = false;
     public $selectAll = false;
-
-
 
     function mount(){
         // $rtid=$this->rtid;
@@ -62,7 +62,7 @@ class Index extends Component
     {
             $this->rtItems = Rt::where('kel_id',$this->kel)->pluck('nama_rt','id')->toArray();
             $this->dataKel = ['pagu' => kegiatan::whereHas('rt', function ($q){ $q->where('kel_id',$this->kel); })->sum('pagu')];
-
+            $this->rt = 0;
         }
         public function UpdatedRtid()
         {
@@ -85,6 +85,15 @@ class Index extends Component
 
     public function exportTable()
     {
-        return (new TableExport(1))->download('data.xlsx');
+        $data = new Collection ([
+            ['Rp. '.number_format($this->dataKec['pagu'],2,',','.'),
+            'Rp. '.number_format($this->dataKel['pagu'],2,',','.'),
+            'Rp. '.number_format($this->dataRT['pagu'],2,',','.'),
+            'Rp. '.number_format($this->dataKec['totPart'],2,',','.'),
+            'Rp. '.number_format($this->dataKec['partBar'],2,',','.'),
+            'Rp. '.number_format($this->dataKec['partJas'],2,',','.'),
+            'Rp. '.number_format($this->dataKec['partUa'],2,',','.')],
+        ]);
+        return (new TableExport($data))->download('data.xlsx');
     }
 }

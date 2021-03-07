@@ -58,7 +58,7 @@
             <a href="#" class="m-2 btn btn-secondary" type="button"
                             onclick="confirm('Ekspor data dalam bentuk excel ?'.$dataKec.'-'.$dataKel.'-'.$dataRT) || event.stopImmediatePropagation()"
                             wire:click="exportTable()">
-                            Ekspor
+                            Excel
                         </a>
             <table id="tabel" class="table table-bordered table-striped table-hover" >
                 <thead>
@@ -88,6 +88,4 @@
             </table>
         </div>
     </div>
-
-        
 </div>

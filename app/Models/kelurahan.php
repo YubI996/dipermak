@@ -57,10 +57,6 @@ class kelurahan extends Model
     {
         return $this->belongsTo(\App\Models\kecamatan::class, 'kec_id');
     }
-    public function kecamatan_nama()
-    {
-        return $this->belongsTo(\App\Models\kecamatan::class, 'kec_id')->select(array('id', 'first_name', 'last_name'));
-    }
     public function rt()
     {
         return $this->hasMany(\App\Models\rt::class,'kel_id');
