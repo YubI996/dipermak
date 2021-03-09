@@ -47,6 +47,7 @@ class Pilihrt extends Component
         // $this->emit('RT',$this->rtid);
         // $this->dispatchBrowserEvent('rthome', ['rt' => $this->rtid]);
         $this->emitUp('rtid', $this->rtid);
+        $this->emit('rtid', $this->rtid);
         
     }
     public function render()

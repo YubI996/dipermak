@@ -3,14 +3,14 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\Kegiatan;
+use App\Models\Dokumentasi;
 use App\Models\RT;
 use App\Models\Kelurahan;
 use App\Models\Kecamatan;
 use Livewire\WithPagination;
 use App\Exports\TableExport;
 
-class KegiatanTable extends Component
+class ProgresTable extends Component
 {
     use WithPagination;
     public $paginate = 10;
@@ -31,13 +31,13 @@ class KegiatanTable extends Component
     }
     public function mount()
     {
-        $this->rts = RT::whereHas('kegiatans')->with('kelurahan','kelurahan.kecamatan')->get()->sortby('nama_rt');
+        $this->rts = RT::whereHas('dokumentasis')->with('kelurahan','kelurahan.kecamatan')->get()->sortby('nama_rt');
     }
     
     public function render()
     {
-        return view('livewire.kegiatan-table', [
-            'kegiatans' => $this->kegiatans,
+        return view('livewire.progres-table', [
+            'dokumentasis' => $this->dokumentasis,
             'rts' => $this->rts
         ]);
     }
@@ -45,7 +45,7 @@ class KegiatanTable extends Component
     public function updatedSelectPage($value)
     {
         if ($value) {
-            $this->checked = $this->kegiatans->pluck('id')->map(function($item){
+            $this->checked = $this->dokumentasis->pluck('id')->map(function($item){
                 return $item;})->toArray();
         } else {
             $this->checked = [];
@@ -60,17 +60,17 @@ class KegiatanTable extends Component
     public function selectAll()
     {
         $this->selectAll = true;
-        $this->checked = $this->kegiatansQuery->pluck('id')->map(function($item){return $item;})->toArray();
+        $this->checked = $this->dokumentasisQuery->pluck('id')->map(function($item){return $item;})->toArray();
     }
 
-    public function getkegiatansProperty()
+    public function getdokumentasisProperty()
     {
-        return $this->kegiatansQuery->paginate($this->paginate);
+        return $this->dokumentasisQuery->paginate($this->paginate);
     }
 
-    public function getkegiatansQueryProperty()
+    public function getdokumentasisQueryProperty()
     {
-        return Kegiatan::with(['rt'])
+        return Dokumentasi::with(['rt'])
             ->when($this->selectedRt, function ($query) {
                 $query->where('rt_id', $this->selectedRt);
             })
@@ -93,8 +93,8 @@ class KegiatanTable extends Component
 
     public function exportSelected()
     {
-        $table = 'keg';
-        return (new TableExport($this->checked,$table))->download('kegiatans.xlsx');
+        $table = 'prog';
+        return (new TableExport($this->checked,$table))->download('dokumentasis.xlsx');
     }
 
 

@@ -1,6 +1,6 @@
 <div>
     <!-- Pagu Field -->
-    {{-- <div class="input-group"> --}}
+
     <div class="row mb-3">
         <div class="col-1">
             {!! Form::label('pagu', 'Pagu :     ') !!}
@@ -10,7 +10,7 @@
                     <div class="input-group-prepend">
                         <div class="input-group-text">Rp</div>
                     </div>
-                    {!! Form::number('pagu', null, ['class' => 'form-control','maxlength' => 255,'wire:model' => 'pagu']) !!}
+                    {!! Form::number('pagu', null, ['class' => 'form-control','maxlength' => 255,'wire:model' => 'pagu','wire:key' => 'pagu']) !!}
                 </div>
             </div>
     </div>
@@ -23,7 +23,7 @@
         </div>
         <div class="col-3">
                 <div class="input-group">
-                    {!! Form::number(null, null, ['class' => 'form-control','maxlength' => 3,'placeholder' => 'Persentase','wire:model' => 'per']) !!}
+                    {!! Form::number(null, null, ['class' => 'form-control','maxlength' => 3,'placeholder' => 'Persentase','wire:model' => 'per', 'wire:key' => 'per']) !!}
                     <div class="input-group-prepend">
                         <div class="input-group-text">
                             %
@@ -38,10 +38,8 @@
                         Rp
                         </div>
                     </div>
-                    {!! Form::number('target', null, ['class' => 'form-control','maxlength' => 255,'placeholder' => 'Nominal','wire:model' => 'nom']) !!}
+                    {!! Form::number('target', null, ['class' => 'form-control','maxlength' => 255,'placeholder' => 'Nominal','wire:model' => 'nom','wire:key' => 'nom']) !!}
                 </div>{{-- input group --}}
         </div>
     </div>
-{{-- </div> --}}
-
 </div>

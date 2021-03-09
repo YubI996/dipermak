@@ -84,10 +84,25 @@ class kegiatan extends Model
         'jen_keg' => 'required|integer',
         'pagu' => 'required|integer',
         'target' => 'required|integer',
-        'volume' => 'required|integer',
+        'volume' => 'required',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable'
+    ];
+    public static $messages = [
+        'nama_keg.required' => 'Nama kegiatan harus diisi',
+        'rt_id.required' => 'RT harus diisi',
+        'rt_id.integer' => 'RT harus dalam format bilangan bulat',
+        'tgl_mulai.required' => 'tanggal Mulai harus diisi',
+        'tgl_selesai.required' => 'Tanggal Selesai harus diisi',
+        'jen_keg.required' => 'Jenis Kegiatan harus diisi',
+        'jen_keg.integer' => 'Jenis Kegiatan harus diisi',
+        'pagu.required' => 'Pagu harus diisi',
+        'pagu.integer' => 'Pagu harus diisi',
+        'target.required' => 'Target harus diisi',
+        'target.integer' => 'Target harus diisi',
+        'volume.required' => 'Volume harus diisi',
+        'volume.integer' => 'Volume harus diisi',
     ];
 
     public function scopeSearch($query, $term)
@@ -106,16 +121,7 @@ class kegiatan extends Model
                 });
         });
     }
-    public static $messages = [
-        'nama_keg.required' => 'Nama kegiatan Harus diisi',
-        'rt_id.required' => 'RT Harus diisi',
-        'tgl_mulai.required' => 'tanggal Mulai Harus diisi',
-        'tgl_selesai.required' => 'Tanggal Selesai Harus diisi',
-        'jen_keg.required' => 'Jenis Kegiatan Harus diisi',
-        'pagu.required' => 'Pagu Harus diisi',
-        'target.required' => 'Target Harus diisi',
-        'volume.required' => 'Volume Harus diisi',
-    ];
+    
 
 
     /**

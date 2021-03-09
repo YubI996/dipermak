@@ -17,7 +17,8 @@ class Nominal extends Component
     public $keg;
     public $pid;
     public $kegItems;
-    protected $listeners = ['RT' => 'rt'];
+    public $rtid;
+    protected $listeners = ['rtid' => 'rt'];
     public function mount()
     {
         if (!(empty($this->pid))) {
@@ -34,7 +35,7 @@ class Nominal extends Component
     }
     public function rt($value)
     {
-        // dd($value);
+        $this->rtid = $value;
         $this->kegItems = keg::where('rt_id',$value)->pluck('nama_keg','id')->toArray();
     }
     public function updatedKid()

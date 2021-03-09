@@ -29,4 +29,10 @@ class UpdatekegiatanRequest extends FormRequest
         
         return $rules;
     }
+    public function messages()
+    {
+        $messages = kegiatan::$messages;
+        
+        return $messages;
+    }
 }

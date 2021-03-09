@@ -27,4 +27,8 @@ class CreatekegiatanRequest extends FormRequest
     {
         return kegiatan::$rules;
     }
+    public function messages()
+    {
+        return kegiatan::$messages;
+    }
 }

@@ -16,7 +16,8 @@
               </div>
               <!-- /.card-header -->
             <div class="card-body">
-                @include('partisipasis.table')
+                @livewire('partisipasi-table')
+
             </div>
             <!-- /.card-body -->
         </div>

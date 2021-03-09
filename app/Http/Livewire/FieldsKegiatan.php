@@ -4,8 +4,14 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\kegiatan;
+use App\Models\JenKeg;
 use App\Http\Livewire\Field;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
+use App\Http\Requests\CreatekegiatanRequest as Request;
+use Flash;
+
+
+use App\Repositories\kegiatanRepository;
 
 class FieldsKegiatan extends Component
 {
@@ -21,13 +27,53 @@ class FieldsKegiatan extends Component
     public $volume;
     public $sat;
     
+    public $edit_mode = false;
+    public $kid;
+
+    public $per =[];
     public $inputs = [];
-    public $i = 0;
+    public $i = 1;
 
     protected $listeners = ['rtid'];
+    protected $rules = [
+        'nama_keg' => 'required|string',
+        'rt_id' => 'required|integer',
+        'tgl_mulai' => 'required',
+        'tgl_selesai' => 'required',
+        'approval' => 'nullable',
+        'jen_keg' => 'required|integer',
+        'pagu' => 'required|integer',
+        'target' => 'required|integer',
+        'volume' => 'required|integer',
+        'created_at' => 'nullable',
+        'updated_at' => 'nullable',
+        'deleted_at' => 'nullable'
+    ];
     public function rtid($rtid)
     {
         $this->rtid = $rtid;
+    }
+    
+    public function UpdatedPagu()
+    {
+        foreach ($this->pagu as $key => $value) {
+            $per = empty($this->per[$key])? 0 :$this->per[$key];
+            $this->target[$key] = intval((($per) / 100) * intval($value));
+        }
+    }
+    public function UpdatedPer()
+    {
+        foreach ($this->per as $key => $value) {
+            $pagu = empty($this->pagu[$key])? 0 :$this->pagu[$key];
+            $this->target[$key] = intval((intval($value) / 100) * ($pagu));
+        }        
+    }
+    public function UpdatedTarget()
+    {
+        foreach ($this->target as $key => $value) {
+            $pagu = empty($this->pagu[$key])? 0 :$this->pagu[$key];
+            $this->per[$key] = intval((intval($value) / intval($pagu)) * 100);
+        }
     }
 
     public function add($i)
@@ -45,71 +91,60 @@ class FieldsKegiatan extends Component
 
     public function render()
     {
-        return view('livewire.fields-kegiatan');
+        $jen_kegItems = JenKeg::pluck('jenis_keg','id')->toArray();
+        if ($this->edit_mode) {
+            $kegiatan = Kegiatan::find($this->kid);
+            // dd($keg->approval);
+            // $this->nama_keg[0] = $keg->nama_keg;
+            // $this->rtid[0] = $keg->rt_id;
+            // $this->tm[0] = $keg->tgl_mulai;
+            // $this->ts[0] = $keg->tgl_selesai;
+            // $this->sumber[0] = $keg->sumber_dana;
+            // $this->ap[0] = $keg->approval;
+            // $this->jk[0] = $keg->jen_keg;
+            // $this->pagu[0] = $keg->pagu;
+            // $this->target[0] = $keg->target;
+            // $this->volume[0] = $keg->volume;
+            // $this->sat[0] = $keg->satuan;
+            return view('livewire.fields-kegiatan')->with('kegiatan', $kegiatan);
+        }
+        return view('livewire.fields-kegiatan')->with('jen_kegItems',$jen_kegItems);
     }
 
     private function resetInputFields(){
         $this->name = '';
         $this->email = '';
     }
-
+    public function update()
+    {
+        // Kegiatan
+    }
     public function store()
     {
-        $validatedDate = $this->validate([
-                'nama_keg.0' => 'required',
-                'nama_keg.*' => 'required',
-                'rtid.0' => 'required',
-                'rtid.*' => 'required',
-                'tm.0' => 'required',
-                'tm.*' => 'required',
-                'ts.0' => 'required',
-                'ts.*' => 'required',
-                'sumber.0' => 'required',
-                'sumber.*' => 'required',
-                'jk.0' => 'required',
-                'jk.*' => 'required',
-                'pagu.0' => 'required',
-                'pagu.*' => 'required',
-                'target.0' => 'required',
-                'target.*' => 'required',
-                'volume.0' => 'required',
-                'volume.*' => 'required',
-                'sat.0' => 'required',
-                'sat.*' => 'required'
-            ],
-            [
-                'nama_keg.0.required' => 'nama kegiatan harus diisi.',
-                'nama_keg.*.required' => 'nama kegiatan harus diisi.',
-                'rtid.0.required' => 'RT harus diisi.',
-                'rtid.*.required' => 'RT harus diisi.',
-                'tm.0.required' => 'Tanggal Mulai harus diisi.',
-                'tm.*.required' => 'Tanggal Mulai harus diisi.',
-                'ts.0.required' => 'Tanggal selesai harus diisi.',
-                'ts.*.required' => 'Tanggal selesai harus diisi.',
-                'sumber.0.required' => 'sumber dana harus diisi.',
-                'sumber.*.required' => 'sumber dana harus diisi.',
-                'jk.0.required' => 'Jenis Kegiatan harus diisi.',
-                'jk.*.required' => 'Jenis Kegiatan harus diisi.',
-                'pagu.0.required' => 'Pagu harus diisi.',
-                'pagu.*.required' => 'Pagu harus diisi.',
-                'target.0.required' => 'Target Partisipasi harus diisi.',
-                'target.*.required' => 'Target Partisipasi harus diisi.',
-                'volume.0.required' => 'Volume harus diisi.',
-                'volume.*.required' => 'Volume harus diisi.',
-                'sat.0.required' => 'Satuan harus diisi.',
-                'sat.*.required' => 'Satuan harus diisi.'                
-            ]
-        );
+        
 
-        foreach ($this->name as $key => $value) {
-            User::create(['name' => $this->name[$key], 'email' => $this->email[$key]]);
+        foreach ($this->nama_keg as $key => $value) {
+            Kegiatan::create([
+                'nama_keg' => $this->nama_keg[$key],
+                'rt_id' => $this->rtid,
+                'tgl_mulai' => $this->tm[$key],
+                'tgl_selesai' => $this->ts[$key],
+                'sumber_dana' => $this->sumber[$key],
+                'approval' => $this->ap[$key]?1:0,
+                'jen_keg' => $this->jk[$key],
+                'pagu' => $this->pagu[$key],
+                'target' => $this->target[$key],
+                'volume' => $this->volume[$key],
+                'satuan' => $this->sat[$key]
+                ]);
         }
 
         $this->inputs = [];
 
         $this->resetInputFields();
 
-        session()->flash('message', 'Users Created Successfully.');
+        Flash::success('Data berhasil diinput.');
+        return redirect(route('kegiatans.index'));
     }
 
 }

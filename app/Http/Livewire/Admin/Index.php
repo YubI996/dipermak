@@ -73,13 +73,6 @@ class Index extends Component
     }
     public function render()
     {
-        // $pagukec = empty($this->dataKec['pagu'])?$this->dataKec['pagu']:0;
-        // $pagukel = empty($this->dataKel['pagu'])?$this->dataKel['pagu']:0;
-        // $pagurt = empty($this->dataRT['pagu'])?$this->dataRT['pagu']:0;
-        // $totpart = empty($this->dataKec['totPart'])?$this->dataKec['totPart']:0;
-        // $partbar = empty($this->dataKec['partBar'])?$this->dataKec['partBar']:0;
-        // $partjas = empty($this->dataKec['partJas'])?$this->dataKec['partJas']:0;
-        // $partua = empty($this->dataKec['partUa'])?$this->dataKec['partUa']:0;
         return view('livewire.admin.index');
     }
 
@@ -94,6 +87,6 @@ class Index extends Component
             'Rp. '.number_format($this->dataKec['partJas'],2,',','.'),
             'Rp. '.number_format($this->dataKec['partUa'],2,',','.')],
         ]);
-        return (new TableExport($data))->download('data.xlsx');
+        return (new PaguExport($data))->download('data.xlsx');
     }
 }

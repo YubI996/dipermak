@@ -11,8 +11,7 @@
             <div class="box-body">
                 <div class="row"> --}}
                     {!! Form::open(['route' => 'kegiatans.store']) !!}
-
-                        @include('kegiatans.fields')
+                        @livewire('fields-kegiatan')
 
                     {!! Form::close() !!}
                 {{-- </div> --}}

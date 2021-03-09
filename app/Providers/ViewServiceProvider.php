@@ -51,7 +51,7 @@ class ViewServiceProvider extends ServiceProvider
             $partisipasiItems = Partisipasi::pluck('id')->toArray();
             $view->with('partisipasiItems', $partisipasiItems);
         });
-        View::composer(['livewire.fields-kegiatan'], function ($view) {
+        View::composer(['kegiatans.fields'], function ($view) {
             $jen_kegItems = JenKeg::pluck('jenis_keg','id')->toArray();
             $view->with('jen_kegItems', $jen_kegItems);
         });

@@ -2,57 +2,72 @@
 
 namespace App\Exports;
 
-use App\Models\kegiatan as keg;
-use App\Models\partisipasi as par;
-use App\Models\kecamatan as kec;
-use App\Models\kelurahan as kel;
-use App\Models\rt;
-use Maatwebsite\Excel\Concerns\FromArray;
-use Illuminate\Database\Eloquent\Collection;
-use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\Exportable;
-use Maatwebsite\Excel\Concerns\FromQuery;
+use App\Models\Kegiatan;
+use App\Models\Partisipasi;
+use App\Models\Dokumentasi;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
-use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\Exportable;
 
 
-
-
-class TableExport implements 
-// FromView
-// FromQuery
-FromCollection, WithHeadings
-
-{   
+class TableExport implements FromView
+{
     use Exportable;
-    protected $pars;
-    protected $kels;
-    protected $kecs;
-    protected $rts;
-    protected $data;
+    public $data;
+    public $pt;
 
-    public $keg;
-    
-    // public function view(): View
-    // {
-    //     return view('kegiatans.table', [
-    //         'kegiatans' => keg::all()
-    //     ]);
-    // }
-    public function __construct($data)
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function __construct($data, $table)
     {
-        $this->keg = $data;
-    }
+        $this->pt = $table;
+        switch ($table) {
+            case 'keg':
+                $this->data = Kegiatan::whereIn('id',$data)->get();
+                
+                break;
+                
+            case 'part':
+                $this->data = Partisipasi::whereIn('id',$data)->get();
+                
+                break;
+                
+            case 'prog':
+                $this->data = Dokumentasi::whereIn('id',$data)->get();
 
-    public function collection()
-    {
-        return new collection($this->keg);
-        // return Student::query()->find($this->kegs);
-        // return Student::query()->whereKey($this->students);
+                break;
+            
+            default:
+                
+                break;
+        }
     }
-    public function headings(): array
+    public function view(): View
     {
-        return ["Pagu Kecamatan", "Pagu Kelurahan", "Pagu RT","Total Partisipasi","Partisipasi Barang","Partisipasi Jasa","Partisipasi Uang"];
+        switch ($this->pt) {
+            case 'keg':
+                return view('mold.Export.table',[
+                    'kegiatans'     => $this->data
+                ]);
+                break;
+            
+            case 'part':
+                return view('partisipasis.table',[
+                    'partisipasis'     => $this->data
+                ]);
+                break;
+            
+            case 'prog':
+                return view('dokumentasis.table',[
+                    'dokumentasis'     => $this->data
+                ]);
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+        
     }
 }

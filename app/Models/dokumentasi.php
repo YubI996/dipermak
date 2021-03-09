@@ -61,14 +61,18 @@ class dokumentasi extends Model
     public static $rules = [
         'keg_id' => 'required|integer',
         'rt_id' => 'required|integer',
+        'keterangan' => 'required|string',
         'progres' => 'nullable|integer',
         'foto' => 'nullable',
-        'keterangan' => 'required|string',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable'
     ];
-
+    public static $messages = [
+        'keg_id.required' => 'Anda harus memilih kegiatan',
+        'rt_id.required' => 'Anda harus memilih RT',
+        'keterangan.integer' => 'Anda harus mengisi keterangan',
+    ];
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
@@ -83,5 +87,19 @@ class dokumentasi extends Model
     public function rt()
     {
         return $this->belongsTo(\App\Models\Rt::class, 'rt_id');
+    }
+    public function scopeSearch($query, $term)
+    {
+        $term = "%$term%";
+        $query->where(function ($query) use ($term) {
+            $query->where('keterangan', 'like', $term)
+                ->orWhere('progres', 'like', $term)
+                ->orWhereHas('rt', function ($query) use ($term) {
+                    $query->where('nama_rt', 'like', $term);
+                })
+                ->orWhereHas('kegiatan', function ($query) use ($term) {
+                    $query->where('nama_keg', 'like', $term);
+                });
+        });
     }
 }

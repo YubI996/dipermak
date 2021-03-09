@@ -63,4 +63,12 @@ class rt extends Model
     {
         return $this->hasMany(\App\Models\kegiatan::class, 'rt_id','id');
     }
+    public function partisipasis()
+    {
+        return $this->hasMany(\App\Models\partisipasi::class, 'rt_id','id');
+    }
+    public function dokumentasis()
+    {
+        return $this->hasMany(\App\Models\dokumentasi::class, 'rt_id','id');
+    }
 }
