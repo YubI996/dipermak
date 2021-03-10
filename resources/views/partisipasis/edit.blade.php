@@ -3,6 +3,7 @@
 Edit Partisipasi
 @endsection
 @section('content')
+        @include('flash::message') 
 
        @include('adminlte-templates::common.errors')
     

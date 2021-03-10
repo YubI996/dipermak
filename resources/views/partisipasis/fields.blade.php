@@ -1,4 +1,5 @@
 <div class="row-sm-12">
+
     @if (isset($partisipasi))
     {{-- {{$partisipasi->}} --}}
     @livewire('admin.pilihrt',['rtid'=>$partisipasi->kegiatan->rt_id])

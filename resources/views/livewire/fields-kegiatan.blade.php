@@ -321,7 +321,7 @@
         </div>
         
         <div class="d-flex">
-            <a href="{{ route('kegiatans.index') }}" class="btn btn-app bg-warning"><i class="fas fa-window-close"></i>Cancel</a>
+            <a href="{{ route('kegiatans.index') }}" class="btn btn-app bg-warning"><i class="fas fa-window-close"></i>Kembali</a>
         </div>
     </div>
 </div>

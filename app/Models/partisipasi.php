@@ -71,7 +71,7 @@ class partisipasi extends Model
     ];
     
     public static $messages = [
-        'keg_id.required' => 'Anda harus memilih kegiatan',
+        'keg_id.required' => 'Anda harus memilih kegiatan, jika ',
         'rt_id.required' => 'Anda harus memilih RT',
         'jenis.required' => 'Anda harus memilih jenis partisipasi',
         'deskripsi.required' => 'Anda harus mengisi deskripsi',

@@ -49,12 +49,12 @@
                         ({{ count($checked) }})</button>
                     <div class="dropdown-menu">
                         <a href="#" class="dropdown-item" type="button"
-                            onclick="confirm('Are you sure you want to delete these Records?') || event.stopImmediatePropagation()"
+                            onclick="confirm('Anda yakin akan menghapus data yang terpilih ?') || event.stopImmediatePropagation()"
                             wire:click="deleteRecords()">
                             Hapus
                         </a>
                         <a href="#" class="dropdown-item" type="button"
-                            onclick="confirm('Are you sure you want to export these Records?') || event.stopImmediatePropagation()"
+                            onclick="confirm('Anda ingin meng-ekspor data yang terpilih ?') || event.stopImmediatePropagation()"
                             wire:click="exportSelected()">
                             Ekspor
                         </a>

@@ -84,11 +84,11 @@ class PartisipasiTable extends Component
 
     public function deleteRecords()
     {
-        Student::whereKey($this->checked)->delete();
+        Partisipasi::whereKey($this->checked)->delete();
         $this->checked = [];
         $this->selectAll = false;
         $this->selectPage = false;
-        session()->flash('info', 'Selected Records were deleted Successfully');
+        session()->flash('info', 'Data yang dipilih telah dihapus');
     }
 
     public function exportSelected()
@@ -98,17 +98,17 @@ class PartisipasiTable extends Component
     }
 
 
-    public function deleteSingleRecord($student_id)
+    public function deleteSingleRecord($partisipasi_id)
     {
-        $student = Student::findOrFail($student_id);
-        $student->delete();
-        $this->checked = array_diff($this->checked, [$student_id]);
-        session()->flash('info', 'Record deleted Successfully');
+        $partisipasi = Partisipasi::findOrFail($partisipasi_id);
+        $partisipasi->delete();
+        $this->checked = array_diff($this->checked, [$partisipasi_id]);
+        session()->flash('info', 'Data telah dihapus');
     }
 
-    public function isChecked($student_id)
+    public function isChecked($partisipasi_id)
     {
-        return in_array($student_id, $this->checked);
+        return in_array($partisipasi_id, $this->checked);
     }
 
 }

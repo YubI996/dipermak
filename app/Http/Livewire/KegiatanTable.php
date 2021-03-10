@@ -84,11 +84,11 @@ class KegiatanTable extends Component
 
     public function deleteRecords()
     {
-        Student::whereKey($this->checked)->delete();
+        Kegiatan::whereKey($this->checked)->delete();
         $this->checked = [];
         $this->selectAll = false;
         $this->selectPage = false;
-        session()->flash('info', 'Selected Records were deleted Successfully');
+        session()->flash('info', 'Data yang dipilih telah dihapus');
     }
 
     public function exportSelected()

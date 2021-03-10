@@ -144,7 +144,6 @@ class FieldsKegiatan extends Component
         $this->resetInputFields();
 
         Flash::success('Data berhasil diinput.');
-        return redirect(route('kegiatans.index'));
     }
 
 }

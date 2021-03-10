@@ -4,7 +4,8 @@
 @endsection
 @section('content')
    
-    
+        @include('flash::message') 
+
         @include('adminlte-templates::common.errors')
         
                     {!! Form::open(['route' => 'partisipasis.store']) !!}

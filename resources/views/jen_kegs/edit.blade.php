@@ -1,11 +1,9 @@
 @extends('mold.app')
-
+@section('content-title')
+    Edit Jenis Kegiatan
+@endsection
 @section('content')
-    <section class="content-header">
-        <h1>
-            Jen Keg
-        </h1>
-    </section>
+    
     <div class="content">
         @include('adminlte-templates::common.errors')
         

@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\kegiatan as keg;
 use App\Models\partisipasi as par;
 use Carbon\Carbon;
+use Flash;
 
 class Nominal extends Component
 {
@@ -37,6 +38,12 @@ class Nominal extends Component
     {
         $this->rtid = $value;
         $this->kegItems = keg::where('rt_id',$value)->pluck('nama_keg','id')->toArray();
+        // dump(empty($this->kegItems));
+        if (empty($this->kegItems)) {
+            dump("jalan");
+            session()->flash('info', 'RT yang Anda pilih belum memiliki kegiatan');
+            Flash::error('RT yang Anda pilih tidak memiliki kegiatan');
+        }
     }
     public function updatedKid()
     {

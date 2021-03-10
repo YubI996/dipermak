@@ -21,9 +21,9 @@ class Pilihrt extends Component
         $rtid=$this->rtid;
         $this->kel = rt::where('id', $this->rtid)->value('kel_id');
         $this->kec = kelurahan::where('id', $this->kel)->value('kec_id');
-        $this->kelurahanItems = Kelurahan::pluck('nama_kel','id')->toArray();
+        $this->kelurahanItems = Kelurahan::where('kec_id',$this->kec)->pluck('nama_kel','id')->toArray();
         $this->kecamatanItems = Kecamatan::pluck('nama_kec','id')->toArray();
-        $this->rtItems = Rt::pluck('nama_rt','id')->toArray();
+        $this->rtItems = Rt::where('kel_id',$this->kel)->pluck('nama_rt','id')->toArray();
 
     }
     public function Updatedkec()
