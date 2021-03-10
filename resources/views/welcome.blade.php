@@ -68,6 +68,7 @@
                 <header class="masthead  text-white text-center">
                     {{-- bg-banner --}}
                     <div class="container d-flex align-items-center flex-column">
+                        <h1 class="masthead-heading text-uppercase p-0 mb-5">Pemerintah Kota Bontang</h1>
                         <!-- Masthead Avatar Image-->
                         <img class="masthead-avatar mb-5" src="/img/logo-bontang.png" alt="Logo Bontang" />
                         <!-- Masthead Heading-->
