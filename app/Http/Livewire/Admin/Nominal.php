@@ -40,7 +40,6 @@ class Nominal extends Component
         $this->kegItems = keg::where('rt_id',$value)->pluck('nama_keg','id')->toArray();
         // dump(empty($this->kegItems));
         if (empty($this->kegItems)) {
-            dump("jalan");
             session()->flash('info', 'RT yang Anda pilih belum memiliki kegiatan');
             Flash::error('RT yang Anda pilih tidak memiliki kegiatan');
         }
@@ -54,18 +53,20 @@ class Nominal extends Component
     }
     public function updatedPer($value)
     {
+        
         empty($this->per) ? $this->nom = 0 : $this->nom = ($this->per/100) * $this->target;
         // empty($this->per) ? $this->nom = 0 : $this->nom = (number_format(($this->per/100) * $this->target,0,'.',','));
         // $this->per = number_format($value,0, ',' , '.');
     }
     public function updatedNom($value)
     {
-        // dd($this->target);
-        // empty($this->nom) ? $this->per = 0 : $this->per = (number_format(($this->nom / $this->target) * 100,0,'.',','));
-        $per = number_format((($this->nom / $this->target) * 100),1,',','.');
-        empty($this->target) ? $this->per = 0 : $this->per = $per;
-        // $this->nom = number_format($value,0, ',' , '.');
-        // dump('keeeeey');
+        if(empty($this->target)){
+            $this->per = 0;
+        }
+        else{
+            $this->per =number_format(((intval($this->nom) / $this->target) * 100),1,',','.');
+
+        }
     }
     public function render()
     {

@@ -26,7 +26,8 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "turbolinks": "^5.2.0",
-        "livewire-turbolinks": "github:livewire/turbolinks"
+        "livewire-turbolinks": "github:livewire/turbolinks",
+        "sweetalert2": "^10.15.5",
+        "turbolinks": "^5.2.0"
     }
 }

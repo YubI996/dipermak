@@ -65,7 +65,7 @@
                     </div>
                 </nav>
                 <!-- Masthead-->
-                <header class="masthead  text-white text-center">
+                <header class="masthead  text-white text-center" style="background-image: url('/img/gdg.jpg'); background-repeat: no-repeat; background-size: 100% 100%;">
                     {{-- bg-banner --}}
                     <div class="container d-flex align-items-center flex-column">
                         <h1 class="masthead-heading text-uppercase p-0 mb-5">Pemerintah Kota Bontang</h1>
@@ -82,7 +82,7 @@
                             <div class="divider-custom-line"></div>
                         </div>
                         <!-- Masthead Subheading-->
-                        <p class="masthead-subheading font-weight-light mb-0">Motto - Motto - Motto         </p>
+                        {{-- <p class="masthead-subheading font-weight-light mb-0">Motto - Motto - Motto         </p> --}}
                     </div>
                 </header> 
                 {{-- PAGU SECTION --}}
@@ -348,8 +348,8 @@
                                 <h4 class="text-uppercase mb-4">Around the Web</h4>
                                 <a class="btn btn-outline-light btn-social mx-1" href="https://www.facebook.com/pages/category/Government-Organization/Dinas-Sosial-dan-Pemberdayaan-Masyarakat-Kota-Bontang-108924554123363/" target="_blank"><i class="fab fa-fw fa-facebook-f"></i></a>
                                 <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
-                                <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
-                                <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
+                                {{-- <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
+                                <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a> --}}
                             </div>
                             <!-- Footer About Text-->
                             <div class="col-lg-4">

@@ -21,7 +21,7 @@
             <div class="input-group-prepend">
                         <div class="input-group-text">Rp</div>
                     </div>
-            {!! Form::text('target',null, ['id' => 'target','class' => 'form-control','maxlength' => 20, 'wire:model.lazy' => 'target', 'disabled']) !!}
+            {!! Form::number('target',null, ['id' => 'target','class' => 'form-control','maxlength' => 20, 'wire:model.lazy' => 'target', 'disabled']) !!}
                
         </div>
     </div>
@@ -37,7 +37,7 @@
                         <div class="input-group-text">Rp</div>
                     </div>
                     {{-- {!! Form::number('nominal', null, ['class' => 'form-control','maxlength' => 3, 'wire:model' => 'nom','wire:change' => 'setPer','step'=>'any']) !!} --}}
-                    {!! Form::text('nominal', null,['id' => 'nom','class' => 'form-control col-6','maxlength' => 20, 'wire:model' => 'nom']) !!}
+                    {!! Form::number('nominal', null,['id' => 'nom','class' => 'form-control col-6','maxlength' => 20, 'wire:model' => 'nom']) !!}
                 </div>
     </div>
     <div class="form-group row">

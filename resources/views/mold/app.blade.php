@@ -275,9 +275,12 @@
           </div>
           <!-- /.content-wrapper -->
           <footer class="main-footer">
-            <strong>Copyright &copy; 2021 Diskominfo Kota Bontang.</strong> |Template by <a href="https://adminlte.io">AdminLTE.io</a>
+            <strong>Copyright &copy; 2021 Pemerintah Kota Bontang.</strong> |Template by <a href="https://adminlte.io">AdminLTE.io</a>
             {{-- <strong>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Diskominfo Kota Bontang.</strong> |Template by <a href="https://adminlte.io">AdminLTE.io</a> --}}
-      </footer>
+            {{-- <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
+              <i class="fas fa-chevron-up"></i>
+            </a> --}}
+          </footer>
 
       <!-- Control Sidebar -->
       <aside class="control-sidebar control-sidebar-dark">

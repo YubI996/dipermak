@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Database\Eloquent\Collection;
 use App\Exports\TableExport;
+use App\Exports\PaguExport;
 use App\Models\kegiatan;
 use App\Models\partisipasi as par;
 use App\Models\kecamatan;

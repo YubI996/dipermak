@@ -84,11 +84,11 @@ class ProgresTable extends Component
 
     public function deleteRecords()
     {
-        Student::whereKey($this->checked)->delete();
+        Dokumentasi::whereKey($this->checked)->delete();
         $this->checked = [];
         $this->selectAll = false;
         $this->selectPage = false;
-        session()->flash('info', 'Selected Records were deleted Successfully');
+        session()->flash('info', 'Data terpilih telah dihapus');
     }
 
     public function exportSelected()
@@ -98,17 +98,17 @@ class ProgresTable extends Component
     }
 
 
-    public function deleteSingleRecord($student_id)
+    public function deleteSingleRecord($dokumentasi_id)
     {
-        $student = Student::findOrFail($student_id);
-        $student->delete();
-        $this->checked = array_diff($this->checked, [$student_id]);
+        $dokumentasi = Dokumentasi::findOrFail($dokumentasi_id);
+        $dokumentasi->delete();
+        $this->checked = array_diff($this->checked, [$dokumentasi_id]);
         session()->flash('info', 'Record deleted Successfully');
     }
 
-    public function isChecked($student_id)
+    public function isChecked($dokumentasi_id)
     {
-        return in_array($student_id, $this->checked);
+        return in_array($dokumentasi_id, $this->checked);
     }
 
 }

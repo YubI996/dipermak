@@ -1,5 +1,24 @@
 <div>
     <div>
+
+    @if (session()->has('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @elseif (session()->has('danger'))
+        <div class="alert alert-danger">
+            {{ session('danger') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+    </div>
+
+    <div>
         @if (isset($kegiatan))
             <input  type="hidden" value="{{$kegiatan->id}}" wire:model ="kid">
         @livewire('admin.pilihrt',['rtid'=>$kegiatan->rt_id])
@@ -9,6 +28,7 @@
         @endif
     </div>
     <hr>
+    <h3>1</h3>
             <!-- Nama Keg Field -->
                 <div class="row">
                     <div class="col-1">
@@ -160,6 +180,7 @@
     <hr>
 
     @foreach ($inputs as $key=>$value)
+                <h3>{{$loop->index+2}}</h3>
         <hr>
             <!-- Nama Keg Field -->
                 <div class="row">
@@ -316,7 +337,7 @@
     <div class="d-flex justify-content-center mb-3">
         <div class="d-flex">
             
-            {{ Form::button('<i class="fas fa-save"></i>Save', ['type' => 'submit', 'class' => 'btn btn-app bg-success',  'wire:click.prevent'=>'store()' ] )  }}
+            {{ Form::button('<i class="fas fa-save"></i>Simpan', ['type' => 'submit', 'class' => 'btn btn-app bg-success',  'wire:click.prevent'=>'store()' ] )  }}
         </div>
         
         <div class="d-flex">

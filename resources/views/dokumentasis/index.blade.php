@@ -1,10 +1,12 @@
 @extends('mold.app')
-
+@section('content-title')
+    Progres Kegiatan
+@endsection
 @section('content')
     <section class="content-header">
     <div class="d-flex justify-content-between">
          <div class="mr-auto p-2">
-            <h1>Dokumentasi</h1></div>
+            </div>
         <div class="p-2">
             <h1>
            <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('dokumentasis.create') }}">Add New</a>

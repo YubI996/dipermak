@@ -7,10 +7,13 @@
 
     
         @include('adminlte-templates::common.errors')
-        {{-- <div class="col">
-            <div class="box-body">
-                <div class="row"> --}}
+    
                     {!! Form::open(['route' => 'kegiatans.store']) !!}
+                    @if (session()->has('message'))
+                        <div class="alert alert-success">
+                            {{ session('message') }}
+                        </div>
+                    @endif
                         @livewire('fields-kegiatan')
 
                     {!! Form::close() !!}
@@ -24,4 +27,5 @@
 @endsection
 @section('content-footer')
     Pastikan Form terisi dengan benar.
+    
 @endsection

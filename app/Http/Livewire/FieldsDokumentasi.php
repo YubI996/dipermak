@@ -4,11 +4,15 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\kegiatan as keg;
+use App\Models\dokumentasi as dok;
 
 class FieldsDokumentasi extends Component
 {
     public $kegiatanItems="";
     public $rtid;
+    public $edit_mode = false;
+    public $did;
+    public $dokumentasi;
     protected $listeners = ['rtid'];
     public function rtid($rtid)
     {
@@ -20,8 +24,16 @@ class FieldsDokumentasi extends Component
             }
         }
     }
+    public function mount($edit_mode, $did)
+    {
+        if ($edit_mode) {
+            $this->dokumentasi = dok::find($did);
+            $this->kegiatanItems = keg::where('id',$this->dokumentasi->kegiatan->id)->pluck('nama_keg','id')->toArray();
+        }
+    }
     public function render()
     {
+        
         return view('livewire.fields-dokumentasi');
     }
 }

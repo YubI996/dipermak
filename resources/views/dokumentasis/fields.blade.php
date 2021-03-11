@@ -41,7 +41,7 @@
     </div>
     <div class="col-11">
         @if (isset($dokumentasi->id))
-        <img src="{{ url('storage/'. $dokumentasi->foto)}}" alt="{{'foto '. $dokumentasi->name }}" width="40" height="40"></td><br>
+            <img src="{{ url('storage/'. $dokumentasi->foto)}}" alt="{{'foto '. $dokumentasi->name }}" width="40" height="40"></td><br>
         @endif
         {!! Form::file('foto',['name' => 'foto[]','multiple']) !!}
     </div>

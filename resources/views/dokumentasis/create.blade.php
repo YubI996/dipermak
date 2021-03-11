@@ -10,7 +10,7 @@
                     {{-- {!! Form::open(['route' => 'dokumentasis.store', 'files' => true]) !!} --}}
 
                         {{-- @include('dokumentasis.fields') --}}
-                        @livewire('fields-dokumentasi')
+                        @livewire('fields-dokumentasi',['edit_mode' => false,'did'=>0])
                     {!! Form::close() !!}
                 
 @endsection

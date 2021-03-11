@@ -5,10 +5,12 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\kegiatan;
 use App\Models\JenKeg;
+use App\Models\rt;
 use App\Http\Livewire\Field;
 // use Illuminate\Http\Request;
 use App\Http\Requests\CreatekegiatanRequest as Request;
 use Flash;
+use Exception;
 
 
 use App\Repositories\kegiatanRepository;
@@ -35,20 +37,7 @@ class FieldsKegiatan extends Component
     public $i = 1;
 
     protected $listeners = ['rtid'];
-    protected $rules = [
-        'nama_keg' => 'required|string',
-        'rt_id' => 'required|integer',
-        'tgl_mulai' => 'required',
-        'tgl_selesai' => 'required',
-        'approval' => 'nullable',
-        'jen_keg' => 'required|integer',
-        'pagu' => 'required|integer',
-        'target' => 'required|integer',
-        'volume' => 'required|integer',
-        'created_at' => 'nullable',
-        'updated_at' => 'nullable',
-        'deleted_at' => 'nullable'
-    ];
+    
     public function rtid($rtid)
     {
         $this->rtid = $rtid;
@@ -94,56 +83,60 @@ class FieldsKegiatan extends Component
         $jen_kegItems = JenKeg::pluck('jenis_keg','id')->toArray();
         if ($this->edit_mode) {
             $kegiatan = Kegiatan::find($this->kid);
-            // dd($keg->approval);
-            // $this->nama_keg[0] = $keg->nama_keg;
-            // $this->rtid[0] = $keg->rt_id;
-            // $this->tm[0] = $keg->tgl_mulai;
-            // $this->ts[0] = $keg->tgl_selesai;
-            // $this->sumber[0] = $keg->sumber_dana;
-            // $this->ap[0] = $keg->approval;
-            // $this->jk[0] = $keg->jen_keg;
-            // $this->pagu[0] = $keg->pagu;
-            // $this->target[0] = $keg->target;
-            // $this->volume[0] = $keg->volume;
-            // $this->sat[0] = $keg->satuan;
             return view('livewire.fields-kegiatan')->with('kegiatan', $kegiatan);
         }
         return view('livewire.fields-kegiatan')->with('jen_kegItems',$jen_kegItems);
     }
 
     private function resetInputFields(){
-        $this->name = '';
-        $this->email = '';
+        $this->nama_keg = '';
+        $this->rtid = '';
+        $this->tm = '';
+        $this->ts = '';
+        $this->sumber = '';
+        $this->ap = '';
+        $this->jk = '';
+        $this->per = '';
+        $this->pagu = '';
+        $this->target = '';
+        $this->volume = '';
+        $this->sat = '';
     }
+        
     public function update()
     {
         // Kegiatan
     }
     public function store()
     {
-        
-
-        foreach ($this->nama_keg as $key => $value) {
-            Kegiatan::create([
-                'nama_keg' => $this->nama_keg[$key],
-                'rt_id' => $this->rtid,
-                'tgl_mulai' => $this->tm[$key],
-                'tgl_selesai' => $this->ts[$key],
-                'sumber_dana' => $this->sumber[$key],
-                'approval' => $this->ap[$key]?1:0,
-                'jen_keg' => $this->jk[$key],
-                'pagu' => $this->pagu[$key],
-                'target' => $this->target[$key],
-                'volume' => $this->volume[$key],
-                'satuan' => $this->sat[$key]
-                ]);
+        // dd($this->nama_keg);
+        try {
+            foreach ($this->nama_keg as $key => $value) {
+                Kegiatan::create([
+                        'nama_keg' => $this->nama_keg[$key],
+                        'rt_id' => $this->rtid,
+                        'tgl_mulai' => $this->tm[$key],
+                        'tgl_selesai' => $this->ts[$key],
+                        'sumber_dana' => $this->sumber[$key],
+                        'approval' => $this->ap[$key]?1:0,
+                        'jen_keg' => $this->jk[$key],
+                        'pagu' => $this->pagu[$key],
+                        'target' => $this->target[$key],
+                        'volume' => $this->volume[$key],
+                        'satuan' => $this->sat[$key]
+                        ]);}
+                        $rtx = RT::find($this->rtid);
+                        $rt = $rtx->nama_rt;
+                        $kl = $rtx->kelurahan->nama_kel;
+                        $kc = $rtx->kelurahan->kecamatan->nama_kec;
+                        session()->flash('message', $this->i.' Data berhasil disimpan untuk RT '.$rt.', Kelurahan '.$kl.', Kecamatan '.$kc);
+                        $this->inputs = [];
+                        $this->resetInputFields();  
+            
+        } catch (Exception $e) {
+            // session()->flash('danger','Error, silahkan periksa kembali pengisian form di bawah.');
+            session()->flash('danger',$e->getMessage());
         }
-
-        $this->inputs = [];
-
-        $this->resetInputFields();
-
-        Flash::success('Data berhasil diinput.');
     }
 
 }

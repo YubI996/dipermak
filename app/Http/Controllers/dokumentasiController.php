@@ -133,23 +133,32 @@ class dokumentasiController extends AppBaseController
     public function update($id, UpdatedokumentasiRequest $request)
     {
         $dokumentasi = $this->dokumentasiRepository->find($id);
-        
+        // dd($request);
         if (empty($dokumentasi)) {
             Flash::error('Dokumentasi not found');
             
             return redirect(route('dokumentasis.index'));
         }
         // dd($dokumentasi);
-        foreach ($request->foto as $index => $foto) {
-            $keg = Kegiatan::where('id',$request->keg_id)->value('nama_keg');
-            $rt = Rt::where('id',$request->rt_id)->value('nama_rt');
-            $nama = '\\img\\dok\\'.$index.'_'.implode(' ', array_slice(explode(' ', $keg), 0, 3)).'_RT_'.$rt.'.'.$foto->getClientOriginalExtension();
+        if(isset($request->foto)){
+            foreach ($request->foto as $index => $foto) {
+                $keg = Kegiatan::where('id',$request->keg_id)->value('nama_keg');
+                $rt = Rt::where('id',$request->rt_id)->value('nama_rt');
+                $nama = '\\img\\dok\\'.$index.'_'.implode(' ', array_slice(explode(' ', $keg), 0, 3)).'_RT_'.$rt.'.'.$foto->getClientOriginalExtension();
+                $dok = Dokumentasi::findorfail($id)->update([
+                    'keg_id' => $request->keg_id,
+                    'rt_id'  => $request->rt_id,
+                    'keterangan' => $request->keterangan,
+                        'foto' => $foto->storeAs('', $nama,'public'),
+                ]);
+            }
+        }
+        else{
             $dok = Dokumentasi::findorfail($id)->update([
-                'keg_id' => $request->keg_id,
-                'rt_id'  => $request->rt_id,
-                'keterangan' => $request->keterangan,
-                    'foto' => $foto->storeAs('', $nama,'public'),
-            ]);
+                    'keg_id' => $request->keg_id,
+                    'rt_id'  => $request->rt_id,
+                    'keterangan' => $request->keterangan,
+                ]);
         }
         // dd($id);
 
