@@ -12,7 +12,8 @@ Edit Kegiatan
                    {!! Form::model($kegiatan, ['route' => ['kegiatans.update', $kegiatan->id], 'method' => 'patch']) !!}
 
                         {{-- @livewire('fields-kegiatan', ['kid' => $kegiatan->id]) --}}
-                        @include('kegiatans.fields')
+                                                @include('kegiatans.fields')
+
 
                    {!! Form::close() !!}
                {{-- </div>

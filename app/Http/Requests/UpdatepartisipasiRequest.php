@@ -29,4 +29,10 @@ class UpdatepartisipasiRequest extends FormRequest
         
         return $rules;
     }
+    public function messages()
+    {
+        $messages = partisipasi::$messages;
+        
+        return $messages;
+    }
 }

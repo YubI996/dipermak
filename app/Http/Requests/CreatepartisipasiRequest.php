@@ -27,4 +27,8 @@ class CreatepartisipasiRequest extends FormRequest
     {
         return partisipasi::$rules;
     }
+    public function messages()
+    {
+        return partisipasi::$messages;
+    }
 }

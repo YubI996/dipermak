@@ -3,88 +3,147 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\kecamatan;
-use App\Models\kelurahan;
-use App\Models\rt;
 use App\Models\kegiatan;
+use App\Models\JenKeg;
+use App\Http\Livewire\Field;
+// use Illuminate\Http\Request;
+use App\Http\Requests\CreatekegiatanRequest as Request;
+use Flash;
+
+
+use App\Repositories\kegiatanRepository;
 
 class FieldsKegiatan extends Component
 {
-    public $kec;
-    public $kel;
+    public $nama_keg;
     public $rtid;
-    public $kid;
-    public $pagu;
-    public $per;
-    public $nom;
-    public $ap;
     public $tm;
     public $ts;
+    public $sumber;
+    public $ap = true;
+    public $jk;
+    public $pagu;
+    public $target;
+    public $volume;
+    public $sat;
+    
+    public $edit_mode = false;
+    public $kid;
+
+    public $per =[];
+    public $inputs = [];
+    public $i = 1;
+
+    protected $listeners = ['rtid'];
+    protected $rules = [
+        'nama_keg' => 'required|string',
+        'rt_id' => 'required|integer',
+        'tgl_mulai' => 'required',
+        'tgl_selesai' => 'required',
+        'approval' => 'nullable',
+        'jen_keg' => 'required|integer',
+        'pagu' => 'required|integer',
+        'target' => 'required|integer',
+        'volume' => 'required|integer',
+        'created_at' => 'nullable',
+        'updated_at' => 'nullable',
+        'deleted_at' => 'nullable'
+    ];
+    public function rtid($rtid)
+    {
+        $this->rtid = $rtid;
+    }
+    
+    public function UpdatedPagu()
+    {
+        foreach ($this->pagu as $key => $value) {
+            $per = empty($this->per[$key])? 0 :$this->per[$key];
+            $this->target[$key] = intval((($per) / 100) * intval($value));
+        }
+    }
+    public function UpdatedPer()
+    {
+        foreach ($this->per as $key => $value) {
+            $pagu = empty($this->pagu[$key])? 0 :$this->pagu[$key];
+            $this->target[$key] = intval((intval($value) / 100) * ($pagu));
+        }        
+    }
+    public function UpdatedTarget()
+    {
+        foreach ($this->target as $key => $value) {
+            $pagu = empty($this->pagu[$key])? 0 :$this->pagu[$key];
+            $this->per[$key] = intval((intval($value) / intval($pagu)) * 100);
+        }
+    }
+
+    public function add($i)
+    {
+        $i = $i + 1;
+        $this->i = $i;
+        array_push($this->inputs, $i);
+        // dump($this->nama_keg);
+        // dd($this->inputs);
+    }
+    public function remove($i)
+    {
+        unset($this->inputs[$i]);
+    }
+
     public function render()
     {
-        if (!(empty($this->kid)))
-        {
-            $keg = kegiatan::where('id',$this->kid)->first();
-            $rt_id = $keg->value('rt_id');
-            $kel_id = rt::where('id',$rt_id)->first()->kel_id;
-            $kec_id = rt::where('id',$rt_id)->first()->kelurahan->kec_id;
-            $kecamatanItems = Kecamatan::pluck('nama_kec','id')->toArray();
-            $kelurahanItems = kelurahan::where('kec_id',$kec_id)->pluck('nama_kel','id')->toArray();
-            $rtItems = rt::where('kel_id',$kel_id)->pluck('nama_rt','id')->toArray();
-            $this->kec = $kec_id;
-            $this->kel = $kel_id;
-            $this->rtid = $rt_id;
-            $this->pagu = $keg->value('pagu');
-            $this->target = $keg->value('target');
-            $this->per = intval(($this->target / $this->pagu) * 100);
-            $this->ap = $keg->approval;
-            $this->tm = $keg->tgl_mulai;
-            $this->ts = $keg->tgl_selesai;
-            return view('livewire.fields-kegiatan', compact('kecamatanItems','kelurahanItems','rtItems'));
-        }   
-        elseif(empty($this->kid))
-        {
-            $kecamatanItems = Kecamatan::pluck('nama_kec','id')->toArray();
-            $kelurahanItems = Kecamatan::pluck('nama_kel','id')->toArray();
-            $rtItems = Kecamatan::pluck('nama_rt','id')->toArray();
-            return view('livewire.fields-kegiatan', compact('kecamatanItems','kelurahanItems','rtItems'));
+        $jen_kegItems = JenKeg::pluck('jenis_keg','id')->toArray();
+        if ($this->edit_mode) {
+            $kegiatan = Kegiatan::find($this->kid);
+            // dd($keg->approval);
+            // $this->nama_keg[0] = $keg->nama_keg;
+            // $this->rtid[0] = $keg->rt_id;
+            // $this->tm[0] = $keg->tgl_mulai;
+            // $this->ts[0] = $keg->tgl_selesai;
+            // $this->sumber[0] = $keg->sumber_dana;
+            // $this->ap[0] = $keg->approval;
+            // $this->jk[0] = $keg->jen_keg;
+            // $this->pagu[0] = $keg->pagu;
+            // $this->target[0] = $keg->target;
+            // $this->volume[0] = $keg->volume;
+            // $this->sat[0] = $keg->satuan;
+            return view('livewire.fields-kegiatan')->with('kegiatan', $kegiatan);
         }
-        // pilih rt
-        // if (!(empty($this->kec))) {
-        //     $kelurahanItems = Kelurahan::where('kec_id',$this->kec)->pluck('nama_kel','id')->toArray();
-        // }
-        // else{
-        //     $kelurahanItems = Kelurahan::pluck('nama_kel','id')->toArray();
-
-        // }
-        // if (!(empty($this->kel))) {
-        //     $rtItems = Rt::where('kel_id',$this->kel)->pluck('nama_rt','id')->toArray();
-        //     # code...
-        // }
-        // else{
-        //     $rtItems = Rt::pluck('nama_rt','id')->toArray();
-        // }
-        //     $this->kel = rt::where('id', $this->rtid)->value('kel_id');
-        //     $this->kec = kelurahan::where('id', $this->kel)->value('kec_id');
-        //     dump($this->kel);
-        //     dump($this->kec);
-        //     //end pilih rt
-        //     // dashboard
-        //      $target=0;
-       
-        // if(!((empty($this->kid)))){
-        //     $this->pagu = kegiatan::Where('id',$this->kid)->pluck('pagu')->first();
-        //     $this->nom = Kegiatan::Where('id',$this->kid)->pluck('target')->first();
-        //     $this->per = intval(($this->nom / $this->pagu) * 100);
-            
-        // }
-        // if(((!(empty($this->pagu)))&&(!(empty($this->per))))){
-        //     $this->nom = intval(($this->per / 100) * $this->pagu);
-        //     // $target = $this->nom;
-        // }
-        // //end dashoboard
-        // return view('livewire.fields-kegiatan');
-    
-        
+        return view('livewire.fields-kegiatan')->with('jen_kegItems',$jen_kegItems);
     }
+
+    private function resetInputFields(){
+        $this->name = '';
+        $this->email = '';
+    }
+    public function update()
+    {
+        // Kegiatan
+    }
+    public function store()
+    {
+        
+
+        foreach ($this->nama_keg as $key => $value) {
+            Kegiatan::create([
+                'nama_keg' => $this->nama_keg[$key],
+                'rt_id' => $this->rtid,
+                'tgl_mulai' => $this->tm[$key],
+                'tgl_selesai' => $this->ts[$key],
+                'sumber_dana' => $this->sumber[$key],
+                'approval' => $this->ap[$key]?1:0,
+                'jen_keg' => $this->jk[$key],
+                'pagu' => $this->pagu[$key],
+                'target' => $this->target[$key],
+                'volume' => $this->volume[$key],
+                'satuan' => $this->sat[$key]
+                ]);
+        }
+
+        $this->inputs = [];
+
+        $this->resetInputFields();
+
+        Flash::success('Data berhasil diinput.');
+    }
+
 }

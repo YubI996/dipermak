@@ -27,4 +27,8 @@ class CreatedokumentasiRequest extends FormRequest
     {
         return dokumentasi::$rules;
     }
+    public function messages()
+    {
+        return dokumentasi::$messages;
+    }
 }

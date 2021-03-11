@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\userRepository;
+use App\Repositories\jenKegRepository;
+
 use App\Models\kecamatan as kec;
 use App\Models\user;
+use App\Models\jenKeg;
 
 class pengaturanController extends Controller
 {
@@ -14,12 +17,15 @@ class pengaturanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    private $jenKegRepository;
+
     public function index()
     {
         $kecs = kec::with('kelurahan.rt')->get();
         $users = user::all();
+        $jenKegs = jenKeg::all()->sortbyDesc('created_at');
 
-        return view('pengaturan.index',compact('kecs', 'users'));
+        return view('pengaturan.index',compact('kecs', 'users','jenKegs'));
     }
 
     /**

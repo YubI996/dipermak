@@ -12,32 +12,36 @@ class Dashboard extends Component
     public $per;
     public $nom;
     public $kid;
-    function mount($kid){
-        // if(((!(empty($this->pagu)))&&(!(empty($this->per))))){
-        //     $this->nom = ($this->per / 100) * $this->pagu;
-        //     // $target = $this->nom;
-        // }
-        // else
-        // $this->kid = $kid;
+    public function mount($kid)
+    {
+        $get = kegiatan::find($kid);
+        if ($get) {
+            $this->pagu = $get->pagu;
+            $this->nom = $get->target;
+            $this->per = intval($this->nom / $this->pagu) * 100;
+        }
+    }
+    public function UpdatedPagu($value)
+    {
+        $per = empty($this->per)? 0 :$this->per;
+        $this->nom = intval(($per / 100) * intval($value));
+    }
+    public function UpdatedPer($value)
+    {
+        if ($this->per > 0) {
+            $this->nom = intval(($this->per / 100) * $this->pagu);
+        }
         
-        
+    }
+    public function UpdatedNom($value)
+    {
+        $this->per = intval(($this->nom / $this->pagu) * 100);
     }
     public function render()
     {
           $target=0;
        
-        if(!((empty($this->kid)))){
-            $this->pagu = kegiatan::Where('id',$this->kid)->pluck('pagu')->first();
-            $this->nom = Kegiatan::Where('id',$this->kid)->pluck('target')->first();
-            $this->per = intval(($this->nom / $this->pagu) * 100);
-            
-        }
-        if(((!(empty($this->pagu)))&&(!(empty($this->per))))){
-            $this->nom = intval(($this->per / 100) * $this->pagu);
-            // $target = $this->nom;
-        }
         
-        
-        return view('livewire.admin.dashboard',\compact('target'));
+        return view('livewire.admin.dashboard');
     }
 }

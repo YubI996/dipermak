@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.2.5",
         "doctrine/dbal": "~2.3",
+        "dompdf/dompdf": "^1.0",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
@@ -22,7 +23,9 @@
         "laravelcollective/html": "^6.1",
         "livewire/livewire": "^2.3",
         "mediconesystems/livewire-datatables": "^0.4.3",
-        "mews/captcha": "^3.2"
+        "maatwebsite/excel": "^3.1",
+        "mews/captcha": "^3.2",
+        "phpoffice/phpspreadsheet": "^1.17"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

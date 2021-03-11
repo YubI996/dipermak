@@ -141,23 +141,49 @@
                             </tr>
                             @endforeach
                         </tbody>
-                        </table>
+                    </table>
                 </div>
             <!-- /.card-body -->
             </div>
             <!-- /.card -->
         </div>
     </div>
-{{-- @php
-    dd($kecamatans);
-@endphp --}}
-{{-- @foreach ($kecs as $kec)
-    {{ $kec->nama_kec }}
-    @foreach ($kec->kelurahan as $kel)
-    {{ $kel->nama_kel }}
-    @foreach ($kel->rt as $rt)
-    {{ $rt->nama_rt }}
-        @endforeach
-    @endforeach
-@endforeach --}}
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Jenis Kegiatan</h3>
+                </div>
+                <div class="card-body">
+                    <table id="tabel1" class="table table-bordered table-striped" >
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Jenis Kegiatan</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($jenKegs as $jk)
+                            <tr>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$jk->jenis_keg}}</td>
+                                <td>
+                                    {!! Form::open(['route' => ['jenKegs.destroy', $jk->id], 'method' => 'delete']) !!}
+                                    <div class='btn-group'>
+                                        <a href="{{ route('jenKegs.show', [$jk->id]) }}" class='btn btn-default btn-xs'><i class="fa fa-eye"></i></a>
+                                        <a href="{{ route('jenKegs.edit', [$jk->id]) }}" class='btn btn-default btn-xs'><i class="fa fa-edit"></i></a>
+                                        {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                                    </div>
+                                    {!! Form::close() !!}
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>    
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection

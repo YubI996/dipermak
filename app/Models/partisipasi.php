@@ -69,6 +69,14 @@ class partisipasi extends Model
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable'
     ];
+    
+    public static $messages = [
+        'keg_id.required' => 'Anda harus memilih kegiatan, jika ',
+        'rt_id.required' => 'Anda harus memilih RT',
+        'jenis.required' => 'Anda harus memilih jenis partisipasi',
+        'deskripsi.required' => 'Anda harus mengisi deskripsi',
+        'nominal.required' => 'Anda harus mengisi nominal partisipasi',
+    ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -84,5 +92,20 @@ class partisipasi extends Model
     public function rt()
     {
         return $this->belongsTo(\App\Models\Rt::class, 'rt_id');
+    }
+    public function scopeSearch($query, $term)
+    {
+        $term = "%$term%";
+        $query->where(function ($query) use ($term) {
+            $query->where('deskripsi', 'like', $term)
+                ->orWhere('jenis', 'like', $term)
+                ->orWhere('nominal', 'like', $term)
+                ->orWhereHas('rt', function ($query) use ($term) {
+                    $query->where('nama_rt', 'like', $term);
+                })
+                ->orWhereHas('kegiatan', function ($query) use ($term) {
+                    $query->where('nama_keg', 'like', $term);
+                });
+        });
     }
 }

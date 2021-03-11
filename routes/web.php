@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/export','TestController@export');
+Route::get('/export2','TestController@export2');
 Route::get('/form-captcha','CaptchaController@index');
 Route::post('/form-captcha','CaptchaController@submit');
 Route::get('createcaptcha', 'CaptchaController@create');

@@ -1,4 +1,5 @@
 
+    
     <table id="tabel1" class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -17,9 +18,9 @@
         @foreach($partisipasis as $partisipasi)
             <tr>
                 <td>{{$loop->iteration}}</td>
-                <td>{{ $partisipasi->kegiatan['nama_keg'] }}</td>
+                <td>{{ $partisipasi->kegiatan->nama_keg }}</td>
                 <td>{{ 'RT '.$partisipasi->rt->nama_rt.' Kelurahan '.$partisipasi->rt->kelurahan->nama_kel }}</td>
-                <td>{{ substr($partisipasi->deskripsi,0, 30).'...' }}</td>
+                <td>{{ $partisipasi->deskripsi}}</td>
                 <td>{{ $partisipasi->jenis }}</td>
                 <td>{{ $partisipasi->nominal }}</td>
                 <td>{{ \Carbon\Carbon::parse($partisipasi->created_at)->translatedFormat('l, d F Y')}}</td>

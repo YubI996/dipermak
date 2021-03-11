@@ -13,6 +13,7 @@
         </div>
     </div>
     <!-- kelurahan Field -->
+    @if ($kec != 0 && !is_null($kec))
     <div class="form-group">
         <div class="row p-auto">
             <div class="col-1">
@@ -25,7 +26,9 @@
             </div>
         </div>
     </div>
+    @endif
     <!-- Rt Id Field -->
+     @if ($kel != 0 && !is_null($kel))
     <div class="form-group">
         <div class="row p-auto">
                 <div class="col-1">
@@ -37,7 +40,6 @@
                 </div>
         </div>
     </div>
-    {{-- <div>
-        {{$rtid}}
-    </div> --}}
+    @endif
+    
 </div>

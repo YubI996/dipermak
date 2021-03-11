@@ -1,5 +1,6 @@
 
-        <table id="tabel1" class="table table-bordered table-striped" >
+        @livewire('kegiatan-table')
+        {{-- <table id="tabel1" class="table table-bordered table-striped" >
             <thead>
                 <tr>
                     <th>No.</th>
@@ -45,11 +46,10 @@
                         {!! Form::close() !!}
                     </td>
                 </tr>
-            
-            
             @endforeach
             </tbody>
-        </table>
+        </table> --}}
+        
 
 
  

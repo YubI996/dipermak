@@ -29,4 +29,10 @@ class UpdatedokumentasiRequest extends FormRequest
         
         return $rules;
     }
+    public function messages()
+    {
+        $messages = dokumentasi::$messages;
+        
+        return $messages;
+    }
 }

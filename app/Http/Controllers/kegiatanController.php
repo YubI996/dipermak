@@ -31,7 +31,7 @@ class kegiatanController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $kegiatans = $this->kegiatanRepository->all()->sortbyDesc('created_at');
+        $kegiatans = $this->kegiatanRepository->all()->sortbyDesc('created_at')->sortbyDesc('rt_id');
 
         return view('kegiatans.index')
             ->with('kegiatans', $kegiatans);

@@ -50,7 +50,7 @@ class rt extends Model
         'nama_rt' => 'required|max:20',
         'kel_id' => 'required'
     ];
-    protected $appends = ['kelurahan'];
+    // protected $appends = ['kelurahan'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -58,5 +58,17 @@ class rt extends Model
     public function kelurahan()
     {
         return $this->belongsTo(\App\Models\kelurahan::class, 'kel_id');
+    }
+    public function kegiatans()
+    {
+        return $this->hasMany(\App\Models\kegiatan::class, 'rt_id','id');
+    }
+    public function partisipasis()
+    {
+        return $this->hasMany(\App\Models\partisipasi::class, 'rt_id','id');
+    }
+    public function dokumentasis()
+    {
+        return $this->hasMany(\App\Models\dokumentasi::class, 'rt_id','id');
     }
 }
